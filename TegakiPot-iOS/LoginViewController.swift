@@ -18,11 +18,11 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func register() {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func login() {
-        
+        dismiss(animated: true, completion: nil)
     }
 }
 
