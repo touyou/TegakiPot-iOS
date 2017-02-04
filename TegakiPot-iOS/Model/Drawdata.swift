@@ -25,6 +25,15 @@ extension Double {
         return String(format:"%.2f",self)
     }
 }
+extension CGFloat {
+    init (_ string : String) {
+        self.init(Double(string)!)
+    }
+    func fmt(_ n: Int) -> String {
+        return String(format:"%.2f",Float(self))
+    }
+}
+typealias Attrs = [String: String]
 
 
 
@@ -87,11 +96,11 @@ func interpolate(_ p0: Point, _ p1: Point, _ p2: Point, _ p3: Point) -> ConTrolT
     return (p1 + (c2-m1) * smooth_value, p2 + (c2-m2) * smooth_value, p2)
 }
 class Pers {
-    var origin: CGPoint
     var scale: Pixels
-    init(_ origin: CGPoint, _ scale: Pixels) {
-        self.origin = origin
+    var origin: CGPoint
+    init(_ scale: Pixels, _ origin: CGPoint = CGPoint(x:0,y:0)) {
         self.scale = scale
+        self.origin = origin
     }
 }
 infix operator <| : CastingPrecedence
@@ -120,16 +129,20 @@ extension UIColor {
             return (Int(r*255),Int(g*255),Int(b*255),Double(a))
         }
     }
-    // (0...255, 0...255, 0...255, 0...1)
     convenience init (_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: CGFloat(a))
     }
+    // rgba(0...255,0...255,0...255,0...1)
     func toRgbaString() -> String {
-        if self == UIColor.clear {
-            return "none"
+        let (r,g,b,a) = self.rgba
+        return a==0 ? "none" : "rgba(\(r),\(g),\(b),\(a.fmt(2)))"
+    }
+    convenience init (_ rgbaString: String) {
+        if rgbaString=="none" {
+            self.init(0,0,0,0)
         } else {
-            let (r,g,b,a) = self.rgba
-            return String(format: "rgba(%d,%d,%d,%.2f)",r,g,b,a)
+            let ss = rgbaString.components(separatedBy: "(,)")
+            self.init(Int(ss[1])!,Int(ss[2])!,Int(ss[3])!,Double(ss[4])!)
         }
     }
 }
@@ -160,8 +173,8 @@ class Rawpath {
 
 
 protocol Shape {
-    func rawpath(_: Pers) -> Rawpath
-    func toSvg() -> AEXMLElement
+    func toRawpath(_: Pers) -> Rawpath
+    func toSvgElem() -> AEXMLElement
 }
 class Stroke {
     var width: Size
@@ -170,8 +183,11 @@ class Stroke {
         self.width = width
         self.color = color
     }
-    func toSvgAttrs() -> [String: String] {
-        return ["stroke": color.toRgbaString(), "stroke-width": width.description]
+    convenience init(_ attrs: Attrs) {
+        self.init(Size(attrs["stroke-width"]!)!, UIColor(attrs["stroke"]!))
+    }
+    func toSvgAttrs() -> Attrs {
+        return ["stroke": color.toRgbaString(), "stroke-width": "\(width)"]
     }
 }
 class Fill {
@@ -179,7 +195,10 @@ class Fill {
     init(_ color: UIColor) {
         self.color = color
     }
-    func toSvgAttrs() -> [String: String] {
+    convenience init(_ attrs: Attrs) {
+        self.init(UIColor(attrs["fill"]!))
+    }
+    func toSvgAttrs() -> Attrs {
         return ["fill": color.toRgbaString()]
     }
 }
@@ -228,7 +247,7 @@ class Freehand : Shape {
         }
         return (added,draft)
     }
-    func rawpath(_ pers: Pers) -> Rawpath {
+    func toRawpath(_ pers: Pers) -> Rawpath {
         let res = Rawpath(UIBezierPath(), stroke, fill)
         res.move(start,pers)
         for bezier in beziers {
@@ -236,15 +255,12 @@ class Freehand : Shape {
         }
         return res
     }
-    func toSvg() -> AEXMLElement {
-        var d = String(format:"M%.2f,%.2f",start.x,start.y)
+    func toSvgElem() -> AEXMLElement {
+        var d = "M \(start.x.fmt(2)) \(start.y.fmt(2))"
         for bezier in beziers {
-            d += String(format:"S%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",
-                        bezier.con.x,bezier.con.y,
-                        bezier.trol.x,bezier.trol.y,
-                        bezier.to.x,bezier.to.y)
+            d += "S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
         }
-        return AEXMLElement(name: "path", value: nil, attributes:
+        return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
     }
 }
@@ -259,16 +275,16 @@ class Line : Shape {
         self.start = start
         self.end = end
     }
-    func rawpath(_ pers: Pers) -> Rawpath {
+    func toRawpath(_ pers: Pers) -> Rawpath {
         let res = Rawpath(UIBezierPath(), stroke, fill)
         res.move(start,pers)
         res.addLine(end,pers)
         return res
     }
-    func toSvg() -> AEXMLElement {
-        return AEXMLElement(name: "rect", value: nil, attributes:
+    func toSvgElem() -> AEXMLElement {
+        return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
-                ["d": String(format:"M%.2f,%.2fL%.2f,%.2f",start.x,start.y,end.x,end.y)])
+                ["d": "M \(start.x.fmt(2)) \(start.y.fmt(2)) L \(end.x.fmt(2)) \(end.y.fmt(2))"])
     }
 }
 class Rect : Shape {
@@ -282,13 +298,13 @@ class Rect : Shape {
         self.origin = origin
         self.diagonal = diagonal
     }
-    func rawpath(_ pers: Pers) -> Rawpath {
+    func toRawpath(_ pers: Pers) -> Rawpath {
         return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill)
     }
-    func toSvg() -> AEXMLElement {
-        return AEXMLElement(name: "rect", value: nil, attributes:
+    func toSvgElem() -> AEXMLElement {
+        return AEXMLElement(name: "rect", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
-                ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "rx": diagonal.dx.fmt(2), "ry": diagonal.dy.fmt(2)])
+                ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "width": diagonal.dx.fmt(2), "height": diagonal.dy.fmt(2)])
     }
 }
 class Oval : Shape {
@@ -305,13 +321,80 @@ class Oval : Shape {
     convenience init(_ stroke: Stroke, _ fill: Fill, _ center: Point, _ radius: Size) {
         self.init(stroke,fill,center,(radius,radius))
     }
-    func rawpath(_ pers: Pers) -> Rawpath {
+    func toRawpath(_ pers: Pers) -> Rawpath {
         return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill)
     }
-    func toSvg() -> AEXMLElement {
-        return AEXMLElement(name: "ellipse", value: nil, attributes:
+    func toSvgElem() -> AEXMLElement {
+        return AEXMLElement(name: "ellipse", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["cx": center.x.fmt(2), "cy": center.y.fmt(2), "rx": radius.dx.fmt(2), "ry": radius.dy.fmt(2)])
+    }
+}
 
+
+
+class Panel {
+    var realsize: CGSize
+    var pers: Pers
+    var shapes: [Shape]
+    init(_ realsize: CGSize, _ pers: Pers, _ shapes: [Shape] = Array()) {
+        self.realsize = realsize
+        self.pers = pers
+        self.shapes = shapes
+    }
+    convenience init(_ svg: AEXMLDocument) {
+        let root = svg.root
+        let realsize = CGSize(width:CGFloat(root.attributes["width"]!),height:CGFloat(root.attributes["height"]!))
+        let subroot = root.children.first!
+        let ss = subroot.attributes["transform"]!.components(separatedBy: "(,)")
+        let pers = Pers(Pixels(ss[4])!, CGPoint(x:CGFloat(ss[1]),y:CGFloat(ss[2])))
+        var shapes = Array<Shape>()
+        for child in root.children {
+            let attrs = child.attributes
+            let stroke = Stroke(attrs)
+            let fill = Fill(attrs)
+            switch child.name {
+            case "path":
+                let d = attrs["d"]!.components(separatedBy: " ")
+                let start = (Size(d[1])!,Size(d[2])!)
+                if(d.count <= 3) {
+                    shapes.append(Freehand(stroke,fill,start))
+                } else if d[3] == "L" {
+                    shapes.append(Line(stroke,fill,start,(Size(d[4])!,Size(d[5])!)))
+                } else {
+                    var curves = Array<ConTrolTo>()
+                    let n = (d.count - 3) / 7
+                    for i in 0..<n {
+                        curves.append((
+                            (Size(d[3+i*7+1])!,Size(d[3+i*7+2])!),
+                            (Size(d[3+i*7+3])!,Size(d[3+i*7+4])!),
+                            (Size(d[3+i*7+5])!,Size(d[3+i*7+6])!)))
+                    }
+                    shapes.append(Freehand(stroke,fill,start,curves))
+                }
+            case "rect":
+                shapes.append(Rect(stroke, fill,
+                                   (Size(attrs["x"]!)!,Size(attrs["y"]!)!),
+                                   (Size(attrs["width"]!)!,Size(attrs["height"]!)!)))
+            case "ellipse":
+                shapes.append(Oval(stroke, fill,
+                                   (Size(attrs["cx"]!)!,Size(attrs["cy"]!)!),
+                                   (Size(attrs["rx"]!)!,Size(attrs["ry"]!)!)))
+            default:
+                print("Panel init svg unexpected tagname")
+            }
+        }
+        self.init(realsize,pers,shapes)
+    }
+    func toSvgDocument() -> AEXMLDocument {
+        let root = AEXMLElement(name: "svg", attributes:
+            ["width": realsize.width.fmt(2), "height": realsize.height.fmt(2)])
+        let subroot = AEXMLElement(name: "g", attributes:
+            ["transform": "translate(\(pers.origin.x.fmt(2)),\(pers.origin.y.fmt(2))) scale(\(pers.scale.fmt(2)))"])
+        root.addChild(subroot)
+        for shape in shapes {
+            subroot.addChild(shape.toSvgElem())
+        }
+        return AEXMLDocument(root: root)
     }
 }

@@ -14,7 +14,6 @@
 		4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */; };
 		4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */; };
 		4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C20B1E4580E600F71C24 /* MaterialColor.swift */; };
-		BE11AA6F1E4584FD00E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA6E1E4584FD00E0F5B5 /* Drawdata.swift */; };
 		4665C20E1E45845700F71C24 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C20D1E45845700F71C24 /* SearchViewController.swift */; };
 		4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */; };
 		4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */; };
@@ -41,6 +40,7 @@
 		4665C23E1E45987600F71C24 /* QuestionStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23D1E45987600F71C24 /* QuestionStruct.swift */; };
 		4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23F1E459A0A00F71C24 /* TransformUtility.swift */; };
 		4665C2421E459DF000F71C24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2411E459DF000F71C24 /* User.swift */; };
+		BE11AA6F1E4584FD00E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA6E1E4584FD00E0F5B5 /* Drawdata.swift */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -304,7 +304,6 @@
 				TargetAttributes = {
 					4652A7071E457DC2003FA92C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = B4S4333JDW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -560,7 +559,7 @@
 			baseConfigurationReference = 50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B4S4333JDW;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -578,7 +577,7 @@
 			baseConfigurationReference = 822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = B4S4333JDW;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
