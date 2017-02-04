@@ -1,0 +1,3 @@
+framework module SwiftSVGiOS {
+    header "SwiftSVGiOS-Swift.h"
+}
