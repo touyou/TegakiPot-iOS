@@ -25,7 +25,6 @@
 		4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C21D1E45858100F71C24 /* HandWritingViewController.swift */; };
 		4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */; };
 		4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */; };
-		4665C2241E4585B800F71C24 /* EditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */; };
 		4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2251E4585D400F71C24 /* QuestionListViewController.swift */; };
 		4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */; };
 		4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2291E45862C00F71C24 /* LoginViewController.swift */; };
@@ -186,10 +185,10 @@
 		4665C1FB1E45802100F71C24 /* QuestionList */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2541E45E97B00F71C24 /* QuestionListTableViewCell.swift */,
-				4665C2551E45E97B00F71C24 /* QuestionListTableViewCell.xib */,
 				4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */,
 				4665C2251E4585D400F71C24 /* QuestionListViewController.swift */,
+				4665C2581E4605D900F71C24 /* QuestionListCollectionViewCell.swift */,
+				4665C2591E4605D900F71C24 /* QuestionListCollectionViewCell.xib */,
 			);
 			path = QuestionList;
 			sourceTree = "<group>";
@@ -197,7 +196,7 @@
 		4665C1FC1E45803200F71C24 /* EditQuestion */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */,
+				4665C25F1E464B0000F71C24 /* EditQuestionViewController.storyboard */,
 				4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */,
 			);
 			path = EditQuestion;
@@ -254,6 +253,7 @@
 				4665C24F1E45E19F00F71C24 /* KeyList.swift */,
 				4665C20B1E4580E600F71C24 /* MaterialColor.swift */,
 				4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */,
+				4665C25C1E46174100F71C24 /* Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -373,14 +373,14 @@
 			files = (
 				4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */,
 				4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */,
+				4665C25B1E4605D900F71C24 /* QuestionListCollectionViewCell.xib in Resources */,
 				4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */,
 				4652A7131E457DC3003FA92C /* Assets.xcassets in Resources */,
+				4665C2601E464B0000F71C24 /* EditQuestionViewController.storyboard in Resources */,
 				4652A7111E457DC3003FA92C /* Main.storyboard in Resources */,
-				4665C2241E4585B800F71C24 /* EditQuestionViewController.storyboard in Resources */,
 				4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */,
 				4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */,
 				4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */,
-				4665C2571E45E97B00F71C24 /* QuestionListTableViewCell.xib in Resources */,
 				4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */,
 				4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */,
 			);
@@ -466,6 +466,7 @@
 				4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */,
 				4665C2481E45A8EE00F71C24 /* ContributionModel.swift in Sources */,
 				4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */,
+				4665C25A1E4605D900F71C24 /* QuestionListCollectionViewCell.swift in Sources */,
 				4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */,
 				BE11AA7F1E461E2D00E0F5B5 /* Utility.swift in Sources */,
 				BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */,
@@ -482,6 +483,7 @@
 				BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */,
 				4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */,
 				4665C2141E45851000F71C24 /* QuestionDetailViewController.swift in Sources */,
+				4665C25D1E46174100F71C24 /* Utility.swift in Sources */,
 				4665C2161E45853A00F71C24 /* FriendListViewController.swift in Sources */,
 				4665C24C1E45C35D00F71C24 /* APIMethod.swift in Sources */,
 				4665C2501E45E19F00F71C24 /* KeyList.swift in Sources */,

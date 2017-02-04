@@ -10,8 +10,16 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField! {
+        didSet {
+            emailTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.delegate = self
+        }
+    }
     
     let saveData = UserDefaults.standard
     
@@ -24,13 +32,13 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func login() {
-        guard let email = emailTextField.text else {
+        guard let email = emailTextField.text, email != "" else {
             let alert = UIAlertController(title: "ログインエラー", message: "メールアドレスを入力してください。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
         }
-        guard let password = passwordTextField.text else {
+        guard let password = passwordTextField.text, password != "" else {
             let alert = UIAlertController(title: "ログインエラー", message: "パスワードを入力してください。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -38,13 +46,21 @@ final class LoginViewController: UIViewController {
         }
         
         TegakiPotAPI().postAuth(email: email, password: password, success: { response in
-            self.saveData.set(response.id, forKey: DataKey.loginUser.rawValue)
+//            self.saveData.set(response.id, forKey: DataKey.loginUser.rawValue)
+            self.saveData.set(response.id, forKey: DataKey.loginForTest.rawValue)
             self.dismiss(animated: true, completion: nil)
         }, failure: { error in
             let alert = UIAlertController(title: "ログイン失敗", message: "ログインに失敗しました。メールアドレスとパスワードを確認してください。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         })
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

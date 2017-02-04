@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import APIKit
+import Alamofire
 import Himotoki
 
 class TegakiPotAPI {
@@ -23,7 +23,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions.json"
+            return baseURL + "/questions.json"
         }
     }
     
@@ -37,7 +37,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/\(id).json"
+            return baseURL + "/questions/\(id).json"
         }
     }
     
@@ -49,7 +49,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/answers.json"
+            return baseURL + "/answers.json"
         }
     }
     
@@ -63,7 +63,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/\(id).json"
+            return baseURL + "/questions/\(id).json"
         }
     }
     
@@ -77,7 +77,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/users/\(id).json"
+            return baseURL + "/users/\(id).json"
         }
     }
     
@@ -94,10 +94,10 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/users/auth.json"
+            return baseURL + "/users/auth.json"
         }
         
-        var parameters: Any? {
+        var parameters: Parameters {
             return [
                 "user": [
                     "email": email,
@@ -131,10 +131,10 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/new.json"
+            return baseURL + "/questions/new.json"
         }
         
-        var parameters: Any? {
+        var parameters: Parameters {
             return [
                 "question": [
                     "posted_by": postedBy,
@@ -161,10 +161,10 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/answers/new.json"
+            return baseURL + "/answers/new.json"
         }
         
-        var parameters: Any? {
+        var parameters: Parameters {
             return [
                 "answer": [
                     "posted_by": postedBy,
@@ -186,7 +186,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/update/good/\(id).json"
+            return baseURL + "/questions/update/good/\(id).json"
         }
     }
     
@@ -200,7 +200,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/update/bad/\(id).json"
+            return baseURL + "/questions/update/bad/\(id).json"
         }
     }
     
@@ -214,7 +214,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/questions/update/view/\(id).json"
+            return baseURL + "/questions/update/view/\(id).json"
         }
     }
     
@@ -228,7 +228,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/answers/update/good/\(id).json"
+            return baseURL + "/answers/update/good/\(id).json"
         }
     }
  
@@ -242,7 +242,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/answers/update/bad/\(id).json"
+            return baseURL + "/answers/update/bad/\(id).json"
         }
     }
 
@@ -256,7 +256,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/answers/update/view/\(id).json"
+            return baseURL + "/answers/update/view/\(id).json"
         }
     }
 
@@ -270,7 +270,7 @@ class TegakiPotAPI {
         }
         
         var path: String {
-            return "/users/update/view/\(id).json"
+            return baseURL + "/users/update/view/\(id).json"
         }
     }
 }

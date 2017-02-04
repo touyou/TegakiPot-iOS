@@ -11,15 +11,15 @@ import Himotoki
 
 // MARK: - Contribution
 public struct Contribution {
-    public var field: Field
-    public var score: Int
+    public var field: Field?
+    public var score: Int?
 }
 
 extension Contribution: Decodable {
     public static func decode(_ e: Extractor) throws -> Contribution {
         return try Contribution(
-            field: e <| "field",
-            score: e <| "score"
+            field: e <|? "field",
+            score: e <|? "score"
         )
     }
 }

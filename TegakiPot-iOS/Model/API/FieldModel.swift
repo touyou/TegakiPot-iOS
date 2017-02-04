@@ -11,17 +11,17 @@ import Himotoki
 
 // MARK: - Field
 public struct Field {
-    public var name: String
-    public var nameJp: String
-    public var color: String
+    public var name: String?
+    public var nameJp: String?
+    public var color: String?
 }
 
 extension Field: Decodable {
     public static func decode(_ e: Extractor) throws -> Field {
         return try Field(
-            name: e <| "name",
-            nameJp: e <| "name_jp",
-            color: "e <| color"
+            name: e <|? "name",
+            nameJp: e <|? "name_jp",
+            color: e <|? "color"
         )
     }
 }

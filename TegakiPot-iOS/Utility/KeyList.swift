@@ -10,4 +10,5 @@ import Foundation
 
 enum DataKey: String {
     case loginUser = "login_user"
+    case loginForTest = "login_test"
 }

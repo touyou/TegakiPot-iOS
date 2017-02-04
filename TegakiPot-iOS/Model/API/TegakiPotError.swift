@@ -19,7 +19,6 @@ struct TegakiPotError: Error {
             message = "success"
         case 401:
             message = "unauthorized"
-            
         default:
             message = "Unknown Error code=\(statusCode)"
         }
