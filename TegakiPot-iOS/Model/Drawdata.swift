@@ -9,6 +9,24 @@
 import Foundation
 import UIKit
 import QuartzCore
+import AEXML
+
+
+
+func + <K,V> (d: [K:V], e: [K:V]) -> [K:V] {
+    var res = d
+    for (k,v) in e {
+        res[k] = v
+    }
+    return res
+}
+extension Double {
+    func fmt(_ n: Int) -> String {
+        return String(format:"%.2f",self)
+    }
+}
+
+
 
 typealias Size = Double
 typealias Pixels = Double
@@ -55,8 +73,8 @@ func individe(_ p: Point, _ q: Point, _ a: Scalar, _ b: Scalar) -> Point {
 func midpoint(_ p: Point, _ q: Point) -> Point {
     return individe(p,q,1,1)
 }
-typealias ToConTrol = (to: Point, con: Point, trol: Point)
-func interpolate(_ p0: Point, _ p1: Point, _ p2: Point, _ p3: Point) -> ToConTrol {
+typealias ConTrolTo = (con: Point, trol: Point, to: Point)
+func interpolate(_ p0: Point, _ p1: Point, _ p2: Point, _ p3: Point) -> ConTrolTo {
     let c1 = midpoint(p0,p1)
     let c2 = midpoint(p1,p2)
     let c3 = midpoint(p2,p3)
@@ -66,9 +84,8 @@ func interpolate(_ p0: Point, _ p1: Point, _ p2: Point, _ p3: Point) -> ToConTro
     let m1 = individe(c1,c2,l1,l2)
     let m2 = individe(c2,c3,l2,l3)
     let smooth_value = 1.0
-    return (p2, p1 + (c2-m1) * smooth_value, p2 + (c2-m2) * smooth_value)
+    return (p1 + (c2-m1) * smooth_value, p2 + (c2-m2) * smooth_value, p2)
 }
-
 class Pers {
     var origin: CGPoint
     var scale: Pixels
@@ -96,34 +113,43 @@ func >|(v: CGSize, pers: Pers) -> DPoint {
 
 extension UIColor {
     // (0...255, 0...255, 0...255, 0...1)
-    var rgba: (r: Double, g: Double, b: Double, a: Double) {
+    var rgba: (r: Int, g: Int, b: Int, a: Double) {
         get {
             var (r,g,b,a) = (CGFloat(0),CGFloat(0),CGFloat(0),CGFloat(0))
             getRed(&r,green:&g,blue:&b,alpha:&a)
-            return (Double(r*255),Double(g*255),Double(b*255),Double(a))
+            return (Int(r*255),Int(g*255),Int(b*255),Double(a))
         }
     }
     // (0...255, 0...255, 0...255, 0...1)
-    convenience init (_ r: Double, _ g: Double, _ b: Double, _ a: Double) {
+    convenience init (_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: CGFloat(a))
     }
+    func toRgbaString() -> String {
+        if self == UIColor.clear {
+            return "none"
+        } else {
+            let (r,g,b,a) = self.rgba
+            return String(format: "rgba(%d,%d,%d,%.2f)",r,g,b,a)
+        }
+    }
 }
-
 class Rawpath {
     var body: UIBezierPath
     var strokecolor: UIColor
-    init(_ body: UIBezierPath, _ strokecolor: UIColor = UIColor.clear) {
+    var fillcolor: UIColor
+    init(_ body: UIBezierPath, _ strokecolor: UIColor = UIColor.clear, _ fillcolor: UIColor = UIColor.clear) {
         self.body = body
         self.strokecolor = strokecolor
+        self.fillcolor = fillcolor
     }
-    convenience init(_ body: UIBezierPath, _ stroke: Stroke) {
-        self.init(body,stroke.color)
+    convenience init(_ body: UIBezierPath, _ stroke: Stroke, _ fill: Fill) {
+        self.init(body,stroke.color,fill.color)
         self.body.lineWidth = CGFloat(stroke.width)
     }
     func move(_ p: Point, _ pers: Pers) {
         body.move(to: p <| pers)
     }
-    func addBezier(_ tct: ToConTrol, _ pers: Pers) {
+    func addBezier(_ tct: ConTrolTo, _ pers: Pers) {
         body.addCurve(to: tct.to <| pers, controlPoint1: tct.con <| pers, controlPoint2: tct.trol <| pers)
     }
     func addLine(_ p: Point, _ pers: Pers) {
@@ -131,121 +157,162 @@ class Rawpath {
     }
 }
 
+
+
 protocol Shape {
     func rawpath(_: Pers) -> Rawpath
+    func toXml() -> AEXMLElement
 }
 class Stroke {
     var width: Size
     var color: UIColor
-    init(_ w: Size, _ c: UIColor) {
-        width = w
-        color = c
+    init(_ width: Size, _ color: UIColor) {
+        self.width = width
+        self.color = color
+    }
+    func toXmlAttrs() -> [String: String] {
+        return ["stroke": color.toRgbaString(), "stroke-width": width.description]
+    }
+}
+class Fill {
+    var color: UIColor
+    init(_ color: UIColor) {
+        self.color = color
+    }
+    func toXmlAttrs() -> [String: String] {
+        return ["fill": color.toRgbaString()]
     }
 }
 class Freehand : Shape {
     var stroke: Stroke
-    var start: Point?
-    var beziers: [ToConTrol]
-    init (_ stroke: Stroke) {
+    var fill: Fill
+    var start: Point
+    var beziers: [ConTrolTo]
+    init (_ stroke: Stroke, _ fill: Fill, _ start: Point, _ beziers: [ConTrolTo] = Array()) {
         self.stroke = stroke
-        self.start = nil
-        self.beziers = Array()
+        self.fill = fill
+        self.start = start
+        self.beziers = beziers
     }
     func addPoint(_ p: Point, _ pers: Pers) -> (added: Rawpath, draft: Rawpath) {
-        let added = Rawpath(UIBezierPath(),stroke)
-        let draft = Rawpath(UIBezierPath(),stroke)
-        if let start = start {
-            if beziers.isEmpty {
-                let bezier = interpolate(start,start,p,p)
-                beziers.append(bezier)
-                draft.move(start,pers)
-                draft.addBezier(bezier,pers)
-            } else {
-                let q = beziers.popLast()!.to
-                if beziers.isEmpty {
-                    let bezier1 = interpolate(start,start,q,p)
-                    let bezier2 = interpolate(start,q,p,p)
-                    beziers.append(bezier1)
-                    beziers.append(bezier2)
-                    added.move(start,pers)
-                    added.addBezier(bezier1,pers)
-                    draft.move(q,pers)
-                    draft.addBezier(bezier2,pers)
-                } else {
-                    let r = beziers.last!.to
-                    let s = beziers.count>1 ? beziers[beziers.count-2].to : start
-                    let bezier1 = interpolate(s,r,q,p)
-                    let bezier2 = interpolate(r,q,p,p)
-                    beziers.append(bezier1)
-                    beziers.append(bezier2)
-                    added.move(r,pers)
-                    added.addBezier(bezier1,pers)
-                    draft.move(q,pers)
-                    draft.addBezier(bezier2,pers)
-                }
-            }
+        let added = Rawpath(UIBezierPath(), stroke, fill)
+        let draft = Rawpath(UIBezierPath(), stroke, fill)
+        if beziers.isEmpty {
+            let bezier = interpolate(start,start,p,p)
+            beziers.append(bezier)
+            draft.move(start,pers)
+            draft.addBezier(bezier,pers)
         } else {
-            start = p
+            let q = beziers.popLast()!.to
+            if beziers.isEmpty {
+                let bezier1 = interpolate(start,start,q,p)
+                let bezier2 = interpolate(start,q,p,p)
+                beziers.append(bezier1)
+                beziers.append(bezier2)
+                added.move(start,pers)
+                added.addBezier(bezier1,pers)
+                draft.move(q,pers)
+                draft.addBezier(bezier2,pers)
+            } else {
+                let r = beziers.last!.to
+                let s = beziers.count>1 ? beziers[beziers.count-2].to : start
+                let bezier1 = interpolate(s,r,q,p)
+                let bezier2 = interpolate(r,q,p,p)
+                beziers.append(bezier1)
+                beziers.append(bezier2)
+                added.move(r,pers)
+                added.addBezier(bezier1,pers)
+                draft.move(q,pers)
+                draft.addBezier(bezier2,pers)
+            }
         }
         return (added,draft)
     }
     func rawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(),stroke)
-        if let s = start {
-            res.move(s,pers)
-            for bezier in beziers {
-                res.addBezier(bezier,pers)
-            }
+        let res = Rawpath(UIBezierPath(), stroke, fill)
+        res.move(start,pers)
+        for bezier in beziers {
+            res.addBezier(bezier,pers)
         }
         return res
+    }
+    func toXml() -> AEXMLElement {
+        var d = String(format:"M%.2f,%.2f",start.x,start.y)
+        for bezier in beziers {
+            d += String(format:"S%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",
+                        bezier.con.x,bezier.con.y,
+                        bezier.trol.x,bezier.trol.y,
+                        bezier.to.x,bezier.to.y)
+        }
+        return AEXMLElement(name: "path", value: nil, attributes:
+            stroke.toXmlAttrs() + fill.toXmlAttrs() + ["d": d])
     }
 }
 class Line : Shape {
     var stroke: Stroke
+    var fill: Fill
     var start: Point
     var end: Point
-    init(_ stroke: Stroke, _ start: Point, _ end: Point) {
+    init(_ stroke: Stroke, _ fill: Fill, _ start: Point, _ end: Point) {
         self.stroke = stroke
+        self.fill = fill
         self.start = start
         self.end = end
     }
     func rawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(),stroke)
+        let res = Rawpath(UIBezierPath(), stroke, fill)
         res.move(start,pers)
         res.addLine(end,pers)
         return res
     }
+    func toXml() -> AEXMLElement {
+        return AEXMLElement(name: "rect", value: nil, attributes:
+            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+                ["d": String(format:"M%.2f,%.2fL%.2f,%.2f",start.x,start.y,end.x,end.y)])
+    }
 }
 class Rect : Shape {
     var stroke: Stroke
+    var fill: Fill
     var origin: Point
     var diagonal: DPoint
-    init(_ stroke: Stroke, _ origin: Point, _ diagonal: DPoint) {
+    init(_ stroke: Stroke, _ fill: Fill, _ origin: Point, _ diagonal: DPoint) {
         self.stroke = stroke
+        self.fill = fill
         self.origin = origin
         self.diagonal = diagonal
     }
     func rawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)),stroke)
+        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill)
+    }
+    func toXml() -> AEXMLElement {
+        return AEXMLElement(name: "rect", value: nil, attributes:
+            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+                ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "rx": diagonal.dx.fmt(2), "ry": diagonal.dy.fmt(2)])
     }
 }
-class Oval : Shape {
+class Circle : Shape {
     // 外接長方形を考える
     var stroke: Stroke
-    var origin: Point
-    var diagonal: DPoint
-    init(_ stroke: Stroke, _ origin: Point, _ diagonal: DPoint) {
+    var fill: Fill
+    var center: Point
+    var radius: DPoint
+    init(_ stroke: Stroke, _ fill: Fill, _ center: Point, _ radius: DPoint) {
         self.stroke = stroke
-        self.origin = origin
-        self.diagonal = diagonal
+        self.fill = fill
+        self.center = center
+        self.radius = radius
     }
-    convenience init(_ stroke: Stroke, _ center: Point, _ xradius: Size, _ yradius: Size) {
-        self.init(stroke,center-(xradius,yradius),(xradius,yradius)*2)
-    }
-    convenience init(_ stroke: Stroke, _ center: Point, _ radius: Size) {
-        self.init(stroke,center,radius,radius)
+    convenience init(_ stroke: Stroke, _ fill: Fill, _ center: Point, _ radius: Size) {
+        self.init(stroke,fill,center,(radius,radius))
     }
     func rawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)),stroke)
+        return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill)
+    }
+    func toXml() -> AEXMLElement {
+        return AEXMLElement(name: "ellipse", value: nil, attributes:
+            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+                ["cx": center.x.fmt(2), "cy": center.y.fmt(2), "rx": radius.dx.fmt(2), "ry": radius.dy.fmt(2)])
+
     }
 }
