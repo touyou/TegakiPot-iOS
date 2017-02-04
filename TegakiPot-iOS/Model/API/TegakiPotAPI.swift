@@ -15,7 +15,7 @@ class TegakiPotAPI {
     
     struct GetQuestions: TegakiPotRequest {
         // MARK: RequestType
-//        typealias Response = 
+        typealias Response = Questions
         
         var method: HTTPMethod {
             return .get

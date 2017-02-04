@@ -25,7 +25,7 @@ extension Questions: Decodable {
 // MARK: - Question
 public struct Question {
     public var id: UInt64
-//    public var postedBy: User
+    public var postedBy: User
     public var isSolved: Bool
 //    public var field: Field
     public var tags: [String]
@@ -48,6 +48,7 @@ extension Question: Decodable {
         
         return try Question(
             id: e <| "id",
+            postedBy: e <| "posted_by",
             isSolved: e <| "is_solved",
             tags: e <|| "tags",
             title: e <| "title",
