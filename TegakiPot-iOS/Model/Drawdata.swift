@@ -291,8 +291,7 @@ class Rect : Shape {
                 ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "rx": diagonal.dx.fmt(2), "ry": diagonal.dy.fmt(2)])
     }
 }
-class Circle : Shape {
-    // 外接長方形を考える
+class Oval : Shape {
     var stroke: Stroke
     var fill: Fill
     var center: Point
