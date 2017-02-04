@@ -11,5 +11,19 @@ import APIKit
 import Himotoki
 
 class TegakiPotAPI {
+    public init() {}
+    
+    struct GetQuestions: TegakiPotRequest {
+        // MARK: RequestType
+//        typealias Response = 
+        
+        var method: HTTPMethod {
+            return .get
+        }
+        
+        var path: String {
+            return "/questions.json"
+        }
+    }
     
 }
