@@ -25,7 +25,6 @@
 		4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C21D1E45858100F71C24 /* HandWritingViewController.swift */; };
 		4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */; };
 		4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */; };
-		4665C2241E4585B800F71C24 /* EditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */; };
 		4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2251E4585D400F71C24 /* QuestionListViewController.swift */; };
 		4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */; };
 		4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2291E45862C00F71C24 /* LoginViewController.swift */; };
@@ -50,6 +49,7 @@
 		4665C25A1E4605D900F71C24 /* QuestionListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2581E4605D900F71C24 /* QuestionListCollectionViewCell.swift */; };
 		4665C25B1E4605D900F71C24 /* QuestionListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2591E4605D900F71C24 /* QuestionListCollectionViewCell.xib */; };
 		4665C25D1E46174100F71C24 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C25C1E46174100F71C24 /* Utility.swift */; };
+		4665C2601E464B0000F71C24 /* EditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C25F1E464B0000F71C24 /* EditQuestionViewController.storyboard */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +74,6 @@
 		4665C21D1E45858100F71C24 /* HandWritingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandWritingViewController.swift; sourceTree = "<group>"; };
 		4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HandWritingViewController.storyboard; sourceTree = "<group>"; };
 		4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
-		4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
 		4665C2251E4585D400F71C24 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
 		4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionListViewController.storyboard; sourceTree = "<group>"; };
 		4665C2291E45862C00F71C24 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		4665C2581E4605D900F71C24 /* QuestionListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4665C2591E4605D900F71C24 /* QuestionListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionListCollectionViewCell.xib; sourceTree = "<group>"; };
 		4665C25C1E46174100F71C24 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4665C25F1E464B0000F71C24 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		4665C1FC1E45803200F71C24 /* EditQuestion */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */,
+				4665C25F1E464B0000F71C24 /* EditQuestionViewController.storyboard */,
 				4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */,
 			);
 			path = EditQuestion;
@@ -364,8 +364,8 @@
 				4665C25B1E4605D900F71C24 /* QuestionListCollectionViewCell.xib in Resources */,
 				4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */,
 				4652A7131E457DC3003FA92C /* Assets.xcassets in Resources */,
+				4665C2601E464B0000F71C24 /* EditQuestionViewController.storyboard in Resources */,
 				4652A7111E457DC3003FA92C /* Main.storyboard in Resources */,
-				4665C2241E4585B800F71C24 /* EditQuestionViewController.storyboard in Resources */,
 				4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */,
 				4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */,
 				4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */,
