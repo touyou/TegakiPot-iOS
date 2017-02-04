@@ -9,6 +9,19 @@
 import Foundation
 import Himotoki
 
+// MARK: - Answers
+public struct Answers {
+    public var answers: [Answer]?
+}
+
+extension Answers: Decodable {
+    public static func decode(_ e: Extractor) throws -> Answers {
+        return try Answers(
+            answers: decodeArray(e.rawValue)
+        )
+    }
+}
+
 // MARK: - Answer
 public struct Answer {
     public var id: UInt64

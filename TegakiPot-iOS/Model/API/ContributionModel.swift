@@ -9,8 +9,6 @@
 import Foundation
 import Himotoki
 
-import Himotoki
-
 // MARK: - Contribution
 public struct Contribution {
     public var field: Field
