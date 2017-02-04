@@ -10,6 +10,7 @@ import UIKit
 
 class QuestionListCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var drawBaseView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
