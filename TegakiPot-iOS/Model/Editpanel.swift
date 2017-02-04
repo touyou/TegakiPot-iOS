@@ -78,14 +78,14 @@ class Editpanel : UIView {
     override init(frame: CGRect) {
         print("editpanel init")
         geometry = Geometry(frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.5, UIColor.red)
+        stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
         backgroundColor = UIColor.white
     }
     init(frame: CGRect, _ svg: AEXMLDocument) {
         geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.5, UIColor.red)
+        stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
         backgroundColor = UIColor.white
@@ -130,7 +130,7 @@ class Editpanel : UIView {
         return res
     }
     func updateShape(_ shape: Shape) {
-        geometry.shapes.popLast()
+        let _ = geometry.shapes.popLast()
         geometry.shapes.append(shape)
         setNeedsDisplay()
     }
