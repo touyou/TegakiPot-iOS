@@ -11,11 +11,11 @@ import Alamofire
 
 final class QuestionListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.tableFooterView = UIView()
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.backgroundColor = .white
         }
     }
     
@@ -35,19 +35,34 @@ final class QuestionListViewController: UIViewController {
     }
 }
 
-// MARK: - Table View
+// MARK: - Collection View
 
-extension QuestionListViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension QuestionListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questions.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPreviewCell", for: indexPath) as! QuestionListCollectionViewCell
+        
+        let question = questions[indexPath.row]
+//        cell.autherLabel.text = "by \(question.)"
+        let calendar = Calendar.current
+        let component = calendar.dateComponents([.year, .day, .month], from: question.createdAt!)
+        cell.yearLabel.text = "\(component.year)"
+        cell.dateLabel.text = "\(component.month)/\(component.day)"
+        cell.titleLabel.text = question.title
+//        cell.voteLabel.text = "votes: \(question.)"
+        
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
 
