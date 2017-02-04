@@ -28,7 +28,7 @@ func -(p: Point, q: Point) -> DPoint {
     return (p.x-q.x, p.y-q.y)
 }
 func -(p: Point, v: DPoint) -> Point {
-    return (p.x-v.dx, p.x-v.dx)
+    return (p.x-v.dx, p.y-v.dy)
 }
 func -(v: DPoint, w: DPoint) -> DPoint {
     return (v.dx-w.dx, v.dy-w.dy)
@@ -48,24 +48,16 @@ func norm(_ v: DPoint) -> Size {
 func dist(_ p: Point, _ q: Point) -> Size {
     return norm(p-q)
 }
-func individe(_ p: Point, _ q: Point, _ a: Scalar, _ b: Scalar) -> Point {
-    return ((p.x*b+q.x*a)/(a+b), (p.y*b+q.y*a)/(a+b))
-}
-func midpoint(_ p: Point, _ q: Point) -> Point {
-    return individe(p,q,1,1)
+func control(_ p: Point, _ q: Point, _ r: Point) -> Point {
+    let dpq = dist(p,q)
+    let dqr = dist(q,r)
+    let s = dpq + dqr
+    let t = s < 1e-6 ? 0 : 0.5 * dqr / s
+    return q + 1.0 * t * (r-p)
 }
 typealias ConTrolTo = (con: Point, trol: Point, to: Point)
 func interpolate(_ p0: Point, _ p1: Point, _ p2: Point, _ p3: Point) -> ConTrolTo {
-    let c1 = midpoint(p0,p1)
-    let c2 = midpoint(p1,p2)
-    let c3 = midpoint(p2,p3)
-    let l1 = dist(p0,p1)
-    let l2 = dist(p1,p2)
-    let l3 = dist(p2,p3)
-    let m1 = individe(c1,c2,l1,l2)
-    let m2 = individe(c2,c3,l2,l3)
-    let smooth_value = 1.0
-    return (p1 + (c2-m1) * smooth_value, p2 + (c2-m2) * smooth_value, p2)
+    return (control(p0,p1,p2),control(p3,p2,p1),p2)
 }
 class Pers {
     var scale: Pixels
@@ -77,10 +69,13 @@ class Pers {
 }
 infix operator <| : CastingPrecedence
 func <|(p: Point, pers: Pers) -> CGPoint {
-    return CGPoint(x: pers.origin.x + CGFloat(p.x * pers.scale), y: pers.origin.y + CGFloat(p.y * pers.scale))
+    return CGPoint(x: pers.origin.x + CGFloat(p.x*pers.scale), y: pers.origin.y + CGFloat(p.y*pers.scale))
 }
 func <|(v: DPoint, pers: Pers) -> CGSize {
-    return CGSize(width: v.dx * pers.scale, height: v.dy * pers.scale)
+    return CGSize(width: v.dx*pers.scale, height: v.dy*pers.scale)
+}
+func <|(a: Size, pers: Pers) -> CGFloat {
+    return CGFloat(a*pers.scale)
 }
 infix operator >| : CastingPrecedence
 func >|(p: CGPoint, pers: Pers) -> Point {
@@ -88,4 +83,7 @@ func >|(p: CGPoint, pers: Pers) -> Point {
 }
 func >|(v: CGSize, pers: Pers) -> DPoint {
     return (Double(v.width)/pers.scale, Double(v.height)/pers.scale)
+}
+func >|(a: CGFloat, pers: Pers) -> Size {
+    return Size(Double(a)/pers.scale)
 }

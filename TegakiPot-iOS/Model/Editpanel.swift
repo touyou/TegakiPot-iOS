@@ -12,9 +12,9 @@ import QuartzCore
 import AEXML
 
 class Editpanel : UIView {
+    unowned var controller: HandWritingViewController
     var geometry: Geometry
     var redoshapes: [Shape] = Array()
-    var stable: StableView?
     var stroke: Stroke
     var fill: Fill
     var creation: Creation?
@@ -30,21 +30,14 @@ class Editpanel : UIView {
     var creating: Bool {
         get { return creation != nil }
     }
-    var modechangeable: Bool {
-        get { return !creating }
-    }
     var undoable: Bool {
-        get { return geometry.shapes.isEmpty }
+        get { return !geometry.shapes.isEmpty }
     }
     var redoable: Bool {
-        get { return redoshapes.isEmpty }
+        get { return !redoshapes.isEmpty }
     }
-    func modechange(mode: Mode) {
+    func modechange(_ mode: Mode) {
         if self.mode == mode { return }
-        if !modechangeable {
-            print ("error: not modechangeable!")
-            return
-        }
         creation?.bye()
         switch mode {
         case .base:
@@ -68,6 +61,7 @@ class Editpanel : UIView {
             return
         }
         redoshapes.append(popShape())
+        update()
     }
     func redo() {
         if !redoable {
@@ -76,17 +70,21 @@ class Editpanel : UIView {
         }
         pushShape(redoshapes.popLast()!)
     }
-    override init(frame: CGRect) {
+    init(_ frame: CGRect, _ controller: HandWritingViewController) {
+        self.controller = controller
         geometry = Geometry(frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.1, UIColor.black)
+        stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
+        backgroundColor = UIColor.white
     }
-    init(frame: CGRect, svg: AEXMLDocument) {
+    init(_ frame: CGRect, _ controller: HandWritingViewController, _ svg: AEXMLDocument) {
+        self.controller = controller
         geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.1, UIColor.black)
+        stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
+        backgroundColor = UIColor.white
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -116,38 +114,34 @@ class Editpanel : UIView {
         }
     }
     func pushShape(_ shape: Shape) {
+        redoshapes = Array()
         geometry.shapes.append(shape)
-        stable?.removeFromSuperview()
-        stable = StableView(frame, geometry)
+        update()
     }
     @discardableResult func popShape() -> Shape {
         let res = geometry.shapes.popLast()!
-        stable?.removeFromSuperview()
-        stable = StableView(frame, geometry)
+        update()
         return res
     }
     func updateShape(_ shape: Shape) {
-        popShape()
-        pushShape(shape)
+        let _ = geometry.shapes.popLast()
+        geometry.shapes.append(shape)
+        update()
     }
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
+        update()
     }
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
     }
-}
-class StableView : UIView {
-    let geometry: Geometry
-    init(_ frame: CGRect, _ geometry: Geometry) {
-        self.geometry = geometry
-        super.init(frame: frame)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func draw(_: CGRect) {
         geometry.draw()
+    }
+    func update() {
+        controller.undoBtn.isEnabled = undoable
+        controller.redoBtn.isEnabled = redoable
+        setNeedsDisplay()
     }
 }
 
@@ -259,6 +253,7 @@ class GoodlineCreation : Creation {
             line.end = goodline(line.start, p)
             editpanel.updateShape(line)
         }
+        line = nil
     }
     func bye() {
         if line != nil {
@@ -328,6 +323,7 @@ class CircleCreation : Creation {
             circle.radius = (radius, radius)
             editpanel.updateShape(circle)
         }
+        circle = nil
     }
     func bye() {
         if circle != nil {

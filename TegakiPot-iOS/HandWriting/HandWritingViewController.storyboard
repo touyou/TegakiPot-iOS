@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,12 +21,124 @@
                     <view key="view" contentMode="scaleToFill" id="FuL-hf-M8o">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjs-yx-kuE">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39A-Rk-9jj">
+                                        <rect key="frame" x="27" y="11" width="116" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Undo"/>
+                                        <connections>
+                                            <action selector="undo" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="MH9-Ob-96f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdb-Nn-Pyy">
+                                        <rect key="frame" x="119" y="14" width="116" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Redo"/>
+                                        <connections>
+                                            <action selector="redo" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="Cdo-N0-nXu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZ6-7J-a4R">
+                                        <rect key="frame" x="391" y="8" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Freehand"/>
+                                        <connections>
+                                            <action selector="freehand" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="1zO-e3-1bG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxt-tm-f08">
+                                        <rect key="frame" x="525" y="10" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Line"/>
+                                        <connections>
+                                            <action selector="line" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="dZF-nv-Sp8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-sa-LkF">
+                                        <rect key="frame" x="659" y="11" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Goodline"/>
+                                        <connections>
+                                            <action selector="goodline" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="Xbk-Sl-rAG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIb-GV-MNz">
+                                        <rect key="frame" x="795" y="12" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Rect"/>
+                                        <connections>
+                                            <action selector="rect" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="9vY-O0-Ahu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xX-Xz-JkO">
+                                        <rect key="frame" x="927" y="12" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Circle"/>
+                                        <connections>
+                                            <action selector="circle" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="3G0-Qu-7KK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rT-bo-qkZ">
+                                        <rect key="frame" x="1077" y="14" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Load"/>
+                                        <connections>
+                                            <action selector="load" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="Z3j-z6-eYH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-JG-NhZ">
+                                        <rect key="frame" x="1211" y="14" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="save" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="H7C-3H-aP9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.48627450980392156" green="0.70196078431372544" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="3Ls-ip-OYr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFW-Ia-ZGO">
+                                <rect key="frame" x="72.5" y="88" width="1221" height="916"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZFW-Ia-ZGO" secondAttribute="height" multiplier="400:300" id="aAx-4N-rdr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yjs-yx-kuE" firstAttribute="top" secondItem="FuL-hf-M8o" secondAttribute="top" id="IEG-bS-L6U"/>
+                            <constraint firstItem="tEI-uZ-hpG" firstAttribute="top" secondItem="ZFW-Ia-ZGO" secondAttribute="bottom" constant="20" id="cyc-Aa-Mik"/>
+                            <constraint firstItem="Yjs-yx-kuE" firstAttribute="leading" secondItem="FuL-hf-M8o" secondAttribute="leading" id="lfO-xz-ZXl"/>
+                            <constraint firstItem="ZFW-Ia-ZGO" firstAttribute="centerX" secondItem="Yjs-yx-kuE" secondAttribute="centerX" id="mOl-g8-Ry7"/>
+                            <constraint firstAttribute="trailing" secondItem="Yjs-yx-kuE" secondAttribute="trailing" id="oEW-Y2-mCZ"/>
+                            <constraint firstItem="ZFW-Ia-ZGO" firstAttribute="top" secondItem="Yjs-yx-kuE" secondAttribute="bottom" constant="8" id="u0t-Hm-7nM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="drawableView" destination="ZFW-Ia-ZGO" id="suE-zx-bsb"/>
+                        <outlet property="redoBtn" destination="Kdb-Nn-Pyy" id="qtR-hK-Bki"/>
+                        <outlet property="undoBtn" destination="39A-Rk-9jj" id="Hhm-2h-nuu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cG6-61-aCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="2"/>
+            <point key="canvasLocation" x="28.98975109809663" y="21.6796875"/>
         </scene>
     </scenes>
 </document>

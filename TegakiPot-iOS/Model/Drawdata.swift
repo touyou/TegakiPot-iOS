@@ -32,8 +32,10 @@ extension UIColor {
         if rgbaString=="none" {
             self.init(0,0,0,0)
         } else {
-            let ss = rgbaString.components(separatedBy: "(,)")
-            self.init(Int(ss[1])!,Int(ss[2])!,Int(ss[3])!,Double(ss[4])!)
+            let ss = rgbaString.substring(with:
+                rgbaString.index(rgbaString.startIndex, offsetBy: 5) ..< rgbaString.index(rgbaString.endIndex, offsetBy: -1))
+                .components(separatedBy: ",")
+            self.init(Int(ss[0])!,Int(ss[1])!,Int(ss[2])!,Double(ss[3])!)
         }
     }
 }
@@ -41,24 +43,27 @@ class Rawpath {
     var body: UIBezierPath
     var strokecolor: UIColor
     var fillcolor: UIColor
-    init(_ body: UIBezierPath, _ strokecolor: UIColor = UIColor.clear, _ fillcolor: UIColor = UIColor.clear) {
+    var pers: Pers
+    init(_ body: UIBezierPath, _ strokecolor: UIColor = UIColor.clear, _ fillcolor: UIColor = UIColor.clear, _ pers: Pers) {
         self.body = body
         self.strokecolor = strokecolor
         self.fillcolor = fillcolor
+        self.pers = pers
     }
-    init(_ body: UIBezierPath, _ stroke: Stroke, _ fill: Fill) {
+    init(_ body: UIBezierPath, _ stroke: Stroke, _ fill: Fill, _ pers: Pers) {
         self.body = body
         self.strokecolor = stroke.color
         self.fillcolor = fill.color
-        self.body.lineWidth = CGFloat(stroke.width)
+        self.pers = pers
+        self.body.lineWidth = stroke.width <| pers
     }
-    func move(_ p: Point, _ pers: Pers) {
+    func move(_ p: Point) {
         body.move(to: p <| pers)
     }
-    func addBezier(_ tct: ConTrolTo, _ pers: Pers) {
+    func addBezier(_ tct: ConTrolTo) {
         body.addCurve(to: tct.to <| pers, controlPoint1: tct.con <| pers, controlPoint2: tct.trol <| pers)
     }
-    func addLine(_ p: Point, _ pers: Pers) {
+    func addLine(_ p: Point) {
         body.addLine(to: p <| pers)
     }
     func draw() {
@@ -94,7 +99,7 @@ class Stroke {
         self.color = UIColor(attrs["stroke"]!)
     }
     func toSvgAttrs() -> Attrs {
-        return ["stroke": color.toRgbaString(), "stroke-width": "\(width)"]
+        return ["stroke": color.toRgbaString(), "stroke-width": "\(width.fmt(2))"]
     }
 }
 class Fill {
@@ -119,40 +124,41 @@ class Freehand : Shape {
         self.fill = fill
         self.start = start
         self.beziers = beziers
-    }
-    func addPoint(_ p: Point, _ pers: Pers) {
         if beziers.isEmpty {
-            let bezier = interpolate(start,start,p,p)
-            beziers.append(bezier)
-        } else {
-            let q = beziers.popLast()!.to
-            if beziers.isEmpty {
-                let bezier1 = interpolate(start,start,q,p)
-                let bezier2 = interpolate(start,q,p,p)
-                beziers.append(bezier1)
-                beziers.append(bezier2)
-            } else {
-                let r = beziers.last!.to
-                let s = beziers.count>1 ? beziers[beziers.count-2].to : start
-                let bezier1 = interpolate(s,r,q,p)
-                let bezier2 = interpolate(r,q,p,p)
-                beziers.append(bezier1)
-                beziers.append(bezier2)
-            }
+            let bezier = interpolate(start, start, start, start)
+            self.beziers.append(bezier)
+            self.beziers.append(bezier)
+            self.beziers.append(bezier)
         }
     }
+    func addPoint(_ p: Point, _ pers: Pers) {
+        if dist(beziers.last!.to, p)  < 1e-6 {
+            return
+        }
+        let q = beziers.popLast()!.to
+        let r = beziers.last!.to
+        let s = beziers[beziers.count-2].to
+        let bezier1 = interpolate(s,r,q,p)
+        let bezier2 = interpolate(r,q,p,p)
+        beziers.append(bezier1)
+        beziers.append(bezier2)
+    }
     func toRawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(), stroke, fill)
-        res.move(start,pers)
-        for bezier in beziers {
-            res.addBezier(bezier,pers)
+        let res = Rawpath(UIBezierPath(), stroke, fill, pers)
+        res.move(start)
+        if beziers.count<=1 {
+            res.addLine(start)
+        } else {
+            for bezier in beziers {
+                res.addBezier(bezier)
+            }
         }
         return res
     }
     func toSvgElem() -> AEXMLElement {
         var d = "M \(start.x.fmt(2)) \(start.y.fmt(2))"
         for bezier in beziers {
-            d += "S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
+            d += " S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
         }
         return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
@@ -170,9 +176,9 @@ class Line : Shape {
         self.end = end
     }
     func toRawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(), stroke, fill)
-        res.move(start,pers)
-        res.addLine(end,pers)
+        let res = Rawpath(UIBezierPath(), stroke, fill, pers)
+        res.move(start)
+        res.addLine(end)
         return res
     }
     func toSvgElem() -> AEXMLElement {
@@ -193,7 +199,7 @@ class Rect : Shape {
         self.diagonal = diagonal
     }
     func toRawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill)
+        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill, pers)
     }
     func toSvgElem() -> AEXMLElement {
         return AEXMLElement(name: "rect", attributes:
@@ -219,7 +225,7 @@ class Oval : Shape {
         self.radius = (radius, radius)
     }
     func toRawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill)
+        return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill, pers)
     }
     func toSvgElem() -> AEXMLElement {
         return AEXMLElement(name: "ellipse", attributes:
@@ -253,7 +259,7 @@ class Geometry {
         self.pers = pers ??
             Pers(Pixels(ss[4])!,CGPoint(x:CGFloat(ss[1]),y:CGFloat(ss[2])))
         self.shapes = Array<Shape>()
-        for child in root.children {
+        for child in subroot.children {
             let attrs = child.attributes
             let stroke = Stroke(attrs)
             let fill = Fill(attrs)
