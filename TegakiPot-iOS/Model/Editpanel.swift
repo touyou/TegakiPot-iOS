@@ -29,21 +29,14 @@ class Editpanel : UIView {
     var creating: Bool {
         get { return creation != nil }
     }
-    var modechangeable: Bool {
-        get { return !creating }
-    }
     var undoable: Bool {
-        get { return geometry.shapes.isEmpty }
+        get { return !geometry.shapes.isEmpty }
     }
     var redoable: Bool {
-        get { return redoshapes.isEmpty }
+        get { return !redoshapes.isEmpty }
     }
     func modechange(_ mode: Mode) {
         if self.mode == mode { return }
-        if !modechangeable {
-            print ("error: not modechangeable!")
-            return
-        }
         creation?.bye()
         switch mode {
         case .base:
@@ -136,6 +129,7 @@ class Editpanel : UIView {
     }
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
+        setNeedsDisplay()
     }
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
@@ -254,6 +248,7 @@ class GoodlineCreation : Creation {
             line.end = goodline(line.start, p)
             editpanel.updateShape(line)
         }
+        line = nil
     }
     func bye() {
         if line != nil {

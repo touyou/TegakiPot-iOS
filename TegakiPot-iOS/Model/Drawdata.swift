@@ -32,8 +32,12 @@ extension UIColor {
         if rgbaString=="none" {
             self.init(0,0,0,0)
         } else {
-            let ss = rgbaString.components(separatedBy: "(,)")
-            self.init(Int(ss[1])!,Int(ss[2])!,Int(ss[3])!,Double(ss[4])!)
+            print("rgbaString \(rgbaString)")
+            let ss = rgbaString.substring(with:
+                rgbaString.index(rgbaString.startIndex, offsetBy: 5) ..< rgbaString.index(rgbaString.endIndex, offsetBy: -1))
+                .components(separatedBy: ",")
+            print(ss)
+            self.init(Int(ss[0])!,Int(ss[1])!,Int(ss[2])!,Double(ss[3])!)
         }
     }
 }
@@ -97,7 +101,7 @@ class Stroke {
         self.color = UIColor(attrs["stroke"]!)
     }
     func toSvgAttrs() -> Attrs {
-        return ["stroke": color.toRgbaString(), "stroke-width": "\(width)"]
+        return ["stroke": color.toRgbaString(), "stroke-width": "\(width.fmt(2))"]
     }
 }
 class Fill {
@@ -159,7 +163,7 @@ class Freehand : Shape {
     func toSvgElem() -> AEXMLElement {
         var d = "M \(start.x.fmt(2)) \(start.y.fmt(2))"
         for bezier in beziers {
-            d += "S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
+            d += " S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
         }
         return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
@@ -260,8 +264,10 @@ class Geometry {
         self.pers = pers ??
             Pers(Pixels(ss[4])!,CGPoint(x:CGFloat(ss[1]),y:CGFloat(ss[2])))
         self.shapes = Array<Shape>()
-        for child in root.children {
+        for child in subroot.children {
+            print("good so far")
             let attrs = child.attributes
+            print(attrs)
             let stroke = Stroke(attrs)
             let fill = Fill(attrs)
             switch child.name {
