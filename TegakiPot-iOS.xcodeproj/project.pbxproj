@@ -30,6 +30,12 @@
 		4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */; };
 		4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2291E45862C00F71C24 /* LoginViewController.swift */; };
 		4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */; };
+		4665C2301E4594EF00F71C24 /* TegakiPotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */; };
+		4665C2361E4595FE00F71C24 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2311E4595FE00F71C24 /* AEXML.framework */; };
+		4665C2371E4595FE00F71C24 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2321E4595FE00F71C24 /* APIKit.framework */; };
+		4665C2381E4595FE00F71C24 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2331E4595FE00F71C24 /* Himotoki.framework */; };
+		4665C2391E4595FE00F71C24 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2341E4595FE00F71C24 /* Result.framework */; };
+		4665C23A1E4595FE00F71C24 /* SwiftSVGiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +65,12 @@
 		4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuestionListViewController.storyboard; path = QuestionList/QuestionListViewController.storyboard; sourceTree = "<group>"; };
 		4665C2291E45862C00F71C24 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginViewController.storyboard; path = Login/LoginViewController.storyboard; sourceTree = "<group>"; };
+		4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TegakiPotAPI.swift; path = Model/API/TegakiPotAPI.swift; sourceTree = "<group>"; };
+		4665C2311E4595FE00F71C24 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
+		4665C2321E4595FE00F71C24 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		4665C2331E4595FE00F71C24 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		4665C2341E4595FE00F71C24 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSVGiOS.framework; path = Carthage/Build/iOS/SwiftSVGiOS.framework; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4665C2361E4595FE00F71C24 /* AEXML.framework in Frameworks */,
+				4665C2371E4595FE00F71C24 /* APIKit.framework in Frameworks */,
+				4665C2381E4595FE00F71C24 /* Himotoki.framework in Frameworks */,
+				4665C2391E4595FE00F71C24 /* Result.framework in Frameworks */,
+				4665C23A1E4595FE00F71C24 /* SwiftSVGiOS.framework in Frameworks */,
 				F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +137,7 @@
 		4665C1FA1E45801C00F71C24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4665C22E1E4594B400F71C24 /* API */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -205,9 +223,22 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		4665C22E1E4594B400F71C24 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		6D0F9475F07E62CA9658FEF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4665C2311E4595FE00F71C24 /* AEXML.framework */,
+				4665C2321E4595FE00F71C24 /* APIKit.framework */,
+				4665C2331E4595FE00F71C24 /* Himotoki.framework */,
+				4665C2341E4595FE00F71C24 /* Result.framework */,
+				4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */,
 				4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */,
 			);
 			name = Frameworks;
@@ -373,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4665C2301E4594EF00F71C24 /* TegakiPotAPI.swift in Sources */,
 				4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */,
 				4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
@@ -509,6 +541,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TegakiPot-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.is2017ers.TegakiPot-iOS";
@@ -523,6 +559,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TegakiPot-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.is2017ers.TegakiPot-iOS";
