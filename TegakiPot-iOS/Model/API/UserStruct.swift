@@ -21,7 +21,7 @@ public struct User {
     public var rating: Int
     public var views: Int
     public var friends: [User]?
-//    public var contributions: [Contribution]?
+    public var contributions: [Contribution]?
     public var questions: Questions
     public var answers: [Answer]?
     public var isValid: Bool
@@ -45,6 +45,7 @@ extension User: Decodable {
             rating: e <| "rating",
             views: e <| "views",
             friends: e <||? "friends",
+            contributions: e <||? "contributions",
             questions: e <| "questions",
             answers: e <||? "answers",
             isValid: e <| "is_valid",
