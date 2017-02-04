@@ -92,7 +92,7 @@ extension QuestionDetailViewController: UITableViewDelegate, UITableViewDataSour
 //            })
         }
         
-        cell.badBtn() = {
+        cell.badCommit = {
 //            TegakiPotAPI().postAnswerBad(answer.id, success: { _ in
 //                
 //            })
