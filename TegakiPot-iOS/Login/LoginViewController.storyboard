@@ -60,7 +60,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uG-4h-0bb">
-                                <rect key="frame" x="860" y="932" width="184" height="72"/>
+                                <rect key="frame" x="860" y="652" width="184" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9uG-4h-0bb" secondAttribute="height" multiplier="23:9" id="Vj9-YP-d0s"/>
@@ -74,7 +74,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bq-vs-NcA">
-                                <rect key="frame" x="1052" y="932" width="184" height="72"/>
+                                <rect key="frame" x="1052" y="652" width="184" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="7ud-mY-REW"/>
@@ -93,7 +93,7 @@
                             <constraint firstItem="gmz-p6-wGj" firstAttribute="centerX" secondItem="Ysy-ZZ-kXE" secondAttribute="centerX" id="1VN-wz-259"/>
                             <constraint firstItem="6Bq-vs-NcA" firstAttribute="leading" secondItem="9uG-4h-0bb" secondAttribute="trailing" constant="8" id="5Oc-eI-gX0"/>
                             <constraint firstItem="6Bq-vs-NcA" firstAttribute="trailing" secondItem="JWe-rS-gC4" secondAttribute="trailing" id="6EA-Sa-rfH"/>
-                            <constraint firstItem="9uG-4h-0bb" firstAttribute="top" secondItem="JWe-rS-gC4" secondAttribute="bottom" constant="380" id="ETj-ag-Wjy"/>
+                            <constraint firstItem="9uG-4h-0bb" firstAttribute="top" secondItem="JWe-rS-gC4" secondAttribute="bottom" constant="100" id="ETj-ag-Wjy"/>
                             <constraint firstItem="H1j-62-HQm" firstAttribute="leading" secondItem="Ysy-ZZ-kXE" secondAttribute="trailing" constant="8" id="PiB-5G-eQT"/>
                             <constraint firstItem="rE1-U7-K54" firstAttribute="leading" secondItem="JvD-lv-9Fy" secondAttribute="leadingMargin" id="QXu-bT-th9"/>
                             <constraint firstItem="Ysy-ZZ-kXE" firstAttribute="top" secondItem="f7w-zu-m0J" secondAttribute="bottom" constant="456" id="SCc-HK-TuS"/>
