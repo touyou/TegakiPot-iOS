@@ -61,14 +61,17 @@ class Editpanel : UIView {
             return
         }
         redoshapes.append(popShape())
-        update()
+        controller.undoBtn.isEnabled = undoable
+        controller.redoBtn.isEnabled = true
     }
     func redo() {
         if !redoable {
             print ("error: not redoable!")
             return
         }
-        pushShape(redoshapes.popLast()!)
+        pushShape(redoshapes.popLast()!, false)
+        controller.redoBtn.isEnabled = redoable
+        controller.undoBtn.isEnabled = true
     }
     init(_ frame: CGRect, _ controller: HandWritingViewController) {
         self.controller = controller
@@ -113,35 +116,34 @@ class Editpanel : UIView {
             creation.touchended(p)
         }
     }
-    func pushShape(_ shape: Shape) {
-        redoshapes = Array()
+    func pushShape(_ shape: Shape, _ clearredo: Bool = true) {
         geometry.shapes.append(shape)
-        update()
+        setNeedsDisplay()
+        controller.undoBtn.isEnabled = true
+        if clearredo {
+            redoshapes = Array()
+            controller.redoBtn.isEnabled = false
+        }
     }
     @discardableResult func popShape() -> Shape {
         let res = geometry.shapes.popLast()!
-        update()
+        setNeedsDisplay()
         return res
     }
     func updateShape(_ shape: Shape) {
         let _ = geometry.shapes.popLast()
         geometry.shapes.append(shape)
-        update()
+        setNeedsDisplay()
     }
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
-        update()
+        setNeedsDisplay()
     }
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
     }
     override func draw(_: CGRect) {
         geometry.draw()
-    }
-    func update() {
-        controller.undoBtn.isEnabled = undoable
-        controller.redoBtn.isEnabled = redoable
-        setNeedsDisplay()
     }
 }
 
