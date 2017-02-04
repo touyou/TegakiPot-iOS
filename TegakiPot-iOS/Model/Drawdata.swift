@@ -32,11 +32,9 @@ extension UIColor {
         if rgbaString=="none" {
             self.init(0,0,0,0)
         } else {
-            print("rgbaString \(rgbaString)")
             let ss = rgbaString.substring(with:
                 rgbaString.index(rgbaString.startIndex, offsetBy: 5) ..< rgbaString.index(rgbaString.endIndex, offsetBy: -1))
                 .components(separatedBy: ",")
-            print(ss)
             self.init(Int(ss[0])!,Int(ss[1])!,Int(ss[2])!,Double(ss[3])!)
         }
     }
@@ -262,9 +260,7 @@ class Geometry {
             Pers(Pixels(ss[4])!,CGPoint(x:CGFloat(ss[1]),y:CGFloat(ss[2])))
         self.shapes = Array<Shape>()
         for child in subroot.children {
-            print("good so far")
             let attrs = child.attributes
-            print(attrs)
             let stroke = Stroke(attrs)
             let fill = Fill(attrs)
             switch child.name {

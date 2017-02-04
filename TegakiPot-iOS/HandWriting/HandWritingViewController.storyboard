@@ -132,6 +132,8 @@
                     </view>
                     <connections>
                         <outlet property="drawableView" destination="ZFW-Ia-ZGO" id="suE-zx-bsb"/>
+                        <outlet property="redoBtn" destination="Kdb-Nn-Pyy" id="qtR-hK-Bki"/>
+                        <outlet property="undoBtn" destination="39A-Rk-9jj" id="Hhm-2h-nuu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cG6-61-aCR" userLabel="First Responder" sceneMemberID="firstResponder"/>

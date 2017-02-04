@@ -12,6 +12,7 @@ import QuartzCore
 import AEXML
 
 class Editpanel : UIView {
+    unowned var controller: HandWritingViewController
     var geometry: Geometry
     var redoshapes: [Shape] = Array()
     var stroke: Stroke
@@ -60,6 +61,7 @@ class Editpanel : UIView {
             return
         }
         redoshapes.append(popShape())
+        update()
     }
     func redo() {
         if !redoable {
@@ -68,15 +70,16 @@ class Editpanel : UIView {
         }
         pushShape(redoshapes.popLast()!)
     }
-    override init(frame: CGRect) {
-        print("editpanel init")
+    init(_ frame: CGRect, _ controller: HandWritingViewController) {
+        self.controller = controller
         geometry = Geometry(frame.size, Pers(Double(frame.width)/40))
         stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
         backgroundColor = UIColor.white
     }
-    init(frame: CGRect, _ svg: AEXMLDocument) {
+    init(_ frame: CGRect, _ controller: HandWritingViewController, _ svg: AEXMLDocument) {
+        self.controller = controller
         geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
         stroke = Stroke(0.1, UIColor.red)
         fill = Fill(UIColor.clear)
@@ -91,7 +94,6 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
-            print("began \(p)")
             creation.touchbegan(p)
         }
     }
@@ -100,7 +102,6 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
-            print("moved \(p)")
             creation.touchmoved(p)
         }
     }
@@ -109,34 +110,38 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
-            print("ended \(p)")
             creation.touchended(p)
         }
     }
     func pushShape(_ shape: Shape) {
+        redoshapes = Array()
         geometry.shapes.append(shape)
-        setNeedsDisplay()
+        update()
     }
     @discardableResult func popShape() -> Shape {
         let res = geometry.shapes.popLast()!
-        setNeedsDisplay()
+        update()
         return res
     }
     func updateShape(_ shape: Shape) {
         let _ = geometry.shapes.popLast()
         geometry.shapes.append(shape)
-        setNeedsDisplay()
+        update()
     }
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
-        setNeedsDisplay()
+        update()
     }
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
     }
     override func draw(_: CGRect) {
-        print("drawing")
         geometry.draw()
+    }
+    func update() {
+        controller.undoBtn.isEnabled = undoable
+        controller.redoBtn.isEnabled = redoable
+        setNeedsDisplay()
     }
 }
 

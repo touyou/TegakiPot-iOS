@@ -20,9 +20,19 @@ class HandWritingViewController: UIViewController {
             drawableView.layer.shadowOpacity = 0.9
             drawableView.layer.shadowRadius = 2.0
             
-            editpanel = Editpanel(frame: drawableView.frame)
+            editpanel = Editpanel(drawableView.frame, self)
             drawableView.addSubview(editpanel)
             editpanel.modechange(.freehand)
+        }
+    }
+    @IBOutlet weak var undoBtn: UIButton! {
+        didSet {
+            undoBtn.isEnabled = false
+        }
+    }
+    @IBOutlet weak var redoBtn: UIButton! {
+        didSet {
+            redoBtn.isEnabled = false
         }
     }
     
@@ -68,6 +78,8 @@ class HandWritingViewController: UIViewController {
             print("error: no svg!")
         }
     }
+    // editpanel.stroke.color で色指定
+    // editpanel.stroke.width で太さ指定
 }
 
 extension HandWritingViewController: StoryboardInstantiable {
