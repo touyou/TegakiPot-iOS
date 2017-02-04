@@ -14,6 +14,9 @@ class HandWritingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let editpanel = Editpanel(frame:view.frame)
+        view.addSubview(editpanel)
+        editpanel.modechange(.freehand)
     }
 
     override func didReceiveMemoryWarning() {

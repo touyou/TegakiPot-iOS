@@ -14,7 +14,6 @@ import AEXML
 class Editpanel : UIView {
     var geometry: Geometry
     var redoshapes: [Shape] = Array()
-    var stable: StableView?
     var stroke: Stroke
     var fill: Fill
     var creation: Creation?
@@ -39,7 +38,7 @@ class Editpanel : UIView {
     var redoable: Bool {
         get { return redoshapes.isEmpty }
     }
-    func modechange(mode: Mode) {
+    func modechange(_ mode: Mode) {
         if self.mode == mode { return }
         if !modechangeable {
             print ("error: not modechangeable!")
@@ -77,16 +76,19 @@ class Editpanel : UIView {
         pushShape(redoshapes.popLast()!)
     }
     override init(frame: CGRect) {
+        print("editpanel init")
         geometry = Geometry(frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.1, UIColor.black)
+        stroke = Stroke(0.5, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
+        backgroundColor = UIColor.white
     }
-    init(frame: CGRect, svg: AEXMLDocument) {
+    init(frame: CGRect, _ svg: AEXMLDocument) {
         geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
-        stroke = Stroke(0.1, UIColor.black)
+        stroke = Stroke(0.5, UIColor.red)
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
+        backgroundColor = UIColor.white
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -96,6 +98,7 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
+            print("began \(p)")
             creation.touchbegan(p)
         }
     }
@@ -104,6 +107,7 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
+            print("moved \(p)")
             creation.touchmoved(p)
         }
     }
@@ -112,23 +116,23 @@ class Editpanel : UIView {
         if let creation = creation {
             let touch = touches.first!
             let p = touch.location(in:self) >| geometry.pers
+            print("ended \(p)")
             creation.touchended(p)
         }
     }
     func pushShape(_ shape: Shape) {
         geometry.shapes.append(shape)
-        stable?.removeFromSuperview()
-        stable = StableView(frame, geometry)
+        setNeedsDisplay()
     }
     @discardableResult func popShape() -> Shape {
         let res = geometry.shapes.popLast()!
-        stable?.removeFromSuperview()
-        stable = StableView(frame, geometry)
+        setNeedsDisplay()
         return res
     }
     func updateShape(_ shape: Shape) {
-        popShape()
-        pushShape(shape)
+        geometry.shapes.popLast()
+        geometry.shapes.append(shape)
+        setNeedsDisplay()
     }
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
@@ -136,17 +140,8 @@ class Editpanel : UIView {
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
     }
-}
-class StableView : UIView {
-    let geometry: Geometry
-    init(_ frame: CGRect, _ geometry: Geometry) {
-        self.geometry = geometry
-        super.init(frame: frame)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func draw(_: CGRect) {
+        print("drawing")
         geometry.draw()
     }
 }
