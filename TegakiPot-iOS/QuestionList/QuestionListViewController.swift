@@ -23,11 +23,14 @@ final class QuestionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavBar()
+        fetchQuestion()
     }
     
-    private func configureNavBar() {
-        navigationController?.navigationBar.backgroundColor = MaterialColor.lightGreenDarken1.color
+    private func fetchQuestion() {
+        TegakiPotAPI().getQuestions(success: { questions in
+            self.questions = questions
+            self.tableView.reloadData()
+        })
     }
 }
 
