@@ -46,7 +46,8 @@ final class LoginViewController: UIViewController {
         }
         
         TegakiPotAPI().postAuth(email: email, password: password, success: { response in
-            self.saveData.set(response.id, forKey: DataKey.loginUser.rawValue)
+//            self.saveData.set(response.id, forKey: DataKey.loginUser.rawValue)
+            self.saveData.set(response.id, forKey: DataKey.loginForTest.rawValue)
             self.dismiss(animated: true, completion: nil)
         }, failure: { error in
             let alert = UIAlertController(title: "ログイン失敗", message: "ログインに失敗しました。メールアドレスとパスワードを確認してください。", preferredStyle: .alert)

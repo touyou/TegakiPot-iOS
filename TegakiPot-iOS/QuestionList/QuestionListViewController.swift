@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 final class QuestionListViewController: UIViewController {
     
@@ -19,7 +20,7 @@ final class QuestionListViewController: UIViewController {
     }
     
     var questions: [Question] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +30,7 @@ final class QuestionListViewController: UIViewController {
     private func fetchQuestion() {
         TegakiPotAPI().getQuestions(success: { questions in
             self.questions = questions
-            self.tableView.reloadData()
+            print(questions)
         })
     }
 }

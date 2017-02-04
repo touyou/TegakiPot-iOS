@@ -23,17 +23,17 @@ struct TransformUtility {
         return try URLTransformer.apply(string)
     }
     
-    let DateTransformer = Transformer<String, Date> { DateString throws -> Date in
+    let DateTransformer = Transformer<String?, Date?> { DateString throws -> Date in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        guard let Date = formatter.date(from: DateString) else {
+        guard let Date = formatter.date(from: DateString ?? "") else {
             throw customError("Invalid Date string: \(DateString)")
         }
         
         return Date
     }
     
-    func applyDate(_ string: String) throws -> Date {
+    func applyDate(_ string: String?) throws -> Date? {
         return try DateTransformer.apply(string)
     }
     
