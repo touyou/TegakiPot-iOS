@@ -9,7 +9,7 @@
 import Foundation
 import Himotoki
 
-// MARK: - Questions
+// MARK: - User
 public struct User {
     public var id: UInt64
     public var email: String
@@ -23,7 +23,7 @@ public struct User {
     public var friends: [User]?
 //    public var contributions: [Contribution]?
     public var questions: Questions
-//    public var answers: [Answer]?
+    public var answers: [Answer]?
     public var isValid: Bool
     public var createdAt: Date
     public var updatedAt: Date
@@ -46,6 +46,7 @@ extension User: Decodable {
             views: e <| "views",
             friends: e <||? "friends",
             questions: e <| "questions",
+            answers: e <||? "answers",
             isValid: e <| "is_valid",
             createdAt: transformer.applyDate(e <| "created_at"),
             updatedAt: transformer.applyDate(e <| "updated_at")

@@ -39,7 +39,9 @@
 		4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */; };
 		4665C23E1E45987600F71C24 /* QuestionStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23D1E45987600F71C24 /* QuestionStruct.swift */; };
 		4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23F1E459A0A00F71C24 /* TransformUtility.swift */; };
-		4665C2421E459DF000F71C24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2411E459DF000F71C24 /* User.swift */; };
+		4665C2421E459DF000F71C24 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2411E459DF000F71C24 /* UserStruct.swift */; };
+		4665C2441E45A19D00F71C24 /* AnswerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2431E45A19D00F71C24 /* AnswerStruct.swift */; };
+		4665C2461E45A53A00F71C24 /* FieldStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2451E45A53A00F71C24 /* FieldStruct.swift */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +80,9 @@
 		4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TegakiPotRequest.swift; path = Model/API/TegakiPotRequest.swift; sourceTree = "<group>"; };
 		4665C23D1E45987600F71C24 /* QuestionStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionStruct.swift; path = Model/API/QuestionStruct.swift; sourceTree = "<group>"; };
 		4665C23F1E459A0A00F71C24 /* TransformUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransformUtility.swift; path = Model/API/TransformUtility.swift; sourceTree = "<group>"; };
-		4665C2411E459DF000F71C24 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/API/User.swift; sourceTree = "<group>"; };
+		4665C2411E459DF000F71C24 /* UserStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStruct.swift; path = Model/API/UserStruct.swift; sourceTree = "<group>"; };
+		4665C2431E45A19D00F71C24 /* AnswerStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerStruct.swift; path = Model/API/AnswerStruct.swift; sourceTree = "<group>"; };
+		4665C2451E45A53A00F71C24 /* FieldStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldStruct.swift; path = Model/API/FieldStruct.swift; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,11 +238,13 @@
 		4665C22E1E4594B400F71C24 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4665C23F1E459A0A00F71C24 /* TransformUtility.swift */,
 				4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */,
 				4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */,
 				4665C23D1E45987600F71C24 /* QuestionStruct.swift */,
-				4665C23F1E459A0A00F71C24 /* TransformUtility.swift */,
-				4665C2411E459DF000F71C24 /* User.swift */,
+				4665C2411E459DF000F71C24 /* UserStruct.swift */,
+				4665C2431E45A19D00F71C24 /* AnswerStruct.swift */,
+				4665C2451E45A53A00F71C24 /* FieldStruct.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -420,10 +426,12 @@
 				4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */,
 				4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */,
 				4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */,
+				4665C2441E45A19D00F71C24 /* AnswerStruct.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
 				4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */,
 				4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */,
-				4665C2421E459DF000F71C24 /* User.swift in Sources */,
+				4665C2421E459DF000F71C24 /* UserStruct.swift in Sources */,
+				4665C2461E45A53A00F71C24 /* FieldStruct.swift in Sources */,
 				4665C23E1E45987600F71C24 /* QuestionStruct.swift in Sources */,
 				4665C21A1E45855C00F71C24 /* UserViewController.swift in Sources */,
 				4652A70E1E457DC3003FA92C /* TabViewController.swift in Sources */,
