@@ -323,6 +323,7 @@ class CircleCreation : Creation {
             circle.radius = (radius, radius)
             editpanel.updateShape(circle)
         }
+        circle = nil
     }
     func bye() {
         if circle != nil {

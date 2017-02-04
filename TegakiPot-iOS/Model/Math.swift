@@ -28,7 +28,7 @@ func -(p: Point, q: Point) -> DPoint {
     return (p.x-q.x, p.y-q.y)
 }
 func -(p: Point, v: DPoint) -> Point {
-    return (p.x-v.dx, p.x-v.dx)
+    return (p.x-v.dx, p.y-v.dy)
 }
 func -(v: DPoint, w: DPoint) -> DPoint {
     return (v.dx-w.dx, v.dy-w.dy)
