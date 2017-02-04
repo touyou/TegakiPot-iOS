@@ -161,7 +161,7 @@ class Rawpath {
 
 protocol Shape {
     func rawpath(_: Pers) -> Rawpath
-    func toXml() -> AEXMLElement
+    func toSvg() -> AEXMLElement
 }
 class Stroke {
     var width: Size
@@ -170,7 +170,7 @@ class Stroke {
         self.width = width
         self.color = color
     }
-    func toXmlAttrs() -> [String: String] {
+    func toSvgAttrs() -> [String: String] {
         return ["stroke": color.toRgbaString(), "stroke-width": width.description]
     }
 }
@@ -179,7 +179,7 @@ class Fill {
     init(_ color: UIColor) {
         self.color = color
     }
-    func toXmlAttrs() -> [String: String] {
+    func toSvgAttrs() -> [String: String] {
         return ["fill": color.toRgbaString()]
     }
 }
@@ -236,7 +236,7 @@ class Freehand : Shape {
         }
         return res
     }
-    func toXml() -> AEXMLElement {
+    func toSvg() -> AEXMLElement {
         var d = String(format:"M%.2f,%.2f",start.x,start.y)
         for bezier in beziers {
             d += String(format:"S%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",
@@ -245,7 +245,7 @@ class Freehand : Shape {
                         bezier.to.x,bezier.to.y)
         }
         return AEXMLElement(name: "path", value: nil, attributes:
-            stroke.toXmlAttrs() + fill.toXmlAttrs() + ["d": d])
+            stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
     }
 }
 class Line : Shape {
@@ -265,9 +265,9 @@ class Line : Shape {
         res.addLine(end,pers)
         return res
     }
-    func toXml() -> AEXMLElement {
+    func toSvg() -> AEXMLElement {
         return AEXMLElement(name: "rect", value: nil, attributes:
-            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+            stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["d": String(format:"M%.2f,%.2fL%.2f,%.2f",start.x,start.y,end.x,end.y)])
     }
 }
@@ -285,9 +285,9 @@ class Rect : Shape {
     func rawpath(_ pers: Pers) -> Rawpath {
         return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill)
     }
-    func toXml() -> AEXMLElement {
+    func toSvg() -> AEXMLElement {
         return AEXMLElement(name: "rect", value: nil, attributes:
-            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+            stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "rx": diagonal.dx.fmt(2), "ry": diagonal.dy.fmt(2)])
     }
 }
@@ -308,9 +308,9 @@ class Oval : Shape {
     func rawpath(_ pers: Pers) -> Rawpath {
         return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill)
     }
-    func toXml() -> AEXMLElement {
+    func toSvg() -> AEXMLElement {
         return AEXMLElement(name: "ellipse", value: nil, attributes:
-            stroke.toXmlAttrs() + fill.toXmlAttrs() +
+            stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["cx": center.x.fmt(2), "cy": center.y.fmt(2), "rx": radius.dx.fmt(2), "ry": radius.dy.fmt(2)])
 
     }
