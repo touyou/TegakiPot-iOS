@@ -14,6 +14,7 @@
 		4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */; };
 		4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */; };
 		4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C20B1E4580E600F71C24 /* MaterialColor.swift */; };
+		BE11AA6F1E4584FD00E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA6E1E4584FD00E0F5B5 /* Drawdata.swift */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BE11AA6E1E4584FD00E0F5B5 /* Drawdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawdata.swift; path = Model/Drawdata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		4665C1FA1E45801C00F71C24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE11AA6E1E4584FD00E0F5B5 /* Drawdata.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE11AA6F1E4584FD00E0F5B5 /* Drawdata.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
 				4652A70E1E457DC3003FA92C /* ViewController.swift in Sources */,
 				4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */,
