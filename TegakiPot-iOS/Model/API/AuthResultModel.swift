@@ -50,7 +50,7 @@ extension QuestionList: Decodable {
 // MARK: - AnswerList
 public struct AnswerList {
     public var id: UInt64
-    public var questionId: Int
+    public var questionId: UInt64
     public var questionTitle: String
     public var votes: Int
     public var updatedAt: Date
