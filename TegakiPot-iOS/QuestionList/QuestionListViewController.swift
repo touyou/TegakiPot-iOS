@@ -60,7 +60,7 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         cell.yearLabel.text = "\(component.year!)"
         cell.dateLabel.text = "\(component.month!)/\(component.day!)"
         cell.titleLabel.text = question.title
-        cell.voteLabel.text = "votes: \(question.votes!)"
+        cell.voteLabel.text = "♥ \(question.votes!)"
         if question.isSolved ?? false {
             cell.solveLabel.text = "solved"
             cell.solveLabel.backgroundColor = UIColor(hexString: "#5ed055ca")

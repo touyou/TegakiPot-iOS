@@ -25,16 +25,20 @@ class HandWritingViewController: UIViewController {
             editpanel.modechange(.freehand)
         }
     }
-    @IBOutlet weak var undoBtn: UIButton! {
+    
+    @IBOutlet var undoButton: UIButton! {
         didSet {
-            undoBtn.isEnabled = false
+            undoButton.isEnabled = false
         }
     }
-    @IBOutlet weak var redoBtn: UIButton! {
+    
+    @IBOutlet var redoButton: UIButton! {
         didSet {
-            redoBtn.isEnabled = false
+            redoButton.isEnabled = false
         }
     }
+    
+    @IBOutlet var modeButton: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,30 +58,53 @@ class HandWritingViewController: UIViewController {
         editpanel.redo()
     }
     @IBAction func freehand() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[0].isEnabled = false
         editpanel.modechange(.freehand)
     }
     @IBAction func line() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[1].isEnabled = false
         editpanel.modechange(.line)
     }
     @IBAction func goodline() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[2].isEnabled = false
         editpanel.modechange(.goodline)
     }
     @IBAction func rect() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[3].isEnabled = false
         editpanel.modechange(.rect)
     }
     @IBAction func circle() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[4].isEnabled = false
         editpanel.modechange(.circle)
     }
     @IBAction func save() {
         svg = editpanel.toSvg()
+        dismiss(animated: true, completion: {
+            
+        })
     }
-    @IBAction func load() {
-        if let svg = svg {
-            editpanel.load(svg)
-        } else {
-            print("error: no svg!")
-        }
-    }
+//    @IBAction func load() {
+//        if let svg = svg {
+//            editpanel.load(svg)
+//        } else {
+//            print("error: no svg!")
+//        }
+//    }
     // editpanel.stroke.color で色指定
     // editpanel.stroke.width で太さ指定
 }
