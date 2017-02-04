@@ -33,3 +33,9 @@ class HandWritingViewController: UIViewController {
     */
 
 }
+
+extension HandWritingViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}

@@ -33,3 +33,9 @@ class LoginViewController: UIViewController {
     */
 
 }
+
+extension LoginViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}
