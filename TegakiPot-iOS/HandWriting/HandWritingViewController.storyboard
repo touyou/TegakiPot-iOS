@@ -139,8 +139,8 @@
                     </view>
                     <connections>
                         <outlet property="drawableView" destination="ZFW-Ia-ZGO" id="suE-zx-bsb"/>
-                        <outlet property="redoButton" destination="Kdb-Nn-Pyy" id="8bf-VI-0gf"/>
-                        <outlet property="undoButton" destination="39A-Rk-9jj" id="vyg-q0-PCy"/>
+                        <outlet property="redoBtn" destination="Kdb-Nn-Pyy" id="vmV-6i-OIl"/>
+                        <outlet property="undoBtn" destination="39A-Rk-9jj" id="Bvj-pB-6er"/>
                         <outletCollection property="modeButton" destination="KZ6-7J-a4R" collectionClass="NSMutableArray" id="Fsf-gS-ljk"/>
                         <outletCollection property="modeButton" destination="Hxt-tm-f08" collectionClass="NSMutableArray" id="4VZ-sx-XoD"/>
                         <outletCollection property="modeButton" destination="bgy-sa-LkF" collectionClass="NSMutableArray" id="Yur-Sy-3Ua"/>

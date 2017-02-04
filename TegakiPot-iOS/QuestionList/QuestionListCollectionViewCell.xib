@@ -52,27 +52,27 @@
                                 <rect key="frame" x="0.0" y="280" width="400" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysb-Pe-Stu">
-                                        <rect key="frame" x="8" y="0.0" width="65.5" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="8" y="2" width="58" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♥ 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ms2-6q-xDx">
-                                        <rect key="frame" x="362.5" y="0.0" width="29.5" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="368.5" y="2" width="23.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ms2-6q-xDx" secondAttribute="bottom" id="DZe-9V-hLw"/>
+                                    <constraint firstAttribute="bottom" secondItem="ms2-6q-xDx" secondAttribute="bottom" constant="2" id="DZe-9V-hLw"/>
                                     <constraint firstItem="ysb-Pe-Stu" firstAttribute="leading" secondItem="dUU-3B-ydg" secondAttribute="leading" constant="8" id="Ody-2O-lux"/>
-                                    <constraint firstItem="ysb-Pe-Stu" firstAttribute="top" secondItem="dUU-3B-ydg" secondAttribute="top" id="STw-bI-2GX"/>
+                                    <constraint firstItem="ysb-Pe-Stu" firstAttribute="top" secondItem="dUU-3B-ydg" secondAttribute="top" constant="2" id="STw-bI-2GX"/>
                                     <constraint firstAttribute="height" constant="20" id="UWl-uH-WRy"/>
                                     <constraint firstAttribute="trailing" secondItem="ms2-6q-xDx" secondAttribute="trailing" constant="8" id="V7C-Cm-4kx"/>
-                                    <constraint firstAttribute="bottom" secondItem="ysb-Pe-Stu" secondAttribute="bottom" id="jX8-Lo-B7P"/>
-                                    <constraint firstItem="ms2-6q-xDx" firstAttribute="top" secondItem="dUU-3B-ydg" secondAttribute="top" id="yfd-gd-aqA"/>
+                                    <constraint firstAttribute="bottom" secondItem="ysb-Pe-Stu" secondAttribute="bottom" constant="2" id="jX8-Lo-B7P"/>
+                                    <constraint firstItem="ms2-6q-xDx" firstAttribute="top" secondItem="dUU-3B-ydg" secondAttribute="top" constant="2" id="yfd-gd-aqA"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-xq-4Ch">

@@ -26,15 +26,15 @@ class HandWritingViewController: UIViewController {
         }
     }
     
-    @IBOutlet var undoButton: UIButton! {
+    @IBOutlet var undoBtn: UIButton! {
         didSet {
-            undoButton.isEnabled = false
+            undoBtn.isEnabled = false
         }
     }
     
-    @IBOutlet var redoButton: UIButton! {
+    @IBOutlet var redoBtn: UIButton! {
         didSet {
-            redoButton.isEnabled = false
+            redoBtn.isEnabled = false
         }
     }
     
