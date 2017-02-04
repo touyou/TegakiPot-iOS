@@ -48,20 +48,11 @@ func norm(_ v: DPoint) -> Size {
 func dist(_ p: Point, _ q: Point) -> Size {
     return norm(p-q)
 }
-func individe(_ p: Point, _ q: Point, _ a: Scalar, _ b: Scalar) -> Point {
-    return ((p.x*b+q.x*a)/(a+b), (p.y*b+q.y*a)/(a+b))
-}
-func midpoint(_ p: Point, _ q: Point) -> Point {
-    return individe(p,q,1,1)
-}
 func control(_ p: Point, _ q: Point, _ r: Point) -> Point {
     let dpq = dist(p,q)
     let dqr = dist(q,r)
-    var s = dpq + dqr
-    if s<0.0001 {
-        s = 1
-    }
-    let t = 0.5 * dpq / s
+    let s = dpq + dqr
+    let t = s < 1e-6 ? 0 : 0.5 * dqr / s
     return q + 1.0 * t * (r-p)
 }
 typealias ConTrolTo = (con: Point, trol: Point, to: Point)
