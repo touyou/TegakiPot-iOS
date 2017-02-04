@@ -21,7 +21,7 @@
 		4665C2161E45853A00F71C24 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2151E45853A00F71C24 /* FriendListViewController.swift */; };
 		4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2171E45854900F71C24 /* FriendListViewController.storyboard */; };
 		4665C21A1E45855C00F71C24 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2191E45855C00F71C24 /* UserViewController.swift */; };
-		4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21B1E45856E00F71C24 /* UserViewController.storyboard */; };
+		4665C21C1E45856E00F71C24 /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21B1E45856E00F71C24 /* UserPage.storyboard */; };
 		4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C21D1E45858100F71C24 /* HandWritingViewController.swift */; };
 		4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */; };
 		4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */; };
@@ -64,7 +64,7 @@
 		4665C2151E45853A00F71C24 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListViewController.swift; path = FriendList/FriendListViewController.swift; sourceTree = "<group>"; };
 		4665C2171E45854900F71C24 /* FriendListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendListViewController.storyboard; path = FriendList/FriendListViewController.storyboard; sourceTree = "<group>"; };
 		4665C2191E45855C00F71C24 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = User/UserViewController.swift; sourceTree = "<group>"; };
-		4665C21B1E45856E00F71C24 /* UserViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserViewController.storyboard; path = User/UserViewController.storyboard; sourceTree = "<group>"; };
+		4665C21B1E45856E00F71C24 /* UserPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserPage.storyboard; path = User/UserPage.storyboard; sourceTree = "<group>"; };
 		4665C21D1E45858100F71C24 /* HandWritingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HandWritingViewController.swift; path = HandWriting/HandWritingViewController.swift; sourceTree = "<group>"; };
 		4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HandWritingViewController.storyboard; path = HandWriting/HandWritingViewController.storyboard; sourceTree = "<group>"; };
 		4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditQuestionViewController.swift; path = EditQuestion/EditQuestionViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				4665C2191E45855C00F71C24 /* UserViewController.swift */,
-				4665C21B1E45856E00F71C24 /* UserViewController.storyboard */,
+				4665C21B1E45856E00F71C24 /* UserPage.storyboard */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				4652A7131E457DC3003FA92C /* Assets.xcassets in Resources */,
 				4652A7111E457DC3003FA92C /* Main.storyboard in Resources */,
 				4665C2241E4585B800F71C24 /* EditQuestionViewController.storyboard in Resources */,
-				4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */,
+				4665C21C1E45856E00F71C24 /* UserPage.storyboard in Resources */,
 				4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */,
 				4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */,
 				4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */,
