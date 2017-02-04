@@ -8,18 +8,35 @@
 
 import UIKit
 
-class TabViewController: UIViewController {
+class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        configureTab()
+        
+        loginChecked()
+    }
+    
+    private func loginChecked() {
+        let saveData = UserDefaults.standard
+        
+        if saveData.object(forKey: "login_user") == nil {
+            present(LoginViewController.instantiateFromStoryboard(), animated: true, completion: nil)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func configureTab() {
+        let mainViewController = UINavigationController(rootViewController: QuestionListViewController.instantiateFromStoryboard())
+        mainViewController.tabBarItem = UITabBarItem(title: "Browse", image: nil, selectedImage: nil)
+        
+        let editViewController = UINavigationController(rootViewController: EditQuestionViewController.instantiateFromStoryboard())
+        editViewController.tabBarItem = UITabBarItem(title: "Question", image: nil, selectedImage: nil)
+        
+        let userViewController = UINavigationController(rootViewController: UserViewController.instantiateFromStoryboard())
+        userViewController.tabBarItem = UITabBarItem(title: "Home", image: nil, selectedImage: nil)
+        
+        viewControllers = [mainViewController, editViewController, userViewController]
     }
-
-
 }
 
