@@ -14,6 +14,7 @@ class EditQuestionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = MaterialColor.limeLighten4.color
     }
 
     override func didReceiveMemoryWarning() {
