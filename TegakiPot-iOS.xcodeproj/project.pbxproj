@@ -49,6 +49,7 @@
 		4665C2501E45E19F00F71C24 /* KeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C24F1E45E19F00F71C24 /* KeyList.swift */; };
 		4665C2561E45E97B00F71C24 /* QuestionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2541E45E97B00F71C24 /* QuestionListTableViewCell.swift */; };
 		4665C2571E45E97B00F71C24 /* QuestionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2551E45E97B00F71C24 /* QuestionListTableViewCell.xib */; };
+		BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */; };
 		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,46 +61,47 @@
 		4652A7121E457DC3003FA92C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4652A7151E457DC3003FA92C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4652A7171E457DC3003FA92C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardInstantiable.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
-		4665C20B1E4580E600F71C24 /* MaterialColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaterialColor.swift; path = MaterialColor.swift; sourceTree = "<group>"; };
-		4665C20D1E45845700F71C24 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SearchViewController.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
-		4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuestionDetailViewController.storyboard; path = QuestionDetailViewController.storyboard; sourceTree = "<group>"; };
-		4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionDetailViewController.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
-		4665C2151E45853A00F71C24 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListViewController.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
-		4665C2171E45854900F71C24 /* FriendListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FriendListViewController.storyboard; path = FriendListViewController.storyboard; sourceTree = "<group>"; };
-		4665C2191E45855C00F71C24 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		4665C21B1E45856E00F71C24 /* UserViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserViewController.storyboard; path = UserViewController.storyboard; sourceTree = "<group>"; };
-		4665C21D1E45858100F71C24 /* HandWritingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HandWritingViewController.swift; path = HandWritingViewController.swift; sourceTree = "<group>"; };
-		4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HandWritingViewController.storyboard; path = HandWritingViewController.storyboard; sourceTree = "<group>"; };
-		4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditQuestionViewController.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
-		4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditQuestionViewController.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
-		4665C2251E4585D400F71C24 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
-		4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuestionListViewController.storyboard; path = QuestionListViewController.storyboard; sourceTree = "<group>"; };
+		4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		4665C20B1E4580E600F71C24 /* MaterialColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialColor.swift; sourceTree = "<group>"; };
+		4665C20D1E45845700F71C24 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionDetailViewController.storyboard; sourceTree = "<group>"; };
+		4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
+		4665C2151E45853A00F71C24 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		4665C2171E45854900F71C24 /* FriendListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendListViewController.storyboard; sourceTree = "<group>"; };
+		4665C2191E45855C00F71C24 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		4665C21B1E45856E00F71C24 /* UserViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserViewController.storyboard; sourceTree = "<group>"; };
+		4665C21D1E45858100F71C24 /* HandWritingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandWritingViewController.swift; sourceTree = "<group>"; };
+		4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HandWritingViewController.storyboard; sourceTree = "<group>"; };
+		4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
+		4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
+		4665C2251E4585D400F71C24 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
+		4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionListViewController.storyboard; sourceTree = "<group>"; };
 		4665C2291E45862C00F71C24 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginViewController.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
-		4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TegakiPotAPI.swift; path = TegakiPotAPI.swift; sourceTree = "<group>"; };
+		4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotAPI.swift; sourceTree = "<group>"; };
 		4665C2311E4595FE00F71C24 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
 		4665C2321E4595FE00F71C24 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		4665C2331E4595FE00F71C24 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		4665C2341E4595FE00F71C24 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSVGiOS.framework; path = Carthage/Build/iOS/SwiftSVGiOS.framework; sourceTree = "<group>"; };
-		4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TegakiPotRequest.swift; path = TegakiPotRequest.swift; sourceTree = "<group>"; };
-		4665C23D1E45987600F71C24 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionModel.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		4665C23F1E459A0A00F71C24 /* TransformUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransformUtility.swift; path = TransformUtility.swift; sourceTree = "<group>"; };
-		4665C2411E459DF000F71C24 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		4665C2431E45A19D00F71C24 /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerModel.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
-		4665C2451E45A53A00F71C24 /* FieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldModel.swift; path = FieldModel.swift; sourceTree = "<group>"; };
-		4665C2471E45A8EE00F71C24 /* ContributionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContributionModel.swift; path = ContributionModel.swift; sourceTree = "<group>"; };
-		4665C2491E45ACC400F71C24 /* AuthResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthResultModel.swift; path = AuthResultModel.swift; sourceTree = "<group>"; };
-		4665C24B1E45C35D00F71C24 /* APIMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIMethod.swift; path = APIMethod.swift; sourceTree = "<group>"; };
-		4665C24D1E45C42D00F71C24 /* TegakiPotError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TegakiPotError.swift; path = TegakiPotError.swift; sourceTree = "<group>"; };
-		4665C24F1E45E19F00F71C24 /* KeyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyList.swift; path = KeyList.swift; sourceTree = "<group>"; };
-		4665C2541E45E97B00F71C24 /* QuestionListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListTableViewCell.swift; path = QuestionListTableViewCell.swift; sourceTree = "<group>"; };
-		4665C2551E45E97B00F71C24 /* QuestionListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionListTableViewCell.xib; path = QuestionListTableViewCell.xib; sourceTree = "<group>"; };
+		4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotRequest.swift; sourceTree = "<group>"; };
+		4665C23D1E45987600F71C24 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		4665C23F1E459A0A00F71C24 /* TransformUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformUtility.swift; sourceTree = "<group>"; };
+		4665C2411E459DF000F71C24 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4665C2431E45A19D00F71C24 /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		4665C2451E45A53A00F71C24 /* FieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldModel.swift; sourceTree = "<group>"; };
+		4665C2471E45A8EE00F71C24 /* ContributionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContributionModel.swift; sourceTree = "<group>"; };
+		4665C2491E45ACC400F71C24 /* AuthResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResultModel.swift; sourceTree = "<group>"; };
+		4665C24B1E45C35D00F71C24 /* APIMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
+		4665C24D1E45C42D00F71C24 /* TegakiPotError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotError.swift; sourceTree = "<group>"; };
+		4665C24F1E45E19F00F71C24 /* KeyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyList.swift; sourceTree = "<group>"; };
+		4665C2541E45E97B00F71C24 /* QuestionListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListTableViewCell.swift; sourceTree = "<group>"; };
+		4665C2551E45E97B00F71C24 /* QuestionListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionListTableViewCell.xib; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawdata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +165,9 @@
 		4665C1FA1E45801C00F71C24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */,
 				4665C22E1E4594B400F71C24 /* API */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -177,7 +179,6 @@
 				4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */,
 				4665C2251E4585D400F71C24 /* QuestionListViewController.swift */,
 			);
-			name = QuestionList;
 			path = QuestionList;
 			sourceTree = "<group>";
 		};
@@ -187,7 +188,6 @@
 				4665C2231E4585B800F71C24 /* EditQuestionViewController.storyboard */,
 				4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */,
 			);
-			name = EditQuestion;
 			path = EditQuestion;
 			sourceTree = "<group>";
 		};
@@ -197,7 +197,6 @@
 				4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */,
 				4665C21D1E45858100F71C24 /* HandWritingViewController.swift */,
 			);
-			name = HandWriting;
 			path = HandWriting;
 			sourceTree = "<group>";
 		};
@@ -207,7 +206,6 @@
 				4665C21B1E45856E00F71C24 /* UserViewController.storyboard */,
 				4665C2191E45855C00F71C24 /* UserViewController.swift */,
 			);
-			name = User;
 			path = User;
 			sourceTree = "<group>";
 		};
@@ -217,7 +215,6 @@
 				4665C2171E45854900F71C24 /* FriendListViewController.storyboard */,
 				4665C2151E45853A00F71C24 /* FriendListViewController.swift */,
 			);
-			name = FriendList;
 			path = FriendList;
 			sourceTree = "<group>";
 		};
@@ -227,7 +224,6 @@
 				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
 				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
 			);
-			name = QuestionDetail;
 			path = QuestionDetail;
 			sourceTree = "<group>";
 		};
@@ -237,7 +233,6 @@
 				4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */,
 				4665C20D1E45845700F71C24 /* SearchViewController.swift */,
 			);
-			name = Search;
 			path = Search;
 			sourceTree = "<group>";
 		};
@@ -248,7 +243,6 @@
 				4665C20B1E4580E600F71C24 /* MaterialColor.swift */,
 				4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */,
 			);
-			name = Utility;
 			path = Utility;
 			sourceTree = "<group>";
 		};
@@ -258,7 +252,6 @@
 				4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */,
 				4665C2291E45862C00F71C24 /* LoginViewController.swift */,
 			);
-			name = Login;
 			path = Login;
 			sourceTree = "<group>";
 		};
@@ -277,7 +270,6 @@
 				4665C23F1E459A0A00F71C24 /* TransformUtility.swift */,
 				4665C2411E459DF000F71C24 /* UserModel.swift */,
 			);
-			name = API;
 			path = API;
 			sourceTree = "<group>";
 		};
@@ -462,6 +454,7 @@
 				4665C2481E45A8EE00F71C24 /* ContributionModel.swift in Sources */,
 				4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */,
 				4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */,
+				BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
 				4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */,
 				4665C24E1E45C42D00F71C24 /* TegakiPotError.swift in Sources */,
