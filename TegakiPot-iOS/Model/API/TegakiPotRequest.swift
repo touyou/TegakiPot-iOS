@@ -14,7 +14,7 @@ protocol TegakiPotRequest: Request {}
 
 extension TegakiPotRequest {
     var baseURL: URL {
-        return URL(string: "http://")!
+        return URL(string: "http://tegakipot.herokuapp.com/api")!
     }
 }
 
