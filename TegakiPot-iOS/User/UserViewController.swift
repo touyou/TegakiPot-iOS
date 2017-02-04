@@ -33,3 +33,10 @@ class UserViewController: UIViewController {
     */
 
 }
+
+extension UserViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}
+

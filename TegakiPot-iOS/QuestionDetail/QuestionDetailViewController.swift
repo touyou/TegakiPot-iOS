@@ -33,3 +33,9 @@ class QuestionDetailViewController: UIViewController {
     */
 
 }
+
+extension QuestionDetailViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}

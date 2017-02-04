@@ -170,8 +170,8 @@
 		4665C2001E45804F00F71C24 /* QuestionDetail */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
 				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
+				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
 			);
 			name = QuestionDetail;
 			sourceTree = "<group>";

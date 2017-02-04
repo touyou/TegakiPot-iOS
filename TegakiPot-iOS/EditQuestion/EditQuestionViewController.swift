@@ -33,3 +33,9 @@ class EditQuestionViewController: UIViewController {
     */
 
 }
+
+extension EditQuestionViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}

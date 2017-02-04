@@ -33,3 +33,10 @@ class SearchViewController: UIViewController {
     */
 
 }
+
+extension SearchViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}
+

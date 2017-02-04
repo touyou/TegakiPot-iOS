@@ -33,3 +33,9 @@ class FriendListViewController: UIViewController {
     */
 
 }
+
+extension FriendListViewController: StoryboardInstantiable {
+    static var storyboardName: String {
+        return String(describing: self)
+    }
+}
