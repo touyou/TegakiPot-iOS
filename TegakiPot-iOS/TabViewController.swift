@@ -25,7 +25,7 @@ final class TabViewController: UITabBarController {
     private func loginChecked() {
         let saveData = UserDefaults.standard
         
-        if saveData.object(forKey: "login_user") == nil {
+        if saveData.object(forKey: DataKey.loginUser.rawValue) == nil {
             print("login")
             present(LoginViewController.instantiateFromStoryboard(), animated: true, completion: nil)
         }
