@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-gK-N7z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1q5-gK-N7z">
                                 <rect key="frame" x="163" y="128" width="280" height="280"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="A0G-JW-2HT"/>
+                                    <constraint firstAttribute="width" secondItem="1q5-gK-N7z" secondAttribute="height" multiplier="1:1" id="s1e-gZ-LNC"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDx-CY-Shv">
                                 <rect key="frame" x="163" y="416" width="280" height="59"/>
@@ -59,7 +64,11 @@
                                 <state key="normal" title="friends"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="1q5-gK-N7z" firstAttribute="top" secondItem="3yC-Gm-AHf" secondAttribute="bottom" constant="108" id="bGe-Yw-dfG"/>
+                            <constraint firstItem="1q5-gK-N7z" firstAttribute="leading" secondItem="70n-qT-8mS" secondAttribute="leadingMargin" constant="143" id="uHc-PH-Rqv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7e1-d0-5M9" userLabel="First Responder" sceneMemberID="firstResponder"/>
