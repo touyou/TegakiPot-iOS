@@ -122,27 +122,24 @@ class Freehand : Shape {
         self.fill = fill
         self.start = start
         self.beziers = beziers
+        if beziers.isEmpty {
+            let bezier = interpolate(start, start, start, start)
+            self.beziers.append(bezier)
+            self.beziers.append(bezier)
+            self.beziers.append(bezier)
+        }
     }
     func addPoint(_ p: Point, _ pers: Pers) {
-        if beziers.isEmpty {
-            let bezier = interpolate(start,start,p,p)
-            beziers.append(bezier)
-        } else {
-            let q = beziers.popLast()!.to
-            if beziers.isEmpty {
-                let bezier1 = interpolate(start,start,q,p)
-                let bezier2 = interpolate(start,q,p,p)
-                beziers.append(bezier1)
-                beziers.append(bezier2)
-            } else {
-                let r = beziers.last!.to
-                let s = beziers.count>1 ? beziers[beziers.count-2].to : start
-                let bezier1 = interpolate(s,r,q,p)
-                let bezier2 = interpolate(r,q,p,p)
-                beziers.append(bezier1)
-                beziers.append(bezier2)
-            }
+        if dist(beziers.last!.to, p)  < 1e-6 {
+            return
         }
+        let q = beziers.popLast()!.to
+        let r = beziers.last!.to
+        let s = beziers[beziers.count-2].to
+        let bezier1 = interpolate(s,r,q,p)
+        let bezier2 = interpolate(r,q,p,p)
+        beziers.append(bezier1)
+        beziers.append(bezier2)
     }
     func toRawpath(_ pers: Pers) -> Rawpath {
         let res = Rawpath(UIBezierPath(), stroke, fill, pers)
