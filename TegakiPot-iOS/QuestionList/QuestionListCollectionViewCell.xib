@@ -160,6 +160,7 @@
                 <outlet property="autherLabel" destination="ysb-Pe-Stu" id="WNf-AA-wWu"/>
                 <outlet property="dateLabel" destination="85K-kz-VMC" id="tQn-qP-kGd"/>
                 <outlet property="drawBaseView" destination="zG4-QB-aiy" id="0hg-QK-uEc"/>
+                <outlet property="imageView" destination="Akr-fM-2fu" id="Xic-2F-vJe"/>
                 <outlet property="solveLabel" destination="JCB-uH-khb" id="Eew-yk-mFb"/>
                 <outlet property="titleLabel" destination="zaA-xq-4Ch" id="7j3-yQ-Aez"/>
                 <outlet property="voteLabel" destination="ms2-6q-xDx" id="cBG-PA-XX3"/>

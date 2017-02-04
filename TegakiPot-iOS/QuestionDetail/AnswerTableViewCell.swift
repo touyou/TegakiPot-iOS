@@ -9,16 +9,26 @@
 import UIKit
 
 class AnswerTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var goodLabel: UILabel!
+    @IBOutlet weak var badLabel: UILabel!
+    @IBOutlet weak var drawableArea: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    var goodCommit: (()->())!
+    var badCommit: (()->())!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func goodBtn() {
+        goodCommit()
     }
     
+    @IBAction func badBtn() {
+        badCommit()
+    }
 }

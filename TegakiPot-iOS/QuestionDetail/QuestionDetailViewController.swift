@@ -17,11 +17,17 @@ class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.tableFooterView = UIView()
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.estimatedRowHeight = 20
+            tableView.rowHeight = UITableViewAutomaticDimension
+            
+            tableView.register(cellType: AnswerTableViewCell.self)
         }
     }
     
     var id: UInt64? = nil
-    var answer: [Answer] = []
+    var answers: [Answer] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +61,7 @@ class QuestionDetailViewController: UIViewController {
         tagsLabel.text = tags
         titleLabel.text = question.title
         descriptionLabel.text = question.description
-        answer = question.answers ?? []
+        answers = question.answers ?? []
         tableView.reloadData()
     }
 }
@@ -68,11 +74,31 @@ extension QuestionDetailViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return answer.count
+        return answers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(with: AnswerTableViewCell.self, for: indexPath)
+        let answer = answers[indexPath.row]
+        
+        cell.descriptionLabel.text = answer.description
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/mm/dd HH:MM:ss"
+        cell.dateLabel.text = formatter.string(from: answer.createdAt ?? Date())
+        
+        cell.goodCommit = {
+//            TegakiPotAPI().postAnswerGood(answer.id, success: { _ in
+//                
+//            })
+        }
+        
+        cell.badBtn() = {
+//            TegakiPotAPI().postAnswerBad(answer.id, success: { _ in
+//                
+//            })
+        }
+        
+        return cell
     }
 }
 

@@ -17,6 +17,7 @@ class QuestionListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var autherLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var solveLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

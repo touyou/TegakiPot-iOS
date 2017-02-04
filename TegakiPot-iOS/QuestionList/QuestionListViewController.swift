@@ -22,6 +22,8 @@ final class QuestionListViewController: UIViewController {
     
     var questions: [Question] = []
     
+    let images = [#imageLiteral(resourceName: "chem"), #imageLiteral(resourceName: "lang"), #imageLiteral(resourceName: "math")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +68,8 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
             cell.solveLabel.text = "unsolved"
             cell.solveLabel.backgroundColor = UIColor(hexString: "#d05568ca")
         }
+        
+        cell.imageView.image = images[indexPath.row % 3]
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)
