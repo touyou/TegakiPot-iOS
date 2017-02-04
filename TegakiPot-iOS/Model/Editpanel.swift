@@ -82,6 +82,12 @@ class Editpanel : UIView {
         fill = Fill(UIColor.clear)
         super.init(frame: frame)
     }
+    init(frame: CGRect, svg: AEXMLDocument) {
+        geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
+        stroke = Stroke(0.1, UIColor.black)
+        fill = Fill(UIColor.clear)
+        super.init(frame: frame)
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -123,6 +129,12 @@ class Editpanel : UIView {
     func updateShape(_ shape: Shape) {
         popShape()
         pushShape(shape)
+    }
+    func load(_ svg: AEXMLDocument) {
+        geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
+    }
+    func toSvg() -> AEXMLDocument {
+        return geometry.toSvg()
     }
 }
 class StableView : UIView {

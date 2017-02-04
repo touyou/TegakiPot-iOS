@@ -231,15 +231,20 @@ class Oval : Shape {
 
 
 class Geometry {
-    let realsize: CGSize
-    let pers: Pers
-    var shapes: [Shape]
+    var realsize: CGSize
+    var pers: Pers
+    var shapes: [Shape] = Array()
     init(_ realsize: CGSize, _ pers: Pers, _ shapes: [Shape] = Array()) {
         self.realsize = realsize
         self.pers = pers
         self.shapes = shapes
     }
     init(_ svg: AEXMLDocument, _ realsize: CGSize? = nil, _ pers: Pers? = nil) {
+        self.realsize = CGSize(width: 0, height: 0)
+        self.pers = Pers(Pixels(0))
+        load(svg, realsize, pers)
+    }
+    func load(_ svg: AEXMLDocument, _ realsize: CGSize? = nil, _ pers: Pers? = nil) {
         let root = svg.root
         self.realsize = realsize ??
             CGSize(width:CGFloat(root.attributes["width"]!),height:CGFloat(root.attributes["height"]!))
@@ -284,7 +289,7 @@ class Geometry {
             }
         }
     }
-    func toSvgDocument() -> AEXMLDocument {
+    func toSvg() -> AEXMLDocument {
         let root = AEXMLElement(name: "svg", attributes:
             ["width": realsize.width.fmt(2), "height": realsize.height.fmt(2)])
         let subroot = AEXMLElement(name: "g", attributes:
