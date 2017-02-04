@@ -284,7 +284,7 @@ enum MaterialColor: String {
     case brownLighten2      = "#a1887fff"
     case brownLighten1      = "#8d6e63ff"
     case brown              = "#795548ff"
-    case brownDarken1       = "#6D4C41ff"
+    case brownDarken2       = "#6D4C41ff"
     case brownDarken2       = "#5d4037ff"
     case brownDarken3       = "#4e342eff"
     case brownDarken4       = "#3e2723ff"
