@@ -152,7 +152,7 @@ extension TegakiPotAPI {
         }
     }
 
-    func postQuestion(postedBy: String, selectedField: Int, tags: [String], title: String, description: String, svg: String,
+    func postQuestion(postedBy: UInt64, selectedField: Int, tags: [String], title: String, description: String, svg: String,
                       success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
         let request = PostQuestion(postedBy: postedBy, selectedField: selectedField,
                                    tags: tags, title: title, description: description, svg: svg)
@@ -174,7 +174,7 @@ extension TegakiPotAPI {
         }
     }
     
-    func postAnswer(postedBy: String, questionId: UInt64, description: String, svg: String,
+    func postAnswer(postedBy: UInt64, questionId: UInt64, description: String, svg: String,
                     success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
         let request = PostAnswer(postedBy: postedBy, questionId: questionId, description: description, svg: svg)
         

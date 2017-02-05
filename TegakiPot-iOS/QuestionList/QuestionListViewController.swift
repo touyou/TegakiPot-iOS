@@ -15,14 +15,21 @@ final class QuestionListViewController: UIViewController {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
-            collectionView.backgroundColor = .white
+            collectionView.backgroundColor = UIColor(hexString: "#f7faeaff")
+            collectionView.register(cellType: QuestionListCollectionViewCell.self)
         }
     }
     
     var questions: [Question] = []
     
+    let images = [#imageLiteral(resourceName: "chem"), #imageLiteral(resourceName: "lang"), #imageLiteral(resourceName: "math")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         fetchQuestion()
     }
@@ -30,14 +37,14 @@ final class QuestionListViewController: UIViewController {
     private func fetchQuestion() {
         TegakiPotAPI().getQuestions(success: { questions in
             self.questions = questions
-            print(questions)
+            self.collectionView.reloadData()
         })
     }
 }
 
 // MARK: - Collection View
 
-extension QuestionListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension QuestionListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -47,22 +54,49 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPreviewCell", for: indexPath) as! QuestionListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(with: QuestionListCollectionViewCell.self, for: indexPath)
         
         let question = questions[indexPath.row]
-//        cell.autherLabel.text = "by \(question.)"
+        let nanashi = "名無しさん"
+        cell.autherLabel.text = "by \(question.postedBy?.userName ?? nanashi)"
         let calendar = Calendar.current
         let component = calendar.dateComponents([.year, .day, .month], from: question.createdAt!)
-        cell.yearLabel.text = "\(component.year)"
-        cell.dateLabel.text = "\(component.month)/\(component.day)"
+        cell.yearLabel.text = "\(component.year!)"
+        cell.dateLabel.text = "\(component.month!)/\(component.day!)"
         cell.titleLabel.text = question.title
-//        cell.voteLabel.text = "votes: \(question.)"
+        cell.voteLabel.text = "♥ \(question.votes!)"
+        if question.isSolved ?? false {
+            cell.solveLabel.text = "solved"
+            cell.solveLabel.backgroundColor = UIColor(hexString: "#5ed055ca")
+        } else {
+            cell.solveLabel.text = "unsolved"
+            cell.solveLabel.backgroundColor = UIColor(hexString: "#d05568ca")
+        }
+        
+        cell.imageView.image = images[indexPath.row % 3]
+        
+        cell.setSvg(question.svg ?? "")
+        
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.shadowRadius = 5.0
         
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let ratio = CGFloat(3.0/4.0)
+        return CGSize(width: view.frame.width / 4.5, height: view.frame.width / 4.5 * ratio)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let question = questions[indexPath.row]
+        
+        let viewController = QuestionDetailViewController.instantiateFromStoryboard()
+        viewController.id = question.id
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
