@@ -56,6 +56,8 @@ class HandWritingViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // editpanel.stroke.color で色指定
+    // editpanel.stroke.width で太さ指定
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -67,6 +69,8 @@ class HandWritingViewController: UIViewController {
         
         centerPoint = CGPoint(x: colorButton[0].frame.origin.x + 20.0, y: colorButton[0].frame.origin.y + 20.0)
         colorButton[0].layer.cornerRadius = 20.0
+        editpanel.stroke.color = colors[0]!
+        editpanel.stroke.width = 0.1
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,6 +85,7 @@ class HandWritingViewController: UIViewController {
                                   width: aft, height: aft)
             sender.layer.cornerRadius = aft / 2
             sizeFlag = (sizeFlag + 1) % 3
+            editpanel.stroke.width = 0.1 * Double(sizeFlag + 1)
         } else {
             colorButton[selected].frame = CGRect(x: centerPoint.x - 20.0, y: centerPoint.y - 20.0,
                                               width: 40.0, height: 40.0)
@@ -90,6 +95,7 @@ class HandWritingViewController: UIViewController {
             sender.layer.cornerRadius = 20.0
             selected = sender.tag
             sizeFlag = 0
+            editpanel.stroke.color = colors[selected]!
         }
     }
     
@@ -144,8 +150,6 @@ class HandWritingViewController: UIViewController {
     @IBAction func animate() {
         editpanel.animate()
     }
-    // editpanel.stroke.color で色指定
-    // editpanel.stroke.width で太さ指定
 }
 
 extension HandWritingViewController: StoryboardInstantiable {
