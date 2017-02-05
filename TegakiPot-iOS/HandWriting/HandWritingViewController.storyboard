@@ -106,6 +106,15 @@
                                             <action selector="save" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="H7C-3H-aP9"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9Y-ja-UT6">
+                                        <rect key="frame" x="243" y="22" width="126" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Animate"/>
+                                        <connections>
+                                            <action selector="animate" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="E4T-XG-07j"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.48627450980392156" green="0.70196078431372544" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

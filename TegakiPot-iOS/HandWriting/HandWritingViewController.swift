@@ -78,6 +78,9 @@ class HandWritingViewController: UIViewController {
             print("error: no svg!")
         }
     }
+    @IBAction func animate() {
+        editpanel.animate()
+    }
     // editpanel.stroke.color で色指定
     // editpanel.stroke.width で太さ指定
 }

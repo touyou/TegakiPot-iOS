@@ -33,7 +33,8 @@ extension UIColor {
             self.init(0,0,0,0)
         } else {
             let ss = rgbaString.substring(with:
-                rgbaString.index(rgbaString.startIndex, offsetBy: 5) ..< rgbaString.index(rgbaString.endIndex, offsetBy: -1))
+                rgbaString.index(rgbaString.startIndex, offsetBy: 5)
+                    ..< rgbaString.index(rgbaString.endIndex, offsetBy: -1))
                 .components(separatedBy: ",")
             self.init(Int(ss[0])!,Int(ss[1])!,Int(ss[2])!,Double(ss[3])!)
         }
@@ -255,9 +256,17 @@ class Geometry {
         self.realsize = realsize ??
             CGSize(width:CGFloat(root.attributes["width"]!),height:CGFloat(root.attributes["height"]!))
         let subroot = root.children.first!
-        let ss = subroot.attributes["transform"]!.components(separatedBy: "(,)")
+        let ss = subroot.attributes["transform"]!.components(separatedBy: " ")
+        let ss0 = ss[0]
+        let ss1 = ss[1]
+        let ss0s = ss0.substring(with:
+            ss0.index(ss0.startIndex, offsetBy: 10)
+                ..< ss0.index(ss0.endIndex, offsetBy: -1)).components(separatedBy: ",")
+        let ss1x = ss1.substring(with:
+            ss1.index(ss1.startIndex, offsetBy: 6)
+                ..< ss1.index(ss1.endIndex, offsetBy: -1))
         self.pers = pers ??
-            Pers(Pixels(ss[4])!,CGPoint(x:CGFloat(ss[1]),y:CGFloat(ss[2])))
+            Pers(Pixels(ss1x)!,CGPoint(x:CGFloat(ss0s[0]),y:CGFloat(ss0s[1])))
         self.shapes = Array<Shape>()
         for child in subroot.children {
             let attrs = child.attributes
@@ -310,5 +319,73 @@ class Geometry {
         for shape in shapes {
             shape.toRawpath(pers).draw()
         }
+    }
+    func animate(_ layer: CALayer, _ view: UIView) {
+        let now = CACurrentMediaTime()
+        let duration = 0.3 // 秒
+        let delay = 0.3 // 秒
+        var count = 0
+        for shape in shapes {
+            let sublayer = CAShapeLayer()
+            layer.addSublayer(sublayer)
+            let rawdata = shape.toRawpath(pers)
+            let body = rawdata.body
+            sublayer.path = UIBezierPath().cgPath
+            sublayer.lineWidth = body.lineWidth
+            sublayer.strokeColor = rawdata.strokecolor.cgColor
+            sublayer.fillColor = rawdata.fillcolor.cgColor
+            let animation = CABasicAnimation(keyPath: "path")
+            animation.duration = duration
+            animation.beginTime = now + Double(count) * delay
+            animation.fromValue = sublayer.path
+            animation.toValue = body.cgPath
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.fillMode = kCAFillModeBoth
+            animation.isRemovedOnCompletion = false
+            sublayer.add(animation, forKey: animation.keyPath)
+            count += 1
+        }
+        let shapes0 = shapes
+        shapes = Array()
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay * Double(count)) {
+            self.shapes = shapes0
+            layer.sublayers = nil
+            view.setNeedsDisplay()
+        }
+        /*
+        let center = CGPoint(x: 100, y: 100)
+        let radius = CGFloat(10.0) //円の半径の設定
+        let graphColor = UIColor.green.cgColor
+        let myLayer = CAShapeLayer()
+        let duration = 1.0
+        layer.addSublayer(myLayer)
+        
+        let endCircle = UIBezierPath(arcCenter: center,
+                                     radius: radius,
+                                     startAngle: 0.0,
+                                     endAngle: CGFloat(2.0) * CGFloat(M_PI),
+                                     clockwise: true)
+        
+        let startCircle = UIBezierPath(arcCenter: CGPoint(x: 150, y: 150),
+                                       radius: radius,
+                                       startAngle: 0.0,
+                                       endAngle: CGFloat(2.0) * CGFloat(M_PI),
+                                       clockwise: true)
+        
+        myLayer.path = startCircle.cgPath // 型に注意!
+        myLayer.lineWidth = 2
+        myLayer.strokeColor = graphColor
+        myLayer.fillColor = graphColor
+        
+        let animation = CABasicAnimation(keyPath: "path")
+        
+        animation.duration = duration //アニメーションの継続時間を指定する
+        animation.fromValue = myLayer.path // 開始pathの設定
+        animation.toValue = endCircle.cgPath // 終了pathの設定。型に注意!
+        
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut) // animation curve is Ease Out
+        animation.fillMode = kCAFillModeBoth // keep to value after finishing
+        animation.isRemovedOnCompletion = false // don't remove after finishing
+        myLayer.add(animation, forKey: animation.keyPath)*/
     }
 }
