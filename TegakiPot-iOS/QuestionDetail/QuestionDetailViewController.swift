@@ -29,6 +29,7 @@ class QuestionDetailViewController: UIViewController {
     
     var id: UInt64? = nil
     var answers: [Answer] = []
+    var question: Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class QuestionDetailViewController: UIViewController {
             return
         }
         TegakiPotAPI().getQuestionDetail(id, success: { question in
+            self.question = question
             self.setViews(question)
         }, failure: { error in
             print("question fetch error")
@@ -70,6 +72,13 @@ class QuestionDetailViewController: UIViewController {
             let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
             svgArea.addSubview(showPanel)
         } catch {}
+    }
+    
+    @IBAction func editAnswer() {
+        let viewController = EditAnswerViewController.instantiateFromStoryboard()
+        viewController.questionTitle = question?.title
+        viewController.questionId = id
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
