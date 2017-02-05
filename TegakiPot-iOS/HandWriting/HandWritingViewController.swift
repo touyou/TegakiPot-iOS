@@ -101,9 +101,11 @@ class HandWritingViewController: UIViewController {
     }
     @IBAction func save() {
         svg = editpanel.toSvg()
+        print(svg!.xml)
+        /*
         dismiss(animated: true, completion: {
             self.delegate.endHandWriting(self.svg!)
-        })
+        })*/
     }
 
     @IBAction func animate() {
