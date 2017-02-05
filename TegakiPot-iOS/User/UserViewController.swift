@@ -44,9 +44,19 @@ class UserViewController: UIViewController {
                 print("get error")
             })
         }
+        
+        configureNavBar()
     }
     
     @IBAction func friend() {}
+    
+    private func configureNavBar() {
+        let imageView =  UIImageView(frame: CGRect(x: ((navigationController?.navigationBar.frame.width)!/2) - (100/2), y: 0,
+                                                   width: 100, height: (navigationController?.navigationBar.frame.height)! - 10.0))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
+    }
 }
 
 extension UserViewController: StoryboardInstantiable {

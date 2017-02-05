@@ -139,7 +139,7 @@ class TegakiPotAPI {
                 "question": [
                     "posted_by": postedBy,
                     "field": fieldsArray[selectedField],
-                    "tags": tags,
+//                    "tags": tags,
                     "title": title,
                     "description": description,
                     "svg": [

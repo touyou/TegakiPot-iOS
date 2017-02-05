@@ -24,11 +24,8 @@ class EditQuestionViewController: UIViewController, EditQuestionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        configureNavBar()
     }
 
     @IBAction func post() {
@@ -70,6 +67,14 @@ class EditQuestionViewController: UIViewController, EditQuestionDelegate {
     
     func endHandWriting(_ doc: AEXMLDocument) {
         svgString = doc.xml
+    }
+    
+    private func configureNavBar() {
+        let imageView =  UIImageView(frame: CGRect(x: ((navigationController?.navigationBar.frame.width)!/2) - (100/2), y: 0,
+                                                   width: 100, height: (navigationController?.navigationBar.frame.height)! - 10.0))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
 }
 

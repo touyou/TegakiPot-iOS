@@ -33,12 +33,22 @@ class QuestionDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         fetchData()
+    }
+    
+    private func configureNavBar() {
+        let imageView =  UIImageView(frame: CGRect(x: ((navigationController?.navigationBar.frame.width)!/2) - (100/2), y: 0,
+                                                   width: 100, height: (navigationController?.navigationBar.frame.height)! - 10.0))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
     
     private func fetchData() {
@@ -67,11 +77,11 @@ class QuestionDetailViewController: UIViewController {
         answers = question.answers ?? []
         tableView.reloadData()
         
-        do {
-            let svg = try AEXMLDocument(xml: question.svg ?? "")
-            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
-            svgArea.addSubview(showPanel)
-        } catch {}
+//        do {
+//            let svg = try AEXMLDocument(xml: question.svg ?? "")
+//            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
+//            svgArea.addSubview(showPanel)
+//        } catch {}
     }
     
     @IBAction func editAnswer() {

@@ -27,6 +27,15 @@ class EditAnswerViewController: UIViewController, EditQuestionDelegate {
         if let idUser = saveData.object(forKey: DataKey.loginUser.rawValue) as? UInt64 {
             id = idUser
         }
+        configureNavBar()
+    }
+    
+    private func configureNavBar() {
+        let imageView =  UIImageView(frame: CGRect(x: ((navigationController?.navigationBar.frame.width)!/2) - (100/2), y: 0,
+                                                   width: 100, height: (navigationController?.navigationBar.frame.height)! - 10.0))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
     
     @IBAction func handWrite() {

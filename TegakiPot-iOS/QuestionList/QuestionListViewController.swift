@@ -21,11 +21,14 @@ final class QuestionListViewController: UIViewController {
     }
     
     var questions: [Question] = []
+    var reloadBtn: UIBarButtonItem!
     
     let images = [#imageLiteral(resourceName: "chem"), #imageLiteral(resourceName: "lang"), #imageLiteral(resourceName: "math")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +42,21 @@ final class QuestionListViewController: UIViewController {
             self.questions = questions
             self.collectionView.reloadData()
         })
+    }
+    
+    func refresh() {
+        fetchQuestion()
+    }
+    
+    private func configureNavBar() {
+        reloadBtn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        navigationItem.rightBarButtonItem = reloadBtn
+        
+        let imageView =  UIImageView(frame: CGRect(x: ((navigationController?.navigationBar.frame.width)!/2) - (100/2), y: 0,
+                                              width: 100, height: (navigationController?.navigationBar.frame.height)! - 10.0))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = imageView
     }
 }
 
@@ -75,7 +93,7 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         
         cell.imageView.image = images[indexPath.row % 3]
         
-        cell.setSvg(question.svg ?? "")
+//        cell.setSvg(question.svg ?? "")
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)

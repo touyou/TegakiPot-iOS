@@ -15,7 +15,7 @@ class HandWritingViewController: UIViewController {
     var delegate: EditQuestionDelegate!
     
     @IBOutlet var colorButton: [UIButton]!
-    var colors = [MaterialColor.red.color, MaterialColor.purple.color, MaterialColor.blue.color, MaterialColor.green.color, MaterialColor.orange.color, MaterialColor.black.color]
+    var colors = [MaterialColor.red.color, MaterialColor.purple.color, MaterialColor.blue.color, MaterialColor.green.color, MaterialColor.orangeAccent1.color, MaterialColor.black.color]
     var selected = 0
     var sizeFlag = 0
     var sizeArray = [40.0, 80.0, 120.0]
@@ -142,7 +142,6 @@ class HandWritingViewController: UIViewController {
     }
     @IBAction func save() {
         svg = editpanel.toSvg()
-        print(svg!.xml)
         dismiss(animated: true, completion: {
             self.delegate.endHandWriting(self.svg!)
         })

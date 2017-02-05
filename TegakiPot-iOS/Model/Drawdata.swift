@@ -331,7 +331,7 @@ class Geometry {
             layer.addSublayer(sublayer)
             let rawdata = shape.toRawpath(pers)
             let body = rawdata.body
-            sublayer.path = UIBezierPath(ovalIn: view.frame).cgPath
+            sublayer.path = UIBezierPath().cgPath
             sublayer.lineWidth = body.lineWidth
             sublayer.strokeColor = rawdata.strokecolor.cgColor
             sublayer.fillColor = rawdata.fillcolor.cgColor
