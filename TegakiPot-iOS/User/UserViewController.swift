@@ -9,29 +9,44 @@
 import UIKit
 
 class UserViewController: UIViewController {
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var descriptLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+        }
+    }
+    @IBOutlet weak var followBtn: UIButton! {
+        didSet {
+            followBtn.isHidden = true
+        }
+    }
+    
+    var userId: UInt64? {
+        didSet {
+            followBtn.isHidden = false
+        }
+    }
+    var user: User?
+    
+    let saveData = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if let id = saveData.object(forKey: DataKey.loginUser.rawValue) as? UInt64 {
+            TegakiPotAPI().getUserDetail(id, success: { user in
+                self.userNameLabel.text = user.userName
+                self.descriptLabel.text = user.selfIntroduction
+                self.user = user
+            }, failure: { error in
+                print("get error")
+            })
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    @IBAction func friend() {}
 }
 
 extension UserViewController: StoryboardInstantiable {

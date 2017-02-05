@@ -12,6 +12,7 @@ import AEXML
 class HandWritingViewController: UIViewController {
     var editpanel: Editpanel!
     var svg: AEXMLDocument?
+    var delegate: EditQuestionDelegate!
     
     @IBOutlet weak var drawableView: UIView! {
         didSet {
@@ -20,26 +21,36 @@ class HandWritingViewController: UIViewController {
             drawableView.layer.shadowOpacity = 0.9
             drawableView.layer.shadowRadius = 2.0
             
-            editpanel = Editpanel(drawableView.frame, self)
+            editpanel = Editpanel(CGRect(x: 0, y: 0, width: drawableView.frame.width, height: drawableView.frame.height), self)
             drawableView.addSubview(editpanel)
             editpanel.modechange(.freehand)
         }
     }
-    @IBOutlet weak var undoBtn: UIButton! {
+    
+    @IBOutlet var undoBtn: UIButton! {
         didSet {
             undoBtn.isEnabled = false
         }
     }
-    @IBOutlet weak var redoBtn: UIButton! {
+    
+    @IBOutlet var redoBtn: UIButton! {
         didSet {
             redoBtn.isEnabled = false
         }
     }
     
+    @IBOutlet var modeButton: [UIButton]! {
+        didSet {
+            modeButton[0].isEnabled = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,30 +65,47 @@ class HandWritingViewController: UIViewController {
         editpanel.redo()
     }
     @IBAction func freehand() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[0].isEnabled = false
         editpanel.modechange(.freehand)
     }
     @IBAction func line() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[1].isEnabled = false
         editpanel.modechange(.line)
     }
     @IBAction func goodline() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[2].isEnabled = false
         editpanel.modechange(.goodline)
     }
     @IBAction func rect() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[3].isEnabled = false
         editpanel.modechange(.rect)
     }
     @IBAction func circle() {
+        for i in 0 ..< modeButton.count {
+            modeButton[i].isEnabled = true
+        }
+        modeButton[4].isEnabled = false
         editpanel.modechange(.circle)
     }
     @IBAction func save() {
         svg = editpanel.toSvg()
+        dismiss(animated: true, completion: {
+            self.delegate.endHandWriting(self.svg!)
+        })
     }
-    @IBAction func load() {
-        if let svg = svg {
-            editpanel.load(svg)
-        } else {
-            print("error: no svg!")
-        }
-    }
+
     @IBAction func animate() {
         editpanel.animate()
     }

@@ -49,6 +49,11 @@
 		4665C2631E464E8E00F71C24 /* QuestionListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2611E464E8E00F71C24 /* QuestionListCollectionViewCell.swift */; };
 		4665C2641E464E8E00F71C24 /* QuestionListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2621E464E8E00F71C24 /* QuestionListCollectionViewCell.xib */; };
 		46E0E4FB1E4650920044F0D2 /* EditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E4FA1E4650920044F0D2 /* EditQuestionViewController.storyboard */; };
+		46E0E4FD1E46553D0044F0D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E4FC1E46553D0044F0D2 /* Extensions.swift */; };
+		46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */; };
+		46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */; };
+		46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */; };
+		46E0E5081E46A7EE0044F0D2 /* EditAnswer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */; };
 		BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */; };
 		BE11AA791E460D0500E0F5B5 /* Editpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA781E460D0500E0F5B5 /* Editpanel.swift */; };
 		BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */; };
@@ -102,6 +107,11 @@
 		4665C2611E464E8E00F71C24 /* QuestionListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4665C2621E464E8E00F71C24 /* QuestionListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionListCollectionViewCell.xib; sourceTree = "<group>"; };
 		46E0E4FA1E4650920044F0D2 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
+		46E0E4FC1E46553D0044F0D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
+		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditAnswerViewController.swift; path = EditAnswer/EditAnswerViewController.swift; sourceTree = "<group>"; };
+		46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswer.storyboard; path = EditAnswer/EditAnswer.storyboard; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 		4652A70A1E457DC3003FA92C /* TegakiPot-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				46E0E5041E46A7C00044F0D2 /* EditAnswer */,
 				4665C1FC1E45803200F71C24 /* EditQuestion */,
 				4665C1FF1E45804800F71C24 /* FriendList */,
 				4665C1FD1E45803B00F71C24 /* HandWriting */,
@@ -235,6 +246,8 @@
 			children = (
 				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
 				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
+				46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */,
+				46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */,
 			);
 			path = QuestionDetail;
 			sourceTree = "<group>";
@@ -254,6 +267,7 @@
 				4665C24F1E45E19F00F71C24 /* KeyList.swift */,
 				4665C20B1E4580E600F71C24 /* MaterialColor.swift */,
 				4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */,
+				46E0E4FC1E46553D0044F0D2 /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -283,6 +297,15 @@
 				4665C2411E459DF000F71C24 /* UserModel.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		46E0E5041E46A7C00044F0D2 /* EditAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
+				46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */,
+			);
+			name = EditAnswer;
 			sourceTree = "<group>";
 		};
 		6D0F9475F07E62CA9658FEF0 /* Frameworks */ = {
@@ -371,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E0E5081E46A7EE0044F0D2 /* EditAnswer.storyboard in Resources */,
 				4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */,
 				4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */,
 				4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */,
@@ -379,6 +403,7 @@
 				46E0E4FB1E4650920044F0D2 /* EditQuestionViewController.storyboard in Resources */,
 				4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */,
 				4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */,
+				46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */,
 				4665C2641E464E8E00F71C24 /* QuestionListCollectionViewCell.xib in Resources */,
 				4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */,
 				4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */,
@@ -466,6 +491,7 @@
 				4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */,
 				4665C2481E45A8EE00F71C24 /* ContributionModel.swift in Sources */,
 				4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */,
+				46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */,
 				4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */,
 				BE11AA7F1E461E2D00E0F5B5 /* Utility.swift in Sources */,
 				BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */,
@@ -474,10 +500,12 @@
 				4665C24E1E45C42D00F71C24 /* TegakiPotError.swift in Sources */,
 				4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */,
 				4665C2421E459DF000F71C24 /* UserModel.swift in Sources */,
+				46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */,
 				4665C2461E45A53A00F71C24 /* FieldModel.swift in Sources */,
 				4665C23E1E45987600F71C24 /* QuestionModel.swift in Sources */,
 				4665C21A1E45855C00F71C24 /* UserViewController.swift in Sources */,
 				4652A70E1E457DC3003FA92C /* TabViewController.swift in Sources */,
+				46E0E4FD1E46553D0044F0D2 /* Extensions.swift in Sources */,
 				4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */,
 				BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */,
 				4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */,

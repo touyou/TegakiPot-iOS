@@ -7,31 +7,115 @@
 //
 
 import UIKit
+import AEXML
 
 class QuestionDetailViewController: UIViewController {
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var svgArea: UIView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.estimatedRowHeight = 20
+            tableView.rowHeight = UITableViewAutomaticDimension
+            
+            tableView.register(cellType: AnswerTableViewCell.self)
+        }
+    }
+    
+    var id: UInt64? = nil
+    var answers: [Answer] = []
+    var question: Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        fetchData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func fetchData() {
+        guard let id = id else {
+            print("no question")
+            return
+        }
+        TegakiPotAPI().getQuestionDetail(id, success: { question in
+            self.question = question
+            self.setViews(question)
+        }, failure: { error in
+            print("question fetch error")
+        })
     }
-    */
+    
+    private func setViews(_ question: Question) {
+        userNameLabel.text = question.postedBy?.userName
+        var tags = ""
+        question.tags?.forEach {
+            tags += $0
+            tags += ","
+        }
+        tagsLabel.text = tags
+        titleLabel.text = question.title
+        descriptionLabel.text = question.description
+        answers = question.answers ?? []
+        tableView.reloadData()
+        
+        do {
+            let svg = try AEXMLDocument(xml: question.svg ?? "")
+            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
+            svgArea.addSubview(showPanel)
+        } catch {}
+    }
+    
+    @IBAction func editAnswer() {
+        let viewController = EditAnswerViewController.instantiateFromStoryboard()
+        viewController.questionTitle = question?.title
+        viewController.questionId = id
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
 
+// MARK: - TableView
+
+extension QuestionDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return answers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(with: AnswerTableViewCell.self, for: indexPath)
+        let answer = answers[indexPath.row]
+        
+        cell.descriptionLabel.text = answer.description
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/mm/dd HH:MM:ss"
+        cell.dateLabel.text = formatter.string(from: answer.createdAt ?? Date())
+        
+        cell.goodCommit = {
+//            TegakiPotAPI().postAnswerGood(answer.id, success: { _ in
+//                
+//            })
+        }
+        
+        cell.badCommit = {
+//            TegakiPotAPI().postAnswerBad(answer.id, success: { _ in
+//                
+//            })
+        }
+        
+        return cell
+    }
 }
 
 extension QuestionDetailViewController: StoryboardInstantiable {
