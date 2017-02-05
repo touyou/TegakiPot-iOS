@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AEXML
 
 class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
@@ -63,6 +64,12 @@ class QuestionDetailViewController: UIViewController {
         descriptionLabel.text = question.description
         answers = question.answers ?? []
         tableView.reloadData()
+        
+        do {
+            let svg = try AEXMLDocument(xml: question.svg ?? "")
+            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
+            svgArea.addSubview(showPanel)
+        } catch {}
     }
 }
 

@@ -19,14 +19,14 @@ final class TabViewController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        loginChecked()
+        loginChecked()
     }
     
     private func loginChecked() {
         let saveData = UserDefaults.standard
         
-//        if saveData.object(forKey: DataKey.loginUser.rawValue) == nil {
-        if saveData.object(forKey: DataKey.loginForTest.rawValue) == nil {
+        if saveData.object(forKey: DataKey.loginUser.rawValue) == nil {
+//        if saveData.object(forKey: DataKey.loginForTest.rawValue) == nil {
             print("login")
             present(LoginViewController.instantiateFromStoryboard(), animated: true, completion: nil)
         }

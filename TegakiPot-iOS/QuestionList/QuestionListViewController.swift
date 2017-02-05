@@ -26,6 +26,10 @@ final class QuestionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         fetchQuestion()
     }
@@ -70,6 +74,8 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         }
         
         cell.imageView.image = images[indexPath.row % 3]
+        
+        cell.setSvg(question.svg ?? "")
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)

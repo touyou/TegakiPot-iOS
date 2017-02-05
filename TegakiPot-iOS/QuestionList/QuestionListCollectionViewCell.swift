@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AEXML
 
 class QuestionListCollectionViewCell: UICollectionViewCell {
     
@@ -22,5 +23,15 @@ class QuestionListCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    func setSvg(_ xml: String) {
+        let width = drawBaseView.frame.height / 3.0 * 4.0
+        let height = drawBaseView.frame.height
+        
+        do {
+            let svg = try AEXMLDocument(xml: xml)
+            let showPanel = Showpanel(CGRect(x: (width - height) / 2.0, y: 0, width: width, height: height), svg)
+            drawBaseView.addSubview(showPanel)
+        } catch {}
+    }
 }

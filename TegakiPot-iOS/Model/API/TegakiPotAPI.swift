@@ -108,7 +108,7 @@ class TegakiPotAPI {
     }
     
     struct PostQuestion: TegakiPotRequest {
-        let postedBy: String
+        let postedBy: UInt64
         let selectedField: Int
         let tags: [String]
         let title: String
@@ -142,14 +142,16 @@ class TegakiPotAPI {
                     "tags": tags,
                     "title": title,
                     "description": description,
-                    "svg": svg
+                    "svg": [
+                        "changeingThisBreaksApplicationSecurity": svg
+                    ]
                 ]
             ]
         }
     }
     
     struct PostAnswer: TegakiPotRequest {
-        let postedBy: String
+        let postedBy: UInt64
         let questionId: UInt64
         let description: String
         let svg: String
@@ -170,7 +172,9 @@ class TegakiPotAPI {
                     "posted_by": postedBy,
                     "question_id": questionId,
                     "description": description,
-                    "svg": svg
+                    "svg":  [
+                        "changeingThisBreaksApplicationSecurity": svg
+                    ]
                 ]
             ]
         }
