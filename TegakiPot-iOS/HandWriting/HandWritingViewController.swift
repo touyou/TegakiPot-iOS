@@ -86,6 +86,7 @@ class HandWritingViewController: UIViewController {
             sender.layer.cornerRadius = aft / 2
             sizeFlag = (sizeFlag + 1) % 3
             editpanel.stroke.width = 0.1 * Double(sizeFlag + 1)
+            editpanel.modechange(editpanel.mode)
         } else {
             colorButton[selected].frame = CGRect(x: centerPoint.x - 20.0, y: centerPoint.y - 20.0,
                                               width: 40.0, height: 40.0)
@@ -96,6 +97,7 @@ class HandWritingViewController: UIViewController {
             selected = sender.tag
             sizeFlag = 0
             editpanel.stroke.color = colors[selected]!
+            editpanel.stroke.width = 0.1
             editpanel.modechange(editpanel.mode)
         }
     }

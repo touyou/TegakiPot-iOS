@@ -27,6 +27,9 @@ class EditAnswerViewController: UIViewController, EditQuestionDelegate {
         if let idUser = saveData.object(forKey: DataKey.loginUser.rawValue) as? UInt64 {
             id = idUser
         }
+        
+        titleLabel.text = questionTitle
+        
         configureNavBar()
     }
     

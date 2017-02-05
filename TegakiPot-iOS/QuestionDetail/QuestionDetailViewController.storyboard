@@ -100,6 +100,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="ezK-KM-ZEM" id="1gV-Mh-YYM"/>
+                        <outlet property="svgArea" destination="WHV-we-KNp" id="Kw2-pM-2Zy"/>
                         <outlet property="tableView" destination="Yn8-Ld-Gno" id="WJ1-3n-sgx"/>
                         <outlet property="tagsLabel" destination="oFd-Vb-LPn" id="Fpy-ld-AtZ"/>
                         <outlet property="titleLabel" destination="EfU-Bp-oZI" id="mX6-NF-1FF"/>

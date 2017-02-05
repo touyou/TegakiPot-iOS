@@ -53,7 +53,7 @@
 		46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */; };
 		46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */; };
 		46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */; };
-		46E0E5081E46A7EE0044F0D2 /* EditAnswer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */; };
+		46E0E5081E46A7EE0044F0D2 /* EditAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */; };
 		BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */; };
 		BE11AA791E460D0500E0F5B5 /* Editpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA781E460D0500E0F5B5 /* Editpanel.swift */; };
 		BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */; };
@@ -111,7 +111,7 @@
 		46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
 		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditAnswerViewController.swift; path = EditAnswer/EditAnswerViewController.swift; sourceTree = "<group>"; };
-		46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswer.storyboard; path = EditAnswer/EditAnswer.storyboard; sourceTree = "<group>"; };
+		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswerViewController.storyboard; path = EditAnswer/EditAnswerViewController.storyboard; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
-				46E0E5071E46A7EE0044F0D2 /* EditAnswer.storyboard */,
+				46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */,
 			);
 			name = EditAnswer;
 			sourceTree = "<group>";
@@ -394,7 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46E0E5081E46A7EE0044F0D2 /* EditAnswer.storyboard in Resources */,
+				46E0E5081E46A7EE0044F0D2 /* EditAnswerViewController.storyboard in Resources */,
 				4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */,
 				4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */,
 				4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */,
