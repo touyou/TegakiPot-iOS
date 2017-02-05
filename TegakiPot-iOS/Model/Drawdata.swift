@@ -306,7 +306,8 @@ class Geometry {
     }
     func toSvg() -> AEXMLDocument {
         let root = AEXMLElement(name: "svg", attributes:
-            ["width": realsize.width.fmt(2), "height": realsize.height.fmt(2)])
+            ["width": realsize.width.fmt(2), "height": realsize.height.fmt(2),
+             "xmlns": "http://www.w3.org/2000/svg"])
         let subroot = AEXMLElement(name: "g", attributes:
             ["transform": "translate(\(pers.origin.x.fmt(2)),\(pers.origin.y.fmt(2))) scale(\(pers.scale.fmt(2)))"])
         root.addChild(subroot)
