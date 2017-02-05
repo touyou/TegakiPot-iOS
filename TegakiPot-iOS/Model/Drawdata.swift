@@ -159,7 +159,7 @@ class Freehand : Shape {
     func toSvgElem() -> AEXMLElement {
         var d = "M \(start.x.fmt(2)) \(start.y.fmt(2))"
         for bezier in beziers {
-            d += " S \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
+            d += " C \(bezier.con.x.fmt(2)) \(bezier.con.y.fmt(2)) \(bezier.trol.x.fmt(2)) \(bezier.trol.y.fmt(2)) \(bezier.to.x.fmt(2)) \(bezier.to.y.fmt(2))"
         }
         return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
@@ -330,14 +330,13 @@ class Geometry {
             layer.addSublayer(sublayer)
             let rawdata = shape.toRawpath(pers)
             let body = rawdata.body
-            sublayer.path = UIBezierPath().cgPath
+            sublayer.path = UIBezierPath(ovalIn: view.frame).cgPath
             sublayer.lineWidth = body.lineWidth
             sublayer.strokeColor = rawdata.strokecolor.cgColor
             sublayer.fillColor = rawdata.fillcolor.cgColor
             let animation = CABasicAnimation(keyPath: "path")
             animation.duration = duration
             animation.beginTime = now + Double(count) * delay
-            animation.fromValue = sublayer.path
             animation.toValue = body.cgPath
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.fillMode = kCAFillModeBoth
