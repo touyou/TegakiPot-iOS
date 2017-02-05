@@ -105,13 +105,10 @@ class HandWritingViewController: UIViewController {
             self.delegate.endHandWriting(self.svg!)
         })
     }
-//    @IBAction func load() {
-//        if let svg = svg {
-//            editpanel.load(svg)
-//        } else {
-//            print("error: no svg!")
-//        }
-//    }
+
+    @IBAction func animate() {
+        editpanel.animate()
+    }
     // editpanel.stroke.color で色指定
     // editpanel.stroke.width で太さ指定
 }

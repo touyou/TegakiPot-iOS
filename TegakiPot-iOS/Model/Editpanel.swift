@@ -145,6 +145,11 @@ class Editpanel : UIView {
     override func draw(_: CGRect) {
         geometry.draw()
     }
+    func animate() {
+        geometry.animate(layer, self)
+        geometry.shapes = Array()
+        setNeedsDisplay()
+    }
 }
 
 protocol Creation {
