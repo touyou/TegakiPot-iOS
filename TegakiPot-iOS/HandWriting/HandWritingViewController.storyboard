@@ -104,10 +104,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9Y-ja-UT6">
-                                        <rect key="frame" x="243" y="22" width="126" height="58"/>
+                                        <rect key="frame" x="1126" y="14" width="126" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Animate"/>
+                                        <state key="normal" title="Animate">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="animate" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="E4T-XG-07j"/>
                                         </connections>
@@ -135,6 +137,54 @@
                                     <constraint firstAttribute="width" secondItem="ZFW-Ia-ZGO" secondAttribute="height" multiplier="400:300" id="aAx-4N-rdr"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-fN-Of4">
+                                <rect key="frame" x="1272" y="210" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="yKI-7v-xLH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJB-db-Mbz">
+                                <rect key="frame" x="1272" y="268" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="IQL-TW-L9d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV3-1o-Thh">
+                                <rect key="frame" x="1272" y="326" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="6x5-kW-yQi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4l-yN-frg">
+                                <rect key="frame" x="1272" y="384" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="Xly-Gm-vYB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5si-Vq-emY">
+                                <rect key="frame" x="1272" y="442" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="Z3A-qw-ZMV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBf-0x-atQ">
+                                <rect key="frame" x="1272" y="500" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tapColorButton:" destination="nRr-Ad-AmQ" eventType="touchUpInside" id="pNh-nn-xTK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -155,6 +205,12 @@
                         <outletCollection property="modeButton" destination="bgy-sa-LkF" collectionClass="NSMutableArray" id="Yur-Sy-3Ua"/>
                         <outletCollection property="modeButton" destination="fIb-GV-MNz" collectionClass="NSMutableArray" id="7yk-gp-WTP"/>
                         <outletCollection property="modeButton" destination="7xX-Xz-JkO" collectionClass="NSMutableArray" id="O4I-Q2-xxN"/>
+                        <outletCollection property="colorButton" destination="enX-fN-Of4" collectionClass="NSMutableArray" id="ALG-qf-mDD"/>
+                        <outletCollection property="colorButton" destination="PJB-db-Mbz" collectionClass="NSMutableArray" id="PZr-QC-e6m"/>
+                        <outletCollection property="colorButton" destination="iV3-1o-Thh" collectionClass="NSMutableArray" id="1Ai-ys-w4K"/>
+                        <outletCollection property="colorButton" destination="a4l-yN-frg" collectionClass="NSMutableArray" id="wZL-5C-PrL"/>
+                        <outletCollection property="colorButton" destination="5si-Vq-emY" collectionClass="NSMutableArray" id="Tde-sv-zR8"/>
+                        <outletCollection property="colorButton" destination="hBf-0x-atQ" collectionClass="NSMutableArray" id="Xn0-pa-ltH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cG6-61-aCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
