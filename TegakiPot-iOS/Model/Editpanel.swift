@@ -37,7 +37,7 @@ class Editpanel : UIView {
         get { return !redoshapes.isEmpty }
     }
     func modechange(_ mode: Mode) {
-        if self.mode == mode { return }
+//        if self.mode == mode { return }
         creation?.bye()
         switch mode {
         case .base:

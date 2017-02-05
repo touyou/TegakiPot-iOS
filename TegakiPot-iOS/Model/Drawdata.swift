@@ -88,7 +88,7 @@ protocol Shape {
     func toRawpath(_: Pers) -> Rawpath
     func toSvgElem() -> AEXMLElement
 }
-class Stroke {
+struct Stroke {
     var width: Size
     var color: UIColor
     init(_ width: Size, _ color: UIColor) {
@@ -103,7 +103,7 @@ class Stroke {
         return ["stroke": color.toRgbaString(), "stroke-width": "\(width.fmt(2))"]
     }
 }
-class Fill {
+struct Fill {
     var color: UIColor
     init(_ color: UIColor) {
         self.color = color

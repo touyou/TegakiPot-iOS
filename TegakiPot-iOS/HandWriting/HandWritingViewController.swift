@@ -96,6 +96,7 @@ class HandWritingViewController: UIViewController {
             selected = sender.tag
             sizeFlag = 0
             editpanel.stroke.color = colors[selected]!
+            editpanel.modechange(editpanel.mode)
         }
     }
     
