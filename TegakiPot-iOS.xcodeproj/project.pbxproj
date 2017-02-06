@@ -110,8 +110,8 @@
 		46E0E4FC1E46553D0044F0D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
-		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditAnswerViewController.swift; path = EditAnswer/EditAnswerViewController.swift; sourceTree = "<group>"; };
-		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswerViewController.storyboard; path = EditAnswer/EditAnswerViewController.storyboard; sourceTree = "<group>"; };
+		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditAnswerViewController.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
+		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswerViewController.storyboard; path = EditAnswerViewController.storyboard; sourceTree = "<group>"; };
 		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +139,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461136B01E48B75E009AC1F2 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */,
+				BE11AA781E460D0500E0F5B5 /* Editpanel.swift */,
+				BE11AA801E461E7B00E0F5B5 /* Math.swift */,
+				BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */,
+				BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */,
+			);
+			name = Drawing;
+			path = Drawing;
+			sourceTree = "<group>";
+		};
 		4652A6FF1E457DC2003FA92C = {
 			isa = PBXGroup;
 			children = (
@@ -185,11 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				4665C22E1E4594B400F71C24 /* API */,
-				BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */,
-				BE11AA781E460D0500E0F5B5 /* Editpanel.swift */,
-				BE11AA801E461E7B00E0F5B5 /* Math.swift */,
-				BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */,
-				BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */,
+				461136B01E48B75E009AC1F2 /* Drawing */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,10 +253,10 @@
 		4665C2001E45804F00F71C24 /* QuestionDetail */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
-				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
 				46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */,
 				46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */,
+				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
+				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
 			);
 			path = QuestionDetail;
 			sourceTree = "<group>";
@@ -264,10 +273,10 @@
 		4665C2061E45809A00F71C24 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				46E0E4FC1E46553D0044F0D2 /* Extensions.swift */,
 				4665C24F1E45E19F00F71C24 /* KeyList.swift */,
 				4665C20B1E4580E600F71C24 /* MaterialColor.swift */,
 				4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */,
-				46E0E4FC1E46553D0044F0D2 /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -302,10 +311,11 @@
 		46E0E5041E46A7C00044F0D2 /* EditAnswer */ = {
 			isa = PBXGroup;
 			children = (
-				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
 				46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */,
+				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
 			);
 			name = EditAnswer;
+			path = EditAnswer;
 			sourceTree = "<group>";
 		};
 		6D0F9475F07E62CA9658FEF0 /* Frameworks */ = {

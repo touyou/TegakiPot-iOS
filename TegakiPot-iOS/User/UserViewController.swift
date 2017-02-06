@@ -36,6 +36,7 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
 
         if let id = saveData.object(forKey: DataKey.loginUser.rawValue) as? UInt64 {
+            print(id)
             TegakiPotAPI().getUserDetail(id, success: { user in
                 self.userNameLabel.text = user.userName
                 self.descriptLabel.text = user.selfIntroduction

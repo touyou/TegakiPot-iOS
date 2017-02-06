@@ -46,9 +46,6 @@ extension Question: Decodable {
     public static func decode(_ e: Extractor) throws -> Question {
         let transformer = TransformUtility()
         
-        print()
-        print(e.rawValue)
-        
         return try Question(
             id: e <|? "id",
             postedBy: e <|? "posted_by",

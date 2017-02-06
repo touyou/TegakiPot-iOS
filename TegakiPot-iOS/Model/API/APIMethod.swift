@@ -31,6 +31,7 @@ extension TegakiPotAPI {
                         success(q.questions ?? [])
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -52,6 +53,7 @@ extension TegakiPotAPI {
                         try success(Question.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -77,6 +79,7 @@ extension TegakiPotAPI {
                         success(q.answers ?? [])
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -99,6 +102,7 @@ extension TegakiPotAPI {
                         try success(Answer.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -120,6 +124,7 @@ extension TegakiPotAPI {
                         try success(User.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -143,6 +148,7 @@ extension TegakiPotAPI {
                         try success(AuthResult.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -165,6 +171,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -186,6 +193,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -207,6 +215,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -228,6 +237,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -249,6 +259,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -270,6 +281,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -291,6 +303,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -312,6 +325,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
@@ -333,6 +347,7 @@ extension TegakiPotAPI {
                         try success(PostResponse.decodeValue(jsonObject))
                     } catch {
                         print("Parse Error")
+                        print(jsonObject)
                     }
                 }
             case .failure(let error):
