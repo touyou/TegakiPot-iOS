@@ -7,5 +7,5 @@ target 'TegakiPot-iOS' do
 
   # Pods for TegakiPot-iOS
 # pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
-  pod 'Alamofire'
+#  pod 'Alamofire'
 end

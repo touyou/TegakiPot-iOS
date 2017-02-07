@@ -10,25 +10,17 @@ import Foundation
 import Himotoki
 import APIKit
 
-protocol TegakiPotRequest {}
+protocol TegakiPotRequest: Request {}
 
 extension TegakiPotRequest {
-    var baseURL: String {
-        return "https://tegakipot.herokuapp.com/api"
+    var baseURL: URL {
+        return URL(string: "https://tegakipot.herokuapp.com/api")!
     }
 }
 
-//protocol TegakiPotRequest: Request {}
-//
-//extension TegakiPotRequest {
-//    var baseURL: URL {
-//        return URL(string: "https://tegakipot.herokuapp.com/api")!
-//    }
-//}
-//
-//extension TegakiPotRequest where Response: Decodable {
-//    internal func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
-//        return try decodeValue(object)
-//    }
-//}
+extension TegakiPotRequest where Response: Decodable {
+    internal func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
+        return try decodeValue(object)
+    }
+}
 
