@@ -77,11 +77,11 @@ class QuestionDetailViewController: UIViewController {
         answers = question.answers ?? []
         tableView.reloadData()
         
-//        do {
-//            let svg = try AEXMLDocument(xml: question.svg ?? "")
-//            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
-//            svgArea.addSubview(showPanel)
-//        } catch {}
+        do {
+            let svg = try AEXMLDocument(xml: question.svg ?? "")
+            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
+            svgArea.addSubview(showPanel)
+        } catch {}
     }
     
     @IBAction func editAnswer() {
@@ -109,8 +109,9 @@ extension QuestionDetailViewController: UITableViewDelegate, UITableViewDataSour
         
         cell.descriptionLabel.text = answer.description
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/mm/dd HH:MM:ss"
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         cell.dateLabel.text = formatter.string(from: answer.createdAt ?? Date())
+        cell.setSvg(answer.svg ?? "")
         
         cell.goodCommit = {
 //            TegakiPotAPI().postAnswerGood(answer.id, success: { _ in

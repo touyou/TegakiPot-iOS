@@ -13,7 +13,7 @@ import Himotoki
 public struct User {
     public var id: UInt64?
     public var email: String?
-    public var passWord: String?
+//    public var passWord: String?
     public var userName: String?
     public var selfIntroduction: String?
     public var posted: Int?
@@ -37,7 +37,7 @@ extension User: Decodable {
         return try User(
             id: e <|? "id",
             email: e <|? "email",
-            passWord: e <|? "password",
+//            passWord: e <|? "password",
             userName: e <|? "username",
             selfIntroduction: e <|? "self_introduction",
             posted: e <|? "posted",

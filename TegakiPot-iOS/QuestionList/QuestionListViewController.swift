@@ -92,7 +92,7 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         
         cell.imageView.image = images[indexPath.row % 3]
         
-//        cell.setSvg(question.svg ?? "")
+        cell.setSvg(question.svg ?? "")
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)

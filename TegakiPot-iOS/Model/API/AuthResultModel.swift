@@ -74,21 +74,21 @@ extension AnswerList: Decodable {
 // MARK: - AuthResult
 public struct AuthResult {
     public var id: UInt64?
-//    public var email: String?
+    public var email: String?
 //    public var passWord: String?
-//    public var userName: String?
-//    public var selfIntroduction: String?
-//    public var posted: Int?
-//    public var solved: Int?
-//    public var rating: Int?
-//    public var views: Int?
+    public var userName: String?
+    public var selfIntroduction: String?
+    public var posted: Int?
+    public var solved: Int?
+    public var rating: Int?
+    public var views: Int?
 //    public var friends: [UserList]?
 //    public var contributions: [Contribution]?
 //    public var questions: [QuestionList]?
 //    public var answers: [AnswerList]?
-//    public var isValid: Bool?
-//    public var createdAt: Date?
-//    public var updatedAt: Date?
+    public var isValid: Bool?
+    public var createdAt: Date?
+    public var updatedAt: Date?
 }
 
 extension AuthResult: Decodable {
@@ -96,22 +96,22 @@ extension AuthResult: Decodable {
         let transformer = TransformUtility()
         
         return try AuthResult(
-            id: e <|? "id"
-//            email: e <|? "email",
+            id: e <|? "id",
+            email: e <|? "email",
 //            passWord: e <|? "password",
-//            userName: e <|? "username",
-//            selfIntroduction: e <|? "self_introduction",
-//            posted: e <|? "posted",
-//            solved: e <|? "solved",
-//            rating: e <|? "rating",
-//            views: e <|? "views",
+            userName: e <|? "username",
+            selfIntroduction: e <|? "self_introduction",
+            posted: e <|? "posted",
+            solved: e <|? "solved",
+            rating: e <|? "rating",
+            views: e <|? "views",
 //            friends: e <||? "friends",
 //            contributions: e <||? "contributions",
 //            questions: e <||? "questions",
 //            answers: e <||? "answers",
-//            isValid: e <|? "is_valid",
-//            createdAt: transformer.applyDate(e <|? "created_at"),
-//            updatedAt: transformer.applyDate(e <|? "updated_at")
+            isValid: e <|? "is_valid",
+            createdAt: transformer.applyDate(e <|? "created_at"),
+            updatedAt: transformer.applyDate(e <|? "updated_at")
         )
     }
 }
