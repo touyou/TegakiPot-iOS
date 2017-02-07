@@ -59,7 +59,6 @@
 		BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */; };
 		BE11AA7F1E461E2D00E0F5B5 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */; };
 		BE11AA811E461E7B00E0F5B5 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA801E461E7B00E0F5B5 /* Math.swift */; };
-		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,11 +109,8 @@
 		46E0E4FC1E46553D0044F0D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
-		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditAnswerViewController.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
-		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditAnswerViewController.storyboard; path = EditAnswerViewController.storyboard; sourceTree = "<group>"; };
-		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
+		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAnswerViewController.storyboard; sourceTree = "<group>"; };
 		BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawdata.swift; sourceTree = "<group>"; };
 		BE11AA781E460D0500E0F5B5 /* Editpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editpanel.swift; sourceTree = "<group>"; };
 		BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showpanel.swift; sourceTree = "<group>"; };
@@ -132,7 +128,6 @@
 				4665C2381E4595FE00F71C24 /* Himotoki.framework in Frameworks */,
 				4665C2391E4595FE00F71C24 /* Result.framework in Frameworks */,
 				4665C23A1E4595FE00F71C24 /* SwiftSVGiOS.framework in Frameworks */,
-				F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +143,6 @@
 				BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */,
 				BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */,
 			);
-			name = Drawing;
 			path = Drawing;
 			sourceTree = "<group>";
 		};
@@ -156,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				6D0F9475F07E62CA9658FEF0 /* Frameworks */,
-				D90F9D9AC76EA28F3354D082 /* Pods */,
 				4652A7091E457DC3003FA92C /* Products */,
 				4652A70A1E457DC3003FA92C /* TegakiPot-iOS */,
 			);
@@ -314,7 +307,6 @@
 				46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */,
 				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
 			);
-			name = EditAnswer;
 			path = EditAnswer;
 			sourceTree = "<group>";
 		};
@@ -326,18 +318,8 @@
 				4665C2331E4595FE00F71C24 /* Himotoki.framework */,
 				4665C2341E4595FE00F71C24 /* Result.framework */,
 				4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */,
-				4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D90F9D9AC76EA28F3354D082 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */,
-				822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,12 +329,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4652A71A1E457DC3003FA92C /* Build configuration list for PBXNativeTarget "TegakiPot-iOS" */;
 			buildPhases = (
-				4B12079DB3AC87896C7F521C /* [CP] Check Pods Manifest.lock */,
 				4652A7041E457DC2003FA92C /* Sources */,
 				4652A7051E457DC2003FA92C /* Frameworks */,
 				4652A7061E457DC2003FA92C /* Resources */,
-				2426C40EA0ED01360ED8059D /* [CP] Embed Pods Frameworks */,
-				91160EBF283E1339AFEB38C8 /* [CP] Copy Pods Resources */,
 				4665C1F91E457FEB00F71C24 /* ShellScript */,
 			);
 			buildRules = (
@@ -424,21 +403,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2426C40EA0ED01360ED8059D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4665C1F91E457FEB00F71C24 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,36 +420,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		4B12079DB3AC87896C7F521C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		91160EBF283E1339AFEB38C8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -649,7 +583,6 @@
 		};
 		4652A71B1E457DC3003FA92C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
@@ -668,7 +601,6 @@
 		};
 		4652A71C1E457DC3003FA92C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
