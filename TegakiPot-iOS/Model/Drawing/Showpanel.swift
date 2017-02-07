@@ -16,6 +16,7 @@ class Showpanel : UIView {
     init(_ frame: CGRect, _ svg: AEXMLDocument) {
         geometry = Geometry(svg, frame.size, Pers(Pixels(frame.width)/40))
         super.init(frame: frame)
+        backgroundColor = UIColor.white
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

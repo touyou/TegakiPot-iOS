@@ -42,19 +42,19 @@ extension UIColor {
 }
 class Rawpath {
     var body: UIBezierPath
-    var strokecolor: UIColor
-    var fillcolor: UIColor
+    var strokeColor: UIColor
+    var fillColor: UIColor
     var pers: Pers
-    init(_ body: UIBezierPath, _ strokecolor: UIColor = UIColor.clear, _ fillcolor: UIColor = UIColor.clear, _ pers: Pers) {
+    init(_ body: UIBezierPath, _ strokeColor: UIColor = UIColor.clear, _ fillColor: UIColor = UIColor.clear, _ pers: Pers) {
         self.body = body
-        self.strokecolor = strokecolor
-        self.fillcolor = fillcolor
+        self.strokeColor = strokeColor
+        self.fillColor = fillColor
         self.pers = pers
     }
     init(_ body: UIBezierPath, _ stroke: Stroke, _ fill: Fill, _ pers: Pers) {
         self.body = body
-        self.strokecolor = stroke.color
-        self.fillcolor = fill.color
+        self.strokeColor = stroke.color
+        self.fillColor = fill.color
         self.pers = pers
         self.body.lineWidth = stroke.width <| pers
     }
@@ -68,15 +68,15 @@ class Rawpath {
         body.addLine(to: p <| pers)
     }
     func draw() {
-        strokecolor.setStroke()
-        fillcolor.setFill()
+        strokeColor.setStroke()
+        fillColor.setFill()
         body.stroke()
         body.fill()
     }
     func toLayer() -> CAShapeLayer {
         let res = CAShapeLayer()
-        res.strokeColor = strokecolor.cgColor
-        res.fillColor = fillcolor.cgColor
+        res.strokeColor = strokeColor.cgColor
+        res.fillColor = fillColor.cgColor
         res.path = body.cgPath
         return res
     }
@@ -333,8 +333,8 @@ class Geometry {
             let body = rawdata.body
             sublayer.path = UIBezierPath().cgPath
             sublayer.lineWidth = body.lineWidth
-            sublayer.strokeColor = rawdata.strokecolor.cgColor
-            sublayer.fillColor = rawdata.fillcolor.cgColor
+            sublayer.strokeColor = rawdata.strokeColor.cgColor
+            sublayer.fillColor = rawdata.fillColor.cgColor
             let animation = CABasicAnimation(keyPath: "path")
             animation.duration = duration
             animation.beginTime = now + Double(count) * delay

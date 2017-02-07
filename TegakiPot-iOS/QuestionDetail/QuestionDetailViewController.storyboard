@@ -24,11 +24,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yn8-Ld-Gno">
-                                <rect key="frame" x="296" y="664" width="1010" height="360"/>
+                                <rect key="frame" x="296" y="474.5" width="1010" height="549.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezK-KM-ZEM">
-                                <rect key="frame" x="296" y="136" width="337" height="0.0"/>
+                                <rect key="frame" x="296" y="136" width="590" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,11 +69,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHV-we-KNp">
-                                <rect key="frame" x="653" y="136" width="653" height="490"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="906" y="136" width="400" height="300.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="653" id="LXR-F5-Tzp"/>
-                                    <constraint firstAttribute="width" secondItem="WHV-we-KNp" secondAttribute="height" multiplier="653:490" id="mel-7k-xiu"/>
+                                    <constraint firstAttribute="width" constant="400" id="LXR-F5-Tzp"/>
+                                    <constraint firstAttribute="width" secondItem="WHV-we-KNp" secondAttribute="height" multiplier="4:3" id="mel-7k-xiu"/>
                                 </constraints>
                             </view>
                         </subviews>
