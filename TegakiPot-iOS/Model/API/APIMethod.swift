@@ -29,7 +29,7 @@ extension TegakiPotAPI {
     }
     
     func getQuestionDetail(_ id: UInt64,
-                           success: @escaping (Question)->Void, failure: ((Error) -> Void)? = nil) {
+                           success: @escaping (Question)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = GetQuestionDetail(id: id)
         
         Session.send(request) { result in
@@ -43,7 +43,7 @@ extension TegakiPotAPI {
         }
     }
     
-    func getAnswers(success: @escaping ([Answer])->Void, failure: ((Error) -> Void)? = nil) {
+    func getAnswers(success: @escaping ([Answer])->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = GetAnswers()
         
         Session.send(request) { result in
@@ -57,7 +57,7 @@ extension TegakiPotAPI {
         }    }
     
     func getAnswerDetail(_ id: UInt64,
-                         success: @escaping (Answer)->Void, failure: ((Error) -> Void)? = nil) {
+                         success: @escaping (Answer)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = GetAnswerDetail(id: id)
         
         Session.send(request) { result in
@@ -72,7 +72,7 @@ extension TegakiPotAPI {
     }
     
     func getUserDetail(_ id: UInt64,
-                       success: @escaping (User)->Void, failure: ((Error) -> Void)? = nil) {
+                       success: @escaping (User)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = GetUserDetail(id: id)
         
         Session.send(request) { result in
@@ -89,7 +89,7 @@ extension TegakiPotAPI {
     // MARK: - Post
     
     func postAuth(email: String, password: String,
-                  success: @escaping (AuthResult)->Void, failure: ((Error) -> Void)? = nil) {
+                  success: @escaping (AuthResult)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostAuth(email: email, password: password)
         
         Session.send(request) { result in
@@ -104,7 +104,7 @@ extension TegakiPotAPI {
     }
 
     func postQuestion(postedBy: UInt64, selectedField: Int, tags: [String], title: String, description: String, svg: String,
-                      success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                      success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostQuestion(postedBy: postedBy, selectedField: selectedField,
                                    tags: tags, title: title, description: description, svg: svg)
         
@@ -120,7 +120,7 @@ extension TegakiPotAPI {
     }
     
     func postAnswer(postedBy: UInt64, questionId: UInt64, description: String, svg: String,
-                    success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                    success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostAnswer(postedBy: postedBy, questionId: questionId, description: description, svg: svg)
         
         Session.send(request) { result in
@@ -135,7 +135,7 @@ extension TegakiPotAPI {
     }
     
     func postQuestionGood(_ id: UInt64,
-                          success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                          success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostQuestionGood(id: id)
         
         Session.send(request) { result in
@@ -150,7 +150,7 @@ extension TegakiPotAPI {
     }
 
     func postQuestionBad(_ id: UInt64,
-                         success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                         success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostQuestionBad(id: id)
         
         Session.send(request) { result in
@@ -165,7 +165,7 @@ extension TegakiPotAPI {
     }
     
     func postQuestionView(_ id: UInt64,
-                         success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                         success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostQuestionView(id: id)
         
         Session.send(request) { result in
@@ -180,7 +180,7 @@ extension TegakiPotAPI {
     }
     
     func postAnswerGood(_ id: UInt64,
-                          success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                          success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostAnswerGood(id: id)
         
         Session.send(request) { result in
@@ -195,7 +195,7 @@ extension TegakiPotAPI {
     }
     
     func postAnswerBad(_ id: UInt64,
-                        success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                        success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostAnswerBad(id: id)
         
         Session.send(request) { result in
@@ -210,7 +210,7 @@ extension TegakiPotAPI {
     }
     
     func postAnswerView(_ id: UInt64,
-                       success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                       success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostAnswerView(id: id)
         
         Session.send(request) { result in
@@ -225,7 +225,7 @@ extension TegakiPotAPI {
     }
     
     func postUserView(_ id: UInt64,
-                        success: @escaping (PostResponse)->Void, failure: ((Error) -> Void)? = nil) {
+                        success: @escaping (PostResponse)->Void, failure: ((SessionTaskError) -> Void)? = nil) {
         let request = PostUserView(id: id)
         
         Session.send(request) { result in
