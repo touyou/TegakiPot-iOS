@@ -63,7 +63,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.808792069890092" green="0.88037552517668427" blue="0.91682469844818115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name=".HiraKakuInterface-W3" family=".Hiragino Kaku Gothic Interface" pointSize="29"/>
-                                <state key="normal" title="回答する"/>
+                                <state key="normal" title="回答する">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="editAnswer" destination="Sv4-kh-lUv" eventType="touchUpInside" id="Qkx-lX-UHY"/>
                                 </connections>
@@ -76,6 +78,17 @@
                                     <constraint firstAttribute="width" secondItem="WHV-we-KNp" secondAttribute="height" multiplier="4:3" id="mel-7k-xiu"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7n-Lz-vGN">
+                                <rect key="frame" x="63" y="736" width="170" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80879206989999997" green="0.88037552519999995" blue="0.91682469840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name=".HiraKakuInterface-W3" family=".Hiragino Kaku Gothic Interface" pointSize="29"/>
+                                <state key="normal" title="再生"/>
+                                <connections>
+                                    <action selector="animate" destination="Sv4-kh-lUv" eventType="touchUpInside" id="YMV-oS-Sf2"/>
+                                    <action selector="editAnswer" destination="Sv4-kh-lUv" eventType="touchUpInside" id="lab-3v-1dr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

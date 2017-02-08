@@ -52,7 +52,7 @@ class EditAnswerViewController: UIViewController, EditQuestionDelegate {
             let alert = UIAlertController(title: "投稿完了", message: "投稿されました。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: { _ in
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             })
         }, failure: { _ in
             let alert = UIAlertController(title: "投稿失敗", message: "投稿に失敗しました。", preferredStyle: .alert)

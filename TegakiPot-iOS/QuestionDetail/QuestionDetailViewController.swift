@@ -22,6 +22,7 @@ class QuestionDetailViewController: UIViewController {
             tableView.dataSource = self
             tableView.estimatedRowHeight = 20
             tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.allowsSelection = false
             
             tableView.register(cellType: AnswerTableViewCell.self)
         }
@@ -30,6 +31,7 @@ class QuestionDetailViewController: UIViewController {
     var id: UInt64? = nil
     var answers: [Answer] = []
     var question: Question?
+    var showPanel: ShowPanel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +81,7 @@ class QuestionDetailViewController: UIViewController {
         
         do {
             let svg = try AEXMLDocument(xml: question.svg ?? "")
-            let showPanel = Showpanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
+            showPanel = ShowPanel(CGRect(x: 0, y: 0, width: svgArea.frame.width, height: svgArea.frame.height), svg)
             svgArea.addSubview(showPanel)
         } catch {}
     }
@@ -89,6 +91,10 @@ class QuestionDetailViewController: UIViewController {
         viewController.questionTitle = question?.title
         viewController.questionId = id
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func animate() {
+        showPanel?.animate()
     }
 }
 

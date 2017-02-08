@@ -11,6 +11,8 @@ import UIKit
 import QuartzCore
 import AEXML
 
+// MARK: - Color Extension
+
 extension UIColor {
     // (0...255, 0...255, 0...255, 0...1)
     var rgba: (r: Int, g: Int, b: Int, a: Double) {
@@ -20,14 +22,17 @@ extension UIColor {
             return (Int(r*255),Int(g*255),Int(b*255),Double(a))
         }
     }
+    
     convenience init (_ r: Int, _ g: Int, _ b: Int, _ a: Double) {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: CGFloat(a))
     }
+    
     // rgba(0...255,0...255,0...255,0...1)
     func toRgbaString() -> String {
         let (r,g,b,a) = self.rgba
         return a==0 ? "none" : "rgba(\(r),\(g),\(b),\(a.fmt(2)))"
     }
+    
     convenience init (_ rgbaString: String) {
         if rgbaString=="none" {
             self.init(0,0,0,0)
@@ -40,17 +45,22 @@ extension UIColor {
         }
     }
 }
-class Rawpath {
+
+// MARK: - Path Class
+
+class RawPath {
     var body: UIBezierPath
     var strokeColor: UIColor
     var fillColor: UIColor
     var pers: Pers
+    
     init(_ body: UIBezierPath, _ strokeColor: UIColor = UIColor.clear, _ fillColor: UIColor = UIColor.clear, _ pers: Pers) {
         self.body = body
         self.strokeColor = strokeColor
         self.fillColor = fillColor
         self.pers = pers
     }
+    
     init(_ body: UIBezierPath, _ stroke: Stroke, _ fill: Fill, _ pers: Pers) {
         self.body = body
         self.strokeColor = stroke.color
@@ -58,21 +68,26 @@ class Rawpath {
         self.pers = pers
         self.body.lineWidth = stroke.width <| pers
     }
+    
     func move(_ p: Point) {
         body.move(to: p <| pers)
     }
+    
     func addBezier(_ tct: ConTrolTo) {
         body.addCurve(to: tct.to <| pers, controlPoint1: tct.con <| pers, controlPoint2: tct.trol <| pers)
     }
+    
     func addLine(_ p: Point) {
         body.addLine(to: p <| pers)
     }
+    
     func draw() {
         strokeColor.setStroke()
         fillColor.setFill()
         body.stroke()
         body.fill()
     }
+    
     func toLayer() -> CAShapeLayer {
         let res = CAShapeLayer()
         res.strokeColor = strokeColor.cgColor
@@ -82,44 +97,57 @@ class Rawpath {
     }
 }
 
-
+// MARK: - Shape Utility
 
 protocol Shape {
-    func toRawpath(_: Pers) -> Rawpath
+    func toRawpath(_: Pers) -> RawPath
     func toSvgElem() -> AEXMLElement
 }
+
 struct Stroke {
     var width: Size
     var color: UIColor
+    
     init(_ width: Size, _ color: UIColor) {
         self.width = width
         self.color = color
     }
+    
     init(_ attrs: Attrs) {
         self.width = Size(attrs["stroke-width"]!)!
         self.color = UIColor(attrs["stroke"]!)
     }
+    
     func toSvgAttrs() -> Attrs {
         return ["stroke": color.toRgbaString(), "stroke-width": "\(width.fmt(2))"]
     }
 }
+
 struct Fill {
     var color: UIColor
+    
     init(_ color: UIColor) {
         self.color = color
     }
+    
     init(_ attrs: Attrs) {
         self.color = UIColor(attrs["fill"]!)
     }
+    
     func toSvgAttrs() -> Attrs {
         return ["fill": color.toRgbaString()]
     }
 }
+
+// MARK: - Shape Class
+
+// MARK: Free hand line
 class Freehand : Shape {
     var stroke: Stroke
     var fill: Fill
     var start: Point
     var beziers: [ConTrolTo]
+    
     init (_ stroke: Stroke, _ fill: Fill, _ start: Point, _ beziers: [ConTrolTo] = Array()) {
         self.stroke = stroke
         self.fill = fill
@@ -132,6 +160,7 @@ class Freehand : Shape {
             self.beziers.append(bezier)
         }
     }
+    
     func addPoint(_ p: Point, _ pers: Pers) {
         if dist(beziers.last!.to, p)  < 1e-6 {
             return
@@ -144,8 +173,9 @@ class Freehand : Shape {
         beziers.append(bezier1)
         beziers.append(bezier2)
     }
-    func toRawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(), stroke, fill, pers)
+    
+    func toRawpath(_ pers: Pers) -> RawPath {
+        let res = RawPath(UIBezierPath(), stroke, fill, pers)
         res.move(start)
         if beziers.count<=1 {
             res.addLine(start)
@@ -156,6 +186,7 @@ class Freehand : Shape {
         }
         return res
     }
+    
     func toSvgElem() -> AEXMLElement {
         var d = "M \(start.x.fmt(2)) \(start.y.fmt(2))"
         for bezier in beziers {
@@ -165,29 +196,38 @@ class Freehand : Shape {
             stroke.toSvgAttrs() + fill.toSvgAttrs() + ["d": d])
     }
 }
+
+// MARK: Straight Line
+
 class Line : Shape {
     var stroke: Stroke
     var fill: Fill
     var start: Point
     var end: Point
+    
     init(_ stroke: Stroke, _ fill: Fill, _ start: Point, _ end: Point) {
         self.stroke = stroke
         self.fill = fill
         self.start = start
         self.end = end
     }
-    func toRawpath(_ pers: Pers) -> Rawpath {
-        let res = Rawpath(UIBezierPath(), stroke, fill, pers)
+    
+    func toRawpath(_ pers: Pers) -> RawPath {
+        let res = RawPath(UIBezierPath(), stroke, fill, pers)
         res.move(start)
         res.addLine(end)
         return res
     }
+    
     func toSvgElem() -> AEXMLElement {
         return AEXMLElement(name: "path", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["d": "M \(start.x.fmt(2)) \(start.y.fmt(2)) L \(end.x.fmt(2)) \(end.y.fmt(2))"])
     }
 }
+
+// MARK: Rectangle
+
 class Rect : Shape {
     var stroke: Stroke
     var fill: Fill
@@ -199,35 +239,44 @@ class Rect : Shape {
         self.origin = origin
         self.diagonal = diagonal
     }
-    func toRawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill, pers)
+    
+    func toRawpath(_ pers: Pers) -> RawPath {
+        return RawPath(UIBezierPath(rect: CGRect(origin:origin<|pers,size:diagonal<|pers)), stroke, fill, pers)
     }
+    
     func toSvgElem() -> AEXMLElement {
         return AEXMLElement(name: "rect", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
                 ["x": origin.x.fmt(2), "y": origin.y.fmt(2), "width": diagonal.dx.fmt(2), "height": diagonal.dy.fmt(2)])
     }
 }
+
+// MARK: Circle
+
 class Oval : Shape {
     var stroke: Stroke
     var fill: Fill
     var center: Point
     var radius: DPoint
+    
     init(_ stroke: Stroke, _ fill: Fill, _ center: Point, _ radius: DPoint) {
         self.stroke = stroke
         self.fill = fill
         self.center = center
         self.radius = radius
     }
+    
     init(_ stroke: Stroke, _ fill: Fill, _ center: Point, _ radius: Size) {
         self.stroke = stroke
         self.fill = fill
         self.center = center
         self.radius = (radius, radius)
     }
-    func toRawpath(_ pers: Pers) -> Rawpath {
-        return Rawpath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill, pers)
+    
+    func toRawpath(_ pers: Pers) -> RawPath {
+        return RawPath(UIBezierPath(ovalIn: CGRect(origin:center-radius<|pers,size:radius*2<|pers)), stroke, fill, pers)
     }
+    
     func toSvgElem() -> AEXMLElement {
         return AEXMLElement(name: "ellipse", attributes:
             stroke.toSvgAttrs() + fill.toSvgAttrs() +
@@ -235,22 +284,25 @@ class Oval : Shape {
     }
 }
 
-
+// MARK: - Geometry
 
 class Geometry {
     var realsize: CGSize
     var pers: Pers
     var shapes: [Shape] = Array()
+    
     init(_ realsize: CGSize, _ pers: Pers, _ shapes: [Shape] = Array()) {
         self.realsize = realsize
         self.pers = pers
         self.shapes = shapes
     }
+    
     init(_ svg: AEXMLDocument, _ realsize: CGSize? = nil, _ pers: Pers? = nil) {
         self.realsize = CGSize(width: 0, height: 0)
         self.pers = Pers(Pixels(0))
         load(svg, realsize, pers)
     }
+    
     func load(_ svg: AEXMLDocument, _ realsize: CGSize? = nil, _ pers: Pers? = nil) {
         let root = svg.root
         self.realsize = realsize ??
@@ -304,6 +356,7 @@ class Geometry {
             }
         }
     }
+    
     func toSvg() -> AEXMLDocument {
         let root = AEXMLElement(name: "svg", attributes:
             ["width": realsize.width.fmt(2), "height": realsize.height.fmt(2),
@@ -316,11 +369,13 @@ class Geometry {
         }
         return AEXMLDocument(root: root)
     }
+    
     func draw() {
         for shape in shapes {
             shape.toRawpath(pers).draw()
         }
     }
+    
     func animate(_ layer: CALayer, _ view: UIView) {
         let now = CACurrentMediaTime()
         let duration = 1.0 // 秒
@@ -353,40 +408,5 @@ class Geometry {
             layer.sublayers = nil
             view.setNeedsDisplay()
         }
-        /*
-        let center = CGPoint(x: 100, y: 100)
-        let radius = CGFloat(10.0) //円の半径の設定
-        let graphColor = UIColor.green.cgColor
-        let myLayer = CAShapeLayer()
-        let duration = 1.0
-        layer.addSublayer(myLayer)
-        
-        let endCircle = UIBezierPath(arcCenter: center,
-                                     radius: radius,
-                                     startAngle: 0.0,
-                                     endAngle: CGFloat(2.0) * CGFloat(M_PI),
-                                     clockwise: true)
-        
-        let startCircle = UIBezierPath(arcCenter: CGPoint(x: 150, y: 150),
-                                       radius: radius,
-                                       startAngle: 0.0,
-                                       endAngle: CGFloat(2.0) * CGFloat(M_PI),
-                                       clockwise: true)
-        
-        myLayer.path = startCircle.cgPath // 型に注意!
-        myLayer.lineWidth = 2
-        myLayer.strokeColor = graphColor
-        myLayer.fillColor = graphColor
-        
-        let animation = CABasicAnimation(keyPath: "path")
-        
-        animation.duration = duration //アニメーションの継続時間を指定する
-        animation.fromValue = myLayer.path // 開始pathの設定
-        animation.toValue = endCircle.cgPath // 終了pathの設定。型に注意!
-        
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut) // animation curve is Ease Out
-        animation.fillMode = kCAFillModeBoth // keep to value after finishing
-        animation.isRemovedOnCompletion = false // don't remove after finishing
-        myLayer.add(animation, forKey: animation.keyPath)*/
     }
 }

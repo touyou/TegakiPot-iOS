@@ -9,18 +9,8 @@
 import UIKit
 import AEXML
 
-class HandWritingViewController: UIViewController {
-    var editpanel: Editpanel!
-    var svg: AEXMLDocument?
-    var delegate: EditQuestionDelegate!
-    
+final class HandWritingViewController: UIViewController {
     @IBOutlet var colorButton: [UIButton]!
-    var colors = [MaterialColor.red.color, MaterialColor.purple.color, MaterialColor.blue.color, MaterialColor.green.color, MaterialColor.orangeAccent1.color, MaterialColor.black.color]
-    var selected = 0
-    var sizeFlag = 0
-    var sizeArray = [40.0, 80.0, 120.0]
-    var centerPoint: CGPoint!
-    
     @IBOutlet weak var drawableView: UIView! {
         didSet {
             drawableView.layer.masksToBounds = false
@@ -28,36 +18,43 @@ class HandWritingViewController: UIViewController {
             drawableView.layer.shadowOpacity = 0.9
             drawableView.layer.shadowRadius = 2.0
             
-            editpanel = Editpanel(CGRect(x: 0, y: 0, width: drawableView.frame.width, height: drawableView.frame.height), self)
-            drawableView.addSubview(editpanel)
-            editpanel.modechange(.freehand)
+            editPanel = EditPanel(CGRect(x: 0, y: 0, width: drawableView.frame.width, height: drawableView.frame.height), self)
+            drawableView.addSubview(editPanel)
+            editPanel.modechange(.freehand)
         }
     }
-    
-    @IBOutlet var undoBtn: UIButton! {
+    @IBOutlet weak var undoBtn: UIButton! {
         didSet {
             undoBtn.isEnabled = false
         }
     }
     
-    @IBOutlet var redoBtn: UIButton! {
+    @IBOutlet weak var redoBtn: UIButton! {
         didSet {
             redoBtn.isEnabled = false
         }
     }
-    
     @IBOutlet var modeButton: [UIButton]! {
         didSet {
             modeButton[0].isEnabled = false
         }
     }
     
+    var editPanel: EditPanel!
+    var svg: AEXMLDocument?
+    var delegate: EditQuestionDelegate!
+    var colors = [MaterialColor.red.color, MaterialColor.purple.color, MaterialColor.blue.color, MaterialColor.green.color, MaterialColor.orangeAccent1.color, MaterialColor.black.color]
+    var selected = 0
+    var sizeFlag = 0
+    var sizeArray = [40.0, 80.0, 120.0]
+    var centerPoint: CGPoint!
+    
+    // MARK: - Initializer
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    // editpanel.stroke.color で色指定
-    // editpanel.stroke.width で太さ指定
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -69,14 +66,11 @@ class HandWritingViewController: UIViewController {
         
         centerPoint = CGPoint(x: colorButton[0].frame.origin.x + 20.0, y: colorButton[0].frame.origin.y + 20.0)
         colorButton[0].layer.cornerRadius = 20.0
-        editpanel.stroke.color = colors[0]!
-        editpanel.stroke.width = 0.1
+        editPanel.stroke.color = colors[0]!
+        editPanel.stroke.width = 0.1
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: - IBActions
     
     @IBAction func tapColorButton(_ sender: UIButton) {
         if sender.tag == selected {
@@ -85,8 +79,8 @@ class HandWritingViewController: UIViewController {
                                   width: aft, height: aft)
             sender.layer.cornerRadius = aft / 2
             sizeFlag = (sizeFlag + 1) % 3
-            editpanel.stroke.width = 0.1 * Double(sizeFlag + 1)
-            editpanel.modechange(editpanel.mode)
+            editPanel.stroke.width = 0.1 * Double(sizeFlag + 1)
+            editPanel.modechange(editPanel.mode)
         } else {
             colorButton[selected].frame = CGRect(x: centerPoint.x - 20.0, y: centerPoint.y - 20.0,
                                               width: 40.0, height: 40.0)
@@ -96,64 +90,73 @@ class HandWritingViewController: UIViewController {
             sender.layer.cornerRadius = 20.0
             selected = sender.tag
             sizeFlag = 0
-            editpanel.stroke.color = colors[selected]!
-            editpanel.stroke.width = 0.1
-            editpanel.modechange(editpanel.mode)
+            editPanel.stroke.color = colors[selected]!
+            editPanel.stroke.width = 0.1
+            editPanel.modechange(editPanel.mode)
         }
     }
     
     @IBAction func undo() {
-        editpanel.undo()
+        editPanel.undo()
     }
+    
     @IBAction func redo() {
-        editpanel.redo()
+        editPanel.redo()
     }
+    
     @IBAction func freehand() {
         for i in 0 ..< modeButton.count {
             modeButton[i].isEnabled = true
         }
         modeButton[0].isEnabled = false
-        editpanel.modechange(.freehand)
+        editPanel.modechange(.freehand)
     }
+    
     @IBAction func line() {
         for i in 0 ..< modeButton.count {
             modeButton[i].isEnabled = true
         }
         modeButton[1].isEnabled = false
-        editpanel.modechange(.line)
+        editPanel.modechange(.line)
     }
+    
     @IBAction func goodline() {
         for i in 0 ..< modeButton.count {
             modeButton[i].isEnabled = true
         }
         modeButton[2].isEnabled = false
-        editpanel.modechange(.goodline)
+        editPanel.modechange(.goodline)
     }
+    
     @IBAction func rect() {
         for i in 0 ..< modeButton.count {
             modeButton[i].isEnabled = true
         }
         modeButton[3].isEnabled = false
-        editpanel.modechange(.rect)
+        editPanel.modechange(.rect)
     }
+    
     @IBAction func circle() {
         for i in 0 ..< modeButton.count {
             modeButton[i].isEnabled = true
         }
         modeButton[4].isEnabled = false
-        editpanel.modechange(.circle)
+        editPanel.modechange(.circle)
     }
+    
     @IBAction func save() {
-        svg = editpanel.toSvg()
+        svg = editPanel.toSvg()
         dismiss(animated: true, completion: {
             self.delegate.endHandWriting(self.svg!)
         })
     }
 
     @IBAction func animate() {
-        editpanel.animate()
+        editPanel.animate()
     }
 }
+
+// MARK: - Storyboard Instantiable
 
 extension HandWritingViewController: StoryboardInstantiable {
     static var storyboardName: String {

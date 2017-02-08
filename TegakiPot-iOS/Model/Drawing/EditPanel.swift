@@ -11,13 +11,16 @@ import UIKit
 import QuartzCore
 import AEXML
 
-class Editpanel : UIView {
+// MARK: - Edit Panel
+
+class EditPanel : UIView {
     unowned var controller: HandWritingViewController
     var geometry: Geometry
     var redoshapes: [Shape] = Array()
     var stroke: Stroke
     var fill: Fill
     var creation: Creation?
+    
     enum Mode {
         case base
         case freehand
@@ -26,6 +29,7 @@ class Editpanel : UIView {
         case rect
         case circle
     }
+    
     var mode: Mode = .base
     var creating: Bool {
         get { return creation != nil }
@@ -36,8 +40,8 @@ class Editpanel : UIView {
     var redoable: Bool {
         get { return !redoshapes.isEmpty }
     }
+    
     func modechange(_ mode: Mode) {
-//        if self.mode == mode { return }
         creation?.bye()
         switch mode {
         case .base:
@@ -55,6 +59,7 @@ class Editpanel : UIView {
         }
         self.mode = mode
     }
+    
     func undo() {
         if !undoable {
             print ("error: not undoable!")
@@ -64,6 +69,7 @@ class Editpanel : UIView {
         controller.undoBtn.isEnabled = undoable
         controller.redoBtn.isEnabled = true
     }
+    
     func redo() {
         if !redoable {
             print ("error: not redoable!")
@@ -73,6 +79,7 @@ class Editpanel : UIView {
         controller.redoBtn.isEnabled = redoable
         controller.undoBtn.isEnabled = true
     }
+    
     init(_ frame: CGRect, _ controller: HandWritingViewController) {
         self.controller = controller
         geometry = Geometry(frame.size, Pers(Double(frame.width)/40))
@@ -81,6 +88,7 @@ class Editpanel : UIView {
         super.init(frame: frame)
         backgroundColor = UIColor.white
     }
+    
     init(_ frame: CGRect, _ controller: HandWritingViewController, _ svg: AEXMLDocument) {
         self.controller = controller
         geometry = Geometry(svg, frame.size, Pers(Double(frame.width)/40))
@@ -89,9 +97,11 @@ class Editpanel : UIView {
         super.init(frame: frame)
         backgroundColor = UIColor.white
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         if let creation = creation {
@@ -100,6 +110,7 @@ class Editpanel : UIView {
             creation.touchbegan(p)
         }
     }
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         if let creation = creation {
@@ -108,6 +119,7 @@ class Editpanel : UIView {
             creation.touchmoved(p)
         }
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         if let creation = creation {
@@ -116,6 +128,11 @@ class Editpanel : UIView {
             creation.touchended(p)
         }
     }
+    
+    override func draw(_: CGRect) {
+        geometry.draw()
+    }
+    
     func pushShape(_ shape: Shape, _ clearredo: Bool = true) {
         geometry.shapes.append(shape)
         setNeedsDisplay()
@@ -125,26 +142,28 @@ class Editpanel : UIView {
             controller.redoBtn.isEnabled = false
         }
     }
+    
     @discardableResult func popShape() -> Shape {
         let res = geometry.shapes.popLast()!
         setNeedsDisplay()
         return res
     }
+    
     func updateShape(_ shape: Shape) {
         let _ = geometry.shapes.popLast()
         geometry.shapes.append(shape)
         setNeedsDisplay()
     }
+    
     func load(_ svg: AEXMLDocument) {
         geometry.load(svg, frame.size, Pers(Double(frame.width)/40))
         setNeedsDisplay()
     }
+    
     func toSvg() -> AEXMLDocument {
         return geometry.toSvg()
     }
-    override func draw(_: CGRect) {
-        geometry.draw()
-    }
+    
     func animate() {
         geometry.animate(layer, self)
         geometry.shapes = Array()
@@ -152,18 +171,23 @@ class Editpanel : UIView {
     }
 }
 
+// MARK: - Creation Protocol
+
 protocol Creation {
     func touchbegan(_: Point)
     func touchmoved(_: Point)
     func touchended(_: Point)
     func bye()
 }
+
+// MARK: - Free Hand Line
+
 class FreehandCreation : Creation {
-    unowned var editpanel: Editpanel
+    unowned var editpanel: EditPanel
     let stroke: Stroke
     let fill: Fill
     var freehand: Freehand?
-    init(_ editpanel: Editpanel, _ stroke: Stroke, _ fill: Fill) {
+    init(_ editpanel: EditPanel, _ stroke: Stroke, _ fill: Fill) {
         self.editpanel = editpanel
         self.stroke = stroke
         self.fill = fill
@@ -192,27 +216,34 @@ class FreehandCreation : Creation {
         }
     }
 }
+
+// MARK: - Normal Line
+
 class LineCreation : Creation {
-    unowned var editpanel: Editpanel
+    unowned var editpanel: EditPanel
     let stroke: Stroke
     let fill: Fill
     var line: Line?
-    init(_ editpanel: Editpanel, _ stroke: Stroke, _ fill: Fill) {
+    
+    init(_ editpanel: EditPanel, _ stroke: Stroke, _ fill: Fill) {
         self.editpanel = editpanel
         self.stroke = stroke
         self.fill = fill
     }
+    
     func touchbegan(_ p: Point) {
         bye()
         line = Line(stroke, fill, p, p)
         editpanel.pushShape(line!)
     }
+    
     func touchmoved(_ p: Point) {
         if let line = line {
             line.end = p
             editpanel.updateShape(line)
         }
     }
+    
     func touchended(_ p: Point) {
         if let line = line {
             line.end = p
@@ -220,13 +251,17 @@ class LineCreation : Creation {
         }
         line = nil
     }
+    
     func bye() {
         if line != nil {
             editpanel.popShape()
         }
     }
 }
-func goodline(_ p: Point, _ q: Point) -> Point {
+
+// MARK: - Good Line
+
+fileprivate func goodline(_ p: Point, _ q: Point) -> Point {
     let v = q - p
     if abs(v.dx) >= abs(v.dy) {
         return p + (v.dx, 0)
@@ -234,27 +269,32 @@ func goodline(_ p: Point, _ q: Point) -> Point {
         return p + (0, v.dy)
     }
 }
+
 class GoodlineCreation : Creation {
-    unowned var editpanel: Editpanel
+    unowned var editpanel: EditPanel
     let stroke: Stroke
     let fill: Fill
     var line: Line?
-    init(_ editpanel: Editpanel, _ stroke: Stroke, _ fill: Fill) {
+    
+    init(_ editpanel: EditPanel, _ stroke: Stroke, _ fill: Fill) {
         self.editpanel = editpanel
         self.stroke = stroke
         self.fill = fill
     }
+    
     func touchbegan(_ p: Point) {
         bye()
         line = Line(stroke, fill, p, p)
         editpanel.pushShape(line!)
     }
+    
     func touchmoved(_ p: Point) {
         if let line = line {
             line.end = goodline(line.start, p)
             editpanel.updateShape(line)
         }
     }
+    
     func touchended(_ p: Point) {
         if let line = line {
             line.end = goodline(line.start, p)
@@ -262,33 +302,41 @@ class GoodlineCreation : Creation {
         }
         line = nil
     }
+    
     func bye() {
         if line != nil {
             editpanel.popShape()
         }
     }
 }
+
+// MARK: - Rectangle
+
 class RectCreation : Creation {
-    unowned var editpanel: Editpanel
+    unowned var editpanel: EditPanel
     let stroke: Stroke
     let fill: Fill
     var rect: Rect?
-    init(_ editpanel: Editpanel, _ stroke: Stroke, _ fill: Fill) {
+    
+    init(_ editpanel: EditPanel, _ stroke: Stroke, _ fill: Fill) {
         self.editpanel = editpanel
         self.stroke = stroke
         self.fill = fill
     }
+    
     func touchbegan(_ p: Point) {
         bye()
         rect = Rect(stroke, fill, p, (0,0))
         editpanel.pushShape(rect!)
     }
+    
     func touchmoved(_ p: Point) {
         if let rect = rect {
             rect.diagonal = p - rect.origin
             editpanel.updateShape(rect)
         }
     }
+    
     func touchended(_ p: Point) {
         if let rect = rect {
             rect.diagonal = p - rect.origin
@@ -296,27 +344,34 @@ class RectCreation : Creation {
         }
         rect = nil
     }
+    
     func bye() {
         if rect != nil {
             editpanel.popShape()
         }
     }
 }
+
+// MARK: - Circle
+
 class CircleCreation : Creation {
-    unowned var editpanel: Editpanel
+    unowned var editpanel: EditPanel
     let stroke: Stroke
     let fill: Fill
     var circle: Oval?
-    init(_ editpanel: Editpanel, _ stroke: Stroke, _ fill: Fill) {
+    
+    init(_ editpanel: EditPanel, _ stroke: Stroke, _ fill: Fill) {
         self.editpanel = editpanel
         self.stroke = stroke
         self.fill = fill
     }
+    
     func touchbegan(_ p: Point) {
         bye()
         circle = Oval(stroke, fill, p, 0)
         editpanel.pushShape(circle!)
     }
+    
     func touchmoved(_ p: Point) {
         if let circle = circle {
             let radius = dist(circle.center, p)
@@ -324,6 +379,7 @@ class CircleCreation : Creation {
             editpanel.updateShape(circle)
         }
     }
+    
     func touchended(_ p: Point) {
         if let circle = circle {
             let radius = dist(circle.center, p)
@@ -332,6 +388,7 @@ class CircleCreation : Creation {
         }
         circle = nil
     }
+    
     func bye() {
         if circle != nil {
             editpanel.popShape()

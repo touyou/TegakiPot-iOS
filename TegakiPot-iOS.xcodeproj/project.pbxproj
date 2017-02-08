@@ -54,10 +54,10 @@
 		46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */; };
 		46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */; };
 		46E0E5081E46A7EE0044F0D2 /* EditAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */; };
-		BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */; };
-		BE11AA791E460D0500E0F5B5 /* Editpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA781E460D0500E0F5B5 /* Editpanel.swift */; };
-		BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */; };
-		BE11AA7F1E461E2D00E0F5B5 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */; };
+		BE11AA711E45F1A000E0F5B5 /* DrawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* DrawData.swift */; };
+		BE11AA791E460D0500E0F5B5 /* EditPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA781E460D0500E0F5B5 /* EditPanel.swift */; };
+		BE11AA7D1E4610A400E0F5B5 /* ShowPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */; };
+		BE11AA7F1E461E2D00E0F5B5 /* DrawableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */; };
 		BE11AA811E461E7B00E0F5B5 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA801E461E7B00E0F5B5 /* Math.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,10 +111,10 @@
 		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
 		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
 		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAnswerViewController.storyboard; sourceTree = "<group>"; };
-		BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawdata.swift; sourceTree = "<group>"; };
-		BE11AA781E460D0500E0F5B5 /* Editpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editpanel.swift; sourceTree = "<group>"; };
-		BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showpanel.swift; sourceTree = "<group>"; };
-		BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		BE11AA701E45F1A000E0F5B5 /* DrawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawData.swift; sourceTree = "<group>"; };
+		BE11AA781E460D0500E0F5B5 /* EditPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPanel.swift; sourceTree = "<group>"; };
+		BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPanel.swift; sourceTree = "<group>"; };
+		BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawableUtility.swift; sourceTree = "<group>"; };
 		BE11AA801E461E7B00E0F5B5 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,11 +137,11 @@
 		461136B01E48B75E009AC1F2 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				BE11AA701E45F1A000E0F5B5 /* Drawdata.swift */,
-				BE11AA781E460D0500E0F5B5 /* Editpanel.swift */,
+				BE11AA701E45F1A000E0F5B5 /* DrawData.swift */,
+				BE11AA781E460D0500E0F5B5 /* EditPanel.swift */,
 				BE11AA801E461E7B00E0F5B5 /* Math.swift */,
-				BE11AA7C1E4610A400E0F5B5 /* Showpanel.swift */,
-				BE11AA7E1E461E2D00E0F5B5 /* Utility.swift */,
+				BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */,
+				BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE11AA791E460D0500E0F5B5 /* Editpanel.swift in Sources */,
+				BE11AA791E460D0500E0F5B5 /* EditPanel.swift in Sources */,
 				4665C2301E4594EF00F71C24 /* TegakiPotAPI.swift in Sources */,
 				4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */,
 				4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */,
@@ -437,8 +437,8 @@
 				4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */,
 				46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */,
 				4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */,
-				BE11AA7F1E461E2D00E0F5B5 /* Utility.swift in Sources */,
-				BE11AA711E45F1A000E0F5B5 /* Drawdata.swift in Sources */,
+				BE11AA7F1E461E2D00E0F5B5 /* DrawableUtility.swift in Sources */,
+				BE11AA711E45F1A000E0F5B5 /* DrawData.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
 				4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */,
 				4665C24E1E45C42D00F71C24 /* TegakiPotError.swift in Sources */,
@@ -451,7 +451,7 @@
 				4652A70E1E457DC3003FA92C /* TabViewController.swift in Sources */,
 				46E0E4FD1E46553D0044F0D2 /* Extensions.swift in Sources */,
 				4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */,
-				BE11AA7D1E4610A400E0F5B5 /* Showpanel.swift in Sources */,
+				BE11AA7D1E4610A400E0F5B5 /* ShowPanel.swift in Sources */,
 				4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */,
 				4665C2141E45851000F71C24 /* QuestionDetailViewController.swift in Sources */,
 				4665C2161E45853A00F71C24 /* FriendListViewController.swift in Sources */,

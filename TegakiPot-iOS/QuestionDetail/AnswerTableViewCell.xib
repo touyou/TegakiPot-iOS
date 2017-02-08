@@ -81,6 +81,17 @@
                             <action selector="badBtn" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ixl-tk-ln8"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESY-ZQ-x4K">
+                        <rect key="frame" x="677" y="31" width="55" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.68235294120000001" green="0.83529411760000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="▶">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="animateBtn" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qJd-bz-shZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gmh-9s-3dT" firstAttribute="top" secondItem="5KU-Cj-OVW" secondAttribute="bottom" constant="8" id="0LZ-9D-rm3"/>

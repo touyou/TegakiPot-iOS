@@ -19,6 +19,8 @@ class QuestionListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var solveLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var showPanel: ShowPanel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +34,7 @@ class QuestionListCollectionViewCell: UICollectionViewCell {
         
         do {
             let svg = try AEXMLDocument(xml: xmlStr)
-            let showPanel = Showpanel(CGRect(x: (width - height) / 2.0, y: 0, width: width, height: height), svg)
+            showPanel = ShowPanel(CGRect(x: (width - height) / 2.0, y: 0, width: width, height: height), svg)
             drawBaseView.addSubview(showPanel)
             self.layoutIfNeeded()
         } catch {}
