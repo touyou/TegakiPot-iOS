@@ -8,28 +8,114 @@
 
 /* Begin PBXBuildFile section */
 		4652A70C1E457DC3003FA92C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A70B1E457DC3003FA92C /* AppDelegate.swift */; };
-		4652A70E1E457DC3003FA92C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A70D1E457DC3003FA92C /* ViewController.swift */; };
+		4652A70E1E457DC3003FA92C /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A70D1E457DC3003FA92C /* TabViewController.swift */; };
 		4652A7111E457DC3003FA92C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4652A70F1E457DC3003FA92C /* Main.storyboard */; };
 		4652A7131E457DC3003FA92C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4652A7121E457DC3003FA92C /* Assets.xcassets */; };
 		4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */; };
 		4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */; };
 		4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C20B1E4580E600F71C24 /* MaterialColor.swift */; };
-		F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */; };
+		4665C20E1E45845700F71C24 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C20D1E45845700F71C24 /* SearchViewController.swift */; };
+		4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */; };
+		4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */; };
+		4665C2141E45851000F71C24 /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */; };
+		4665C2161E45853A00F71C24 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2151E45853A00F71C24 /* FriendListViewController.swift */; };
+		4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2171E45854900F71C24 /* FriendListViewController.storyboard */; };
+		4665C21A1E45855C00F71C24 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2191E45855C00F71C24 /* UserViewController.swift */; };
+		4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21B1E45856E00F71C24 /* UserViewController.storyboard */; };
+		4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C21D1E45858100F71C24 /* HandWritingViewController.swift */; };
+		4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */; };
+		4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */; };
+		4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2251E4585D400F71C24 /* QuestionListViewController.swift */; };
+		4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */; };
+		4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2291E45862C00F71C24 /* LoginViewController.swift */; };
+		4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */; };
+		4665C2301E4594EF00F71C24 /* TegakiPotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */; };
+		4665C2361E4595FE00F71C24 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2311E4595FE00F71C24 /* AEXML.framework */; };
+		4665C2371E4595FE00F71C24 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2321E4595FE00F71C24 /* APIKit.framework */; };
+		4665C2381E4595FE00F71C24 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2331E4595FE00F71C24 /* Himotoki.framework */; };
+		4665C2391E4595FE00F71C24 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2341E4595FE00F71C24 /* Result.framework */; };
+		4665C23A1E4595FE00F71C24 /* SwiftSVGiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */; };
+		4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */; };
+		4665C23E1E45987600F71C24 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23D1E45987600F71C24 /* QuestionModel.swift */; };
+		4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C23F1E459A0A00F71C24 /* TransformUtility.swift */; };
+		4665C2421E459DF000F71C24 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2411E459DF000F71C24 /* UserModel.swift */; };
+		4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2431E45A19D00F71C24 /* AnswerModel.swift */; };
+		4665C2461E45A53A00F71C24 /* FieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2451E45A53A00F71C24 /* FieldModel.swift */; };
+		4665C2481E45A8EE00F71C24 /* ContributionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2471E45A8EE00F71C24 /* ContributionModel.swift */; };
+		4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2491E45ACC400F71C24 /* AuthResultModel.swift */; };
+		4665C24C1E45C35D00F71C24 /* APIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C24B1E45C35D00F71C24 /* APIMethod.swift */; };
+		4665C24E1E45C42D00F71C24 /* TegakiPotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C24D1E45C42D00F71C24 /* TegakiPotError.swift */; };
+		4665C2501E45E19F00F71C24 /* KeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C24F1E45E19F00F71C24 /* KeyList.swift */; };
+		4665C2631E464E8E00F71C24 /* QuestionListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665C2611E464E8E00F71C24 /* QuestionListCollectionViewCell.swift */; };
+		4665C2641E464E8E00F71C24 /* QuestionListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4665C2621E464E8E00F71C24 /* QuestionListCollectionViewCell.xib */; };
+		46E0E4FB1E4650920044F0D2 /* EditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E4FA1E4650920044F0D2 /* EditQuestionViewController.storyboard */; };
+		46E0E4FD1E46553D0044F0D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E4FC1E46553D0044F0D2 /* Extensions.swift */; };
+		46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */; };
+		46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */; };
+		46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */; };
+		46E0E5081E46A7EE0044F0D2 /* EditAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */; };
+		BE11AA711E45F1A000E0F5B5 /* DrawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA701E45F1A000E0F5B5 /* DrawData.swift */; };
+		BE11AA791E460D0500E0F5B5 /* EditPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA781E460D0500E0F5B5 /* EditPanel.swift */; };
+		BE11AA7D1E4610A400E0F5B5 /* ShowPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */; };
+		BE11AA7F1E461E2D00E0F5B5 /* DrawableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */; };
+		BE11AA811E461E7B00E0F5B5 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11AA801E461E7B00E0F5B5 /* Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4652A7081E457DC3003FA92C /* TegakiPot-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TegakiPot-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4652A70B1E457DC3003FA92C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4652A70D1E457DC3003FA92C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4652A70D1E457DC3003FA92C /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		4652A7101E457DC3003FA92C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4652A7121E457DC3003FA92C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4652A7151E457DC3003FA92C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4652A7171E457DC3003FA92C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardInstantiable.swift; path = Utility/StoryboardInstantiable.swift; sourceTree = "<group>"; };
-		4665C20B1E4580E600F71C24 /* MaterialColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaterialColor.swift; path = Utility/MaterialColor.swift; sourceTree = "<group>"; };
-		4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TegakiPot_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TegakiPot-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		4665C20B1E4580E600F71C24 /* MaterialColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialColor.swift; sourceTree = "<group>"; };
+		4665C20D1E45845700F71C24 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionDetailViewController.storyboard; sourceTree = "<group>"; };
+		4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
+		4665C2151E45853A00F71C24 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		4665C2171E45854900F71C24 /* FriendListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendListViewController.storyboard; sourceTree = "<group>"; };
+		4665C2191E45855C00F71C24 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		4665C21B1E45856E00F71C24 /* UserViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserViewController.storyboard; sourceTree = "<group>"; };
+		4665C21D1E45858100F71C24 /* HandWritingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandWritingViewController.swift; sourceTree = "<group>"; };
+		4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HandWritingViewController.storyboard; sourceTree = "<group>"; };
+		4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
+		4665C2251E4585D400F71C24 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
+		4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuestionListViewController.storyboard; sourceTree = "<group>"; };
+		4665C2291E45862C00F71C24 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotAPI.swift; sourceTree = "<group>"; };
+		4665C2311E4595FE00F71C24 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AEXML.framework; path = Carthage/Build/iOS/AEXML.framework; sourceTree = "<group>"; };
+		4665C2321E4595FE00F71C24 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		4665C2331E4595FE00F71C24 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		4665C2341E4595FE00F71C24 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSVGiOS.framework; path = Carthage/Build/iOS/SwiftSVGiOS.framework; sourceTree = "<group>"; };
+		4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotRequest.swift; sourceTree = "<group>"; };
+		4665C23D1E45987600F71C24 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		4665C23F1E459A0A00F71C24 /* TransformUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformUtility.swift; sourceTree = "<group>"; };
+		4665C2411E459DF000F71C24 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4665C2431E45A19D00F71C24 /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		4665C2451E45A53A00F71C24 /* FieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldModel.swift; sourceTree = "<group>"; };
+		4665C2471E45A8EE00F71C24 /* ContributionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContributionModel.swift; sourceTree = "<group>"; };
+		4665C2491E45ACC400F71C24 /* AuthResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResultModel.swift; sourceTree = "<group>"; };
+		4665C24B1E45C35D00F71C24 /* APIMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
+		4665C24D1E45C42D00F71C24 /* TegakiPotError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegakiPotError.swift; sourceTree = "<group>"; };
+		4665C24F1E45E19F00F71C24 /* KeyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyList.swift; sourceTree = "<group>"; };
+		4665C2611E464E8E00F71C24 /* QuestionListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionListCollectionViewCell.swift; sourceTree = "<group>"; };
+		4665C2621E464E8E00F71C24 /* QuestionListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionListCollectionViewCell.xib; sourceTree = "<group>"; };
+		46E0E4FA1E4650920044F0D2 /* EditQuestionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditQuestionViewController.storyboard; sourceTree = "<group>"; };
+		46E0E4FC1E46553D0044F0D2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
+		46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswerViewController.swift; sourceTree = "<group>"; };
+		46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditAnswerViewController.storyboard; sourceTree = "<group>"; };
+		BE11AA701E45F1A000E0F5B5 /* DrawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawData.swift; sourceTree = "<group>"; };
+		BE11AA781E460D0500E0F5B5 /* EditPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPanel.swift; sourceTree = "<group>"; };
+		BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPanel.swift; sourceTree = "<group>"; };
+		BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawableUtility.swift; sourceTree = "<group>"; };
+		BE11AA801E461E7B00E0F5B5 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,20 +123,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0289F3933F9674F09F9F2FC /* Pods_TegakiPot_iOS.framework in Frameworks */,
+				4665C2361E4595FE00F71C24 /* AEXML.framework in Frameworks */,
+				4665C2371E4595FE00F71C24 /* APIKit.framework in Frameworks */,
+				4665C2381E4595FE00F71C24 /* Himotoki.framework in Frameworks */,
+				4665C2391E4595FE00F71C24 /* Result.framework in Frameworks */,
+				4665C23A1E4595FE00F71C24 /* SwiftSVGiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461136B01E48B75E009AC1F2 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				BE11AA701E45F1A000E0F5B5 /* DrawData.swift */,
+				BE11AA781E460D0500E0F5B5 /* EditPanel.swift */,
+				BE11AA801E461E7B00E0F5B5 /* Math.swift */,
+				BE11AA7C1E4610A400E0F5B5 /* ShowPanel.swift */,
+				BE11AA7E1E461E2D00E0F5B5 /* DrawableUtility.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
 		4652A6FF1E457DC2003FA92C = {
 			isa = PBXGroup;
 			children = (
-				4652A70A1E457DC3003FA92C /* TegakiPot-iOS */,
-				4652A7091E457DC3003FA92C /* Products */,
-				D90F9D9AC76EA28F3354D082 /* Pods */,
 				6D0F9475F07E62CA9658FEF0 /* Frameworks */,
+				4652A7091E457DC3003FA92C /* Products */,
+				4652A70A1E457DC3003FA92C /* TegakiPot-iOS */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,21 +166,23 @@
 		4652A70A1E457DC3003FA92C /* TegakiPot-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				4665C2061E45809A00F71C24 /* Utility */,
-				4665C2011E45805700F71C24 /* SearchView */,
-				4665C2001E45804F00F71C24 /* QuestionDetail */,
-				4665C1FF1E45804800F71C24 /* FriendList */,
-				4665C1FE1E45804200F71C24 /* User */,
-				4665C1FD1E45803B00F71C24 /* HandWriting */,
+				46E0E5041E46A7C00044F0D2 /* EditAnswer */,
 				4665C1FC1E45803200F71C24 /* EditQuestion */,
-				4665C1FB1E45802100F71C24 /* QuestionList */,
+				4665C1FF1E45804800F71C24 /* FriendList */,
+				4665C1FD1E45803B00F71C24 /* HandWriting */,
+				4665C22B1E458BFF00F71C24 /* Login */,
 				4665C1FA1E45801C00F71C24 /* Model */,
+				4665C2001E45804F00F71C24 /* QuestionDetail */,
+				4665C1FB1E45802100F71C24 /* QuestionList */,
+				4665C2011E45805700F71C24 /* Search */,
+				4665C1FE1E45804200F71C24 /* User */,
+				4665C2061E45809A00F71C24 /* Utility */,
 				4652A70B1E457DC3003FA92C /* AppDelegate.swift */,
-				4652A70D1E457DC3003FA92C /* ViewController.swift */,
-				4652A70F1E457DC3003FA92C /* Main.storyboard */,
 				4652A7121E457DC3003FA92C /* Assets.xcassets */,
-				4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */,
 				4652A7171E457DC3003FA92C /* Info.plist */,
+				4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */,
+				4652A70F1E457DC3003FA92C /* Main.storyboard */,
+				4652A70D1E457DC3003FA92C /* TabViewController.swift */,
 			);
 			path = "TegakiPot-iOS";
 			sourceTree = "<group>";
@@ -87,83 +190,136 @@
 		4665C1FA1E45801C00F71C24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4665C22E1E4594B400F71C24 /* API */,
+				461136B01E48B75E009AC1F2 /* Drawing */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4665C1FB1E45802100F71C24 /* QuestionList */ = {
 			isa = PBXGroup;
 			children = (
+				4665C2611E464E8E00F71C24 /* QuestionListCollectionViewCell.swift */,
+				4665C2621E464E8E00F71C24 /* QuestionListCollectionViewCell.xib */,
+				4665C2271E4585E600F71C24 /* QuestionListViewController.storyboard */,
+				4665C2251E4585D400F71C24 /* QuestionListViewController.swift */,
 			);
-			name = QuestionList;
+			path = QuestionList;
 			sourceTree = "<group>";
 		};
 		4665C1FC1E45803200F71C24 /* EditQuestion */ = {
 			isa = PBXGroup;
 			children = (
+				46E0E4FA1E4650920044F0D2 /* EditQuestionViewController.storyboard */,
+				4665C2211E4585A600F71C24 /* EditQuestionViewController.swift */,
 			);
-			name = EditQuestion;
+			path = EditQuestion;
 			sourceTree = "<group>";
 		};
 		4665C1FD1E45803B00F71C24 /* HandWriting */ = {
 			isa = PBXGroup;
 			children = (
+				4665C21F1E45859200F71C24 /* HandWritingViewController.storyboard */,
+				4665C21D1E45858100F71C24 /* HandWritingViewController.swift */,
 			);
-			name = HandWriting;
+			path = HandWriting;
 			sourceTree = "<group>";
 		};
 		4665C1FE1E45804200F71C24 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				4665C21B1E45856E00F71C24 /* UserViewController.storyboard */,
+				4665C2191E45855C00F71C24 /* UserViewController.swift */,
 			);
-			name = User;
+			path = User;
 			sourceTree = "<group>";
 		};
 		4665C1FF1E45804800F71C24 /* FriendList */ = {
 			isa = PBXGroup;
 			children = (
+				4665C2171E45854900F71C24 /* FriendListViewController.storyboard */,
+				4665C2151E45853A00F71C24 /* FriendListViewController.swift */,
 			);
-			name = FriendList;
+			path = FriendList;
 			sourceTree = "<group>";
 		};
 		4665C2001E45804F00F71C24 /* QuestionDetail */ = {
 			isa = PBXGroup;
 			children = (
+				46E0E5001E467A300044F0D2 /* AnswerTableViewCell.swift */,
+				46E0E5011E467A300044F0D2 /* AnswerTableViewCell.xib */,
+				4665C2111E45850100F71C24 /* QuestionDetailViewController.storyboard */,
+				4665C2131E45851000F71C24 /* QuestionDetailViewController.swift */,
 			);
-			name = QuestionDetail;
+			path = QuestionDetail;
 			sourceTree = "<group>";
 		};
-		4665C2011E45805700F71C24 /* SearchView */ = {
+		4665C2011E45805700F71C24 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				4665C20F1E45847A00F71C24 /* SearchViewController.storyboard */,
+				4665C20D1E45845700F71C24 /* SearchViewController.swift */,
 			);
-			name = SearchView;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		4665C2061E45809A00F71C24 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				46E0E4FC1E46553D0044F0D2 /* Extensions.swift */,
+				4665C24F1E45E19F00F71C24 /* KeyList.swift */,
 				4665C20B1E4580E600F71C24 /* MaterialColor.swift */,
 				4665C2071E4580BE00F71C24 /* StoryboardInstantiable.swift */,
 			);
-			name = Utility;
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		4665C22B1E458BFF00F71C24 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4665C22C1E458C2400F71C24 /* LoginViewController.storyboard */,
+				4665C2291E45862C00F71C24 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4665C22E1E4594B400F71C24 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4665C24B1E45C35D00F71C24 /* APIMethod.swift */,
+				4665C2431E45A19D00F71C24 /* AnswerModel.swift */,
+				4665C2491E45ACC400F71C24 /* AuthResultModel.swift */,
+				4665C2471E45A8EE00F71C24 /* ContributionModel.swift */,
+				4665C2451E45A53A00F71C24 /* FieldModel.swift */,
+				4665C23D1E45987600F71C24 /* QuestionModel.swift */,
+				4665C22F1E4594EF00F71C24 /* TegakiPotAPI.swift */,
+				4665C24D1E45C42D00F71C24 /* TegakiPotError.swift */,
+				4665C23B1E4596F100F71C24 /* TegakiPotRequest.swift */,
+				4665C23F1E459A0A00F71C24 /* TransformUtility.swift */,
+				4665C2411E459DF000F71C24 /* UserModel.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		46E0E5041E46A7C00044F0D2 /* EditAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				46E0E5071E46A7EE0044F0D2 /* EditAnswerViewController.storyboard */,
+				46E0E5051E46A7DF0044F0D2 /* EditAnswerViewController.swift */,
+			);
+			path = EditAnswer;
 			sourceTree = "<group>";
 		};
 		6D0F9475F07E62CA9658FEF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4E45B77E8E8F4E2C31C1D249 /* Pods_TegakiPot_iOS.framework */,
+				4665C2311E4595FE00F71C24 /* AEXML.framework */,
+				4665C2321E4595FE00F71C24 /* APIKit.framework */,
+				4665C2331E4595FE00F71C24 /* Himotoki.framework */,
+				4665C2341E4595FE00F71C24 /* Result.framework */,
+				4665C2351E4595FE00F71C24 /* SwiftSVGiOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D90F9D9AC76EA28F3354D082 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */,
-				822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,12 +329,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4652A71A1E457DC3003FA92C /* Build configuration list for PBXNativeTarget "TegakiPot-iOS" */;
 			buildPhases = (
-				4B12079DB3AC87896C7F521C /* [CP] Check Pods Manifest.lock */,
 				4652A7041E457DC2003FA92C /* Sources */,
 				4652A7051E457DC2003FA92C /* Frameworks */,
 				4652A7061E457DC2003FA92C /* Resources */,
-				2426C40EA0ED01360ED8059D /* [CP] Embed Pods Frameworks */,
-				91160EBF283E1339AFEB38C8 /* [CP] Copy Pods Resources */,
 				4665C1F91E457FEB00F71C24 /* ShellScript */,
 			);
 			buildRules = (
@@ -230,30 +383,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E0E5081E46A7EE0044F0D2 /* EditAnswerViewController.storyboard in Resources */,
 				4652A7161E457DC3003FA92C /* LaunchScreen.storyboard in Resources */,
+				4665C2201E45859200F71C24 /* HandWritingViewController.storyboard in Resources */,
+				4665C2121E45850100F71C24 /* QuestionDetailViewController.storyboard in Resources */,
 				4652A7131E457DC3003FA92C /* Assets.xcassets in Resources */,
 				4652A7111E457DC3003FA92C /* Main.storyboard in Resources */,
+				46E0E4FB1E4650920044F0D2 /* EditQuestionViewController.storyboard in Resources */,
+				4665C21C1E45856E00F71C24 /* UserViewController.storyboard in Resources */,
+				4665C22D1E458C2400F71C24 /* LoginViewController.storyboard in Resources */,
+				46E0E5031E467A300044F0D2 /* AnswerTableViewCell.xib in Resources */,
+				4665C2641E464E8E00F71C24 /* QuestionListCollectionViewCell.xib in Resources */,
+				4665C2101E45847A00F71C24 /* SearchViewController.storyboard in Resources */,
+				4665C2181E45854900F71C24 /* FriendListViewController.storyboard in Resources */,
+				4665C2281E4585E600F71C24 /* QuestionListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2426C40EA0ED01360ED8059D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4665C1F91E457FEB00F71C24 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,36 +421,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		4B12079DB3AC87896C7F521C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		91160EBF283E1339AFEB38C8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TegakiPot-iOS/Pods-TegakiPot-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -309,10 +428,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE11AA791E460D0500E0F5B5 /* EditPanel.swift in Sources */,
+				4665C2301E4594EF00F71C24 /* TegakiPotAPI.swift in Sources */,
+				4665C2401E459A0A00F71C24 /* TransformUtility.swift in Sources */,
+				4665C22A1E45862C00F71C24 /* LoginViewController.swift in Sources */,
+				4665C2221E4585A600F71C24 /* EditQuestionViewController.swift in Sources */,
+				4665C2481E45A8EE00F71C24 /* ContributionModel.swift in Sources */,
+				4665C24A1E45ACC400F71C24 /* AuthResultModel.swift in Sources */,
+				46E0E5021E467A300044F0D2 /* AnswerTableViewCell.swift in Sources */,
+				4665C2441E45A19D00F71C24 /* AnswerModel.swift in Sources */,
+				BE11AA7F1E461E2D00E0F5B5 /* DrawableUtility.swift in Sources */,
+				BE11AA711E45F1A000E0F5B5 /* DrawData.swift in Sources */,
 				4665C20C1E4580E600F71C24 /* MaterialColor.swift in Sources */,
-				4652A70E1E457DC3003FA92C /* ViewController.swift in Sources */,
+				4665C23C1E4596F100F71C24 /* TegakiPotRequest.swift in Sources */,
+				4665C24E1E45C42D00F71C24 /* TegakiPotError.swift in Sources */,
+				4665C2261E4585D400F71C24 /* QuestionListViewController.swift in Sources */,
+				4665C2421E459DF000F71C24 /* UserModel.swift in Sources */,
+				46E0E5061E46A7DF0044F0D2 /* EditAnswerViewController.swift in Sources */,
+				4665C2461E45A53A00F71C24 /* FieldModel.swift in Sources */,
+				4665C23E1E45987600F71C24 /* QuestionModel.swift in Sources */,
+				4665C21A1E45855C00F71C24 /* UserViewController.swift in Sources */,
+				4652A70E1E457DC3003FA92C /* TabViewController.swift in Sources */,
+				46E0E4FD1E46553D0044F0D2 /* Extensions.swift in Sources */,
 				4665C2091E4580BE00F71C24 /* StoryboardInstantiable.swift in Sources */,
+				BE11AA7D1E4610A400E0F5B5 /* ShowPanel.swift in Sources */,
+				4665C21E1E45858100F71C24 /* HandWritingViewController.swift in Sources */,
+				4665C2141E45851000F71C24 /* QuestionDetailViewController.swift in Sources */,
+				4665C2161E45853A00F71C24 /* FriendListViewController.swift in Sources */,
+				4665C2631E464E8E00F71C24 /* QuestionListCollectionViewCell.swift in Sources */,
+				4665C24C1E45C35D00F71C24 /* APIMethod.swift in Sources */,
+				4665C2501E45E19F00F71C24 /* KeyList.swift in Sources */,
 				4652A70C1E457DC3003FA92C /* AppDelegate.swift in Sources */,
+				4665C20E1E45845700F71C24 /* SearchViewController.swift in Sources */,
+				BE11AA811E461E7B00E0F5B5 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +473,7 @@
 				4652A7101E457DC3003FA92C /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		4652A7141E457DC3003FA92C /* LaunchScreen.storyboard */ = {
@@ -333,6 +482,7 @@
 				4652A7151E457DC3003FA92C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -433,11 +583,15 @@
 		};
 		4652A71B1E457DC3003FA92C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50510289541176ACAE4B09BB /* Pods-TegakiPot-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TegakiPot-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.is2017ers.TegakiPot-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,11 +601,15 @@
 		};
 		4652A71C1E457DC3003FA92C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 822494CE43614CD7A548658C /* Pods-TegakiPot-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B4S4333JDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TegakiPot-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.is2017ers.TegakiPot-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

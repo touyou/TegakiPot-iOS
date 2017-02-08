@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zzi-b2-hVu">
+    <device id="ipad12_9" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Question List View Controller-->
+        <scene sceneID="QtM-28-bgn">
+            <objects>
+                <viewController id="Zzi-b2-hVu" customClass="QuestionListViewController" customModule="TegakiPot_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lhr-EL-FE5"/>
+                        <viewControllerLayoutGuide type="bottom" id="zIk-Ln-awH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Opq-iQ-r0P">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-hE-AyE">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="2" id="yMX-yf-6G6">
+                                    <size key="itemSize" width="540" height="352"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yiH-hE-AyE" secondAttribute="trailing" id="Xr9-aS-6gp"/>
+                            <constraint firstItem="yiH-hE-AyE" firstAttribute="top" secondItem="Opq-iQ-r0P" secondAttribute="top" id="c19-aJ-bYQ"/>
+                            <constraint firstItem="zIk-Ln-awH" firstAttribute="top" secondItem="yiH-hE-AyE" secondAttribute="bottom" id="hFP-Kk-xfJ"/>
+                            <constraint firstItem="yiH-hE-AyE" firstAttribute="leading" secondItem="Opq-iQ-r0P" secondAttribute="leading" id="hnl-3U-VDv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="yiH-hE-AyE" id="qFT-ce-FGS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dta-Mg-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-121.22986822840409" y="42.7734375"/>
+        </scene>
+    </scenes>
+</document>
