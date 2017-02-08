@@ -323,26 +323,27 @@ class Geometry {
     }
     func animate(_ layer: CALayer, _ view: UIView) {
         let now = CACurrentMediaTime()
-        let duration = 0.3 // 秒
-        let delay = 0.3 // 秒
+        let duration = 1.0 // 秒
+        let delay = 1.0 // 秒
         var count = 0
         for shape in shapes {
             let sublayer = CAShapeLayer()
             layer.addSublayer(sublayer)
             let rawdata = shape.toRawpath(pers)
             let body = rawdata.body
-            sublayer.path = UIBezierPath().cgPath
+            sublayer.path = body.cgPath
             sublayer.lineWidth = body.lineWidth
             sublayer.strokeColor = rawdata.strokeColor.cgColor
             sublayer.fillColor = rawdata.fillColor.cgColor
-            let animation = CABasicAnimation(keyPath: "path")
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.duration = duration
             animation.beginTime = now + Double(count) * delay
-            animation.toValue = body.cgPath
+            animation.fromValue = 0.0
+            animation.toValue = 1.0
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.fillMode = kCAFillModeBoth
             animation.isRemovedOnCompletion = false
-            sublayer.add(animation, forKey: animation.keyPath)
+            sublayer.add(animation, forKey: "drawLineAnim\(count)")
             count += 1
         }
         let shapes0 = shapes
