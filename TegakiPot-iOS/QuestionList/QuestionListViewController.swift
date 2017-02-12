@@ -76,10 +76,8 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         let question = questions[indexPath.row]
         let nanashi = "名無しさん"
         cell.autherLabel.text = "by \(question.postedBy?.userName ?? nanashi)"
-        let calendar = Calendar.current
-        let component = calendar.dateComponents([.year, .day, .month], from: question.createdAt!)
-        cell.yearLabel.text = "\(component.year!)"
-        cell.dateLabel.text = "\(component.month!)/\(component.day!)"
+//        let calendar = Calendar.current
+//        let component = calendar.dateComponents([.year, .day, .month], from: question.createdAt!)
         cell.titleLabel.text = question.title
         cell.voteLabel.text = "♥ \(question.votes!)"
         if question.isSolved ?? false {
@@ -90,9 +88,8 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
             cell.solveLabel.backgroundColor = UIColor(hexString: "#d05568ca")
         }
         
-        cell.imageView.image = images[indexPath.row % 3]
-        
-        cell.setSvg(question.svg ?? "")
+        let width = (view.frame.width - 100) / 4.0
+        cell.setSvg(question.svg ?? "", width)
         
         cell.layer.masksToBounds = false
         cell.layer.shadowOffset = CGSize(width: 2.0, height: 3.0)
@@ -103,17 +100,31 @@ extension QuestionListViewController: UICollectionViewDelegate, UICollectionView
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio = CGFloat(3.0/4.0)
-        return CGSize(width: view.frame.width / 4.5, height: view.frame.width / 4.5 * ratio)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let question = questions[indexPath.row]
         
         let viewController = QuestionDetailViewController.instantiateFromStoryboard()
         viewController.id = question.id
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // MARK: Layout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let ratio = CGFloat(3.0/4.0)
+        let width = (view.frame.width - 100) / 4.0
+        return CGSize(width: width, height: width * ratio)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
 }
 
