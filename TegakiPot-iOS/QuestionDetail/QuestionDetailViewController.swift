@@ -117,6 +117,8 @@ extension QuestionDetailViewController: UITableViewDelegate, UITableViewDataSour
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         cell.dateLabel.text = formatter.string(from: answer.createdAt ?? Date())
+        cell.goodLabel.text = "\(answer.good ?? 0)"
+        cell.badLabel.text = "\(answer.bad ?? 0)"
         cell.setSvg(answer.svg ?? "")
         
         cell.goodCommit = {

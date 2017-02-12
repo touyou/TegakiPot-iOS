@@ -24,9 +24,19 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zG4-QB-aiy" userLabel="DrawBaseView">
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="画像がありません。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuN-M2-njJ">
+                                        <rect key="frame" x="135.5" y="141" width="129" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="EuN-M2-njJ" firstAttribute="centerY" secondItem="zG4-QB-aiy" secondAttribute="centerY" id="Mm4-LI-OdX"/>
                                     <constraint firstAttribute="width" secondItem="zG4-QB-aiy" secondAttribute="height" multiplier="4:3" id="QKS-fH-09c"/>
+                                    <constraint firstItem="EuN-M2-njJ" firstAttribute="centerX" secondItem="zG4-QB-aiy" secondAttribute="centerX" id="r67-Mf-nwY"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-xq-4Ch">
